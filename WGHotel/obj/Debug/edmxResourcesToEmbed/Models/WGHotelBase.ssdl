@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WGHotelBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="CID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Banner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Extension" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Path" Type="nvarchar" MaxLength="500" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Enabled" Type="bit" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Location" Type="int" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="NUSF" Type="nvarchar" MaxLength="400" />
+    <Property Name="Tel1" Type="nvarchar" MaxLength="150" />
+    <Property Name="Tel2" Type="nvarchar" MaxLength="150" />
+    <Property Name="Telmobile" Type="nvarchar" MaxLength="150" />
+    <Property Name="Fax" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="ImageStore">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="image" Nullable="false" />
+    <Property Name="Path" Type="nvarchar" MaxLength="300" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ReferIdZH" Type="int" />
+    <Property Name="ReferIdUS" Type="int" />
+    <Property Name="ReferNameZH" Type="nvarchar" MaxLength="150" />
+    <Property Name="ReferNameUS" Type="nvarchar" MaxLength="150" />
+    <Property Name="Extension" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="false" />
+    <Property Name="HotelID" Type="int" Nullable="false" />
+    <Property Name="RoomID" Type="int" Nullable="false" />
+    <Property Name="Creator" Type="int" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="CheckInDate" Type="date" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="NumOfPeople" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+    <Property Name="Modified" Type="datetime" Nullable="false" />
+    <Property Name="Modify" Type="int" Nullable="false" />
+    <Property Name="Room" Type="nvarchar" MaxLength="50" />
+    <Property Name="FoodCost" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Other" Type="nvarchar" MaxLength="1500" />
+    <Property Name="OtherCost" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Food" Type="nvarchar" MaxLength="1500" />
+    <Property Name="UserType" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="ReportRooms">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReportID" Type="int" Nullable="false" />
+    <Property Name="RoomName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="RoomID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoomPrice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ROOMID" Type="int" Nullable="false" />
+    <Property Name="ROOMIDOFUS" Type="int" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="SaleOff" Type="bit" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysSetting">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Code" Type="nvarchar" MaxLength="15" />
+    <Property Name="Value" Type="nvarchar" MaxLength="50" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Area__CID__239E4DCF">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Area" Type="Self.Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Area">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportRooms_Report">
+    <End Role="Report" Type="Self.Report" Multiplicity="1" />
+    <End Role="ReportRooms" Type="Self.ReportRooms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Report">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReportRooms">
+        <PropertyRef Name="ReportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WGHotelBaseModelStoreContainer">
+    <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImageStore" EntityType="Self.ImageStore" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportRooms" EntityType="Self.ReportRooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoomPrice" EntityType="Self.RoomPrice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysSetting" EntityType="Self.SysSetting" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Area__CID__239E4DCF" Association="Self.FK__Area__CID__239E4DCF">
+      <End Role="City" EntitySet="City" />
+      <End Role="Area" EntitySet="Area" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportRooms_Report" Association="Self.FK_ReportRooms_Report">
+      <End Role="Report" EntitySet="Report" />
+      <End Role="ReportRooms" EntitySet="ReportRooms" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

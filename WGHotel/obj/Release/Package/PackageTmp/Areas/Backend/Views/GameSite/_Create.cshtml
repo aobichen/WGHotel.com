@@ -1,0 +1,82 @@
+﻿@model WGHotel.Areas.Backend.Models.GameSiteListModel
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+       @Html.HiddenFor(model=>model.IDZH)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            <label class="control-label col-md-2">體育項目中文</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SportZH, new { htmlAttributes = new { @class = "form-control alert-info" } })
+                @Html.ValidationMessageFor(model => model.SportZH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">體育項目英文</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SportUS, new { htmlAttributes = new { @class = "form-control alert-success" } })
+                @Html.ValidationMessageFor(model => model.SportUS, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">用途中文</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TypeZH, new { htmlAttributes = new { @class = "form-control alert-info" } })
+                @Html.ValidationMessageFor(model => model.TypeZH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">用途英文</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TypeUS, new { htmlAttributes = new { @class = "form-control alert-success" } })
+                @Html.ValidationMessageFor(model => model.TypeUS, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">場館名稱中文</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VenueZH, new { htmlAttributes = new { @class = "form-control alert-info" } })
+                @Html.ValidationMessageFor(model => model.VenueZH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">場館名稱英文</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VenueUS, new { htmlAttributes = new { @class = "form-control alert-success" } })
+                @Html.ValidationMessageFor(model => model.VenueUS, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">備註中文</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RemarkZH, new { htmlAttributes = new { @class = "form-control alert-info" } })
+                @Html.ValidationMessageFor(model => model.RemarkZH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">備註英文</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RemarkUS, new { htmlAttributes = new { @class = "form-control alert-success" } })
+                @Html.ValidationMessageFor(model => model.RemarkUS, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="確定" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+

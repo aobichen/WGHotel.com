@@ -1,0 +1,39 @@
+INSERT INTO [WGHotel-US].[dbo].[CodeFile]
+           ([ItemType]
+           ,[ItemCode]
+           ,[ItemDescription]
+           ,[Remark]
+           ,[Created]
+           ,[Creator]
+           ,[Modified]
+           ,[Modify])
+     VALUES
+           ('Bed'
+           ,'Bed'
+           ,'1 Queen bed'
+           ,'1加大床'
+           ,GETDATE() 
+           ,34
+           ,GETDATE() 
+           ,34)
+GO
+
+INSERT INTO [WGHotel-ZH].[dbo].[CodeFile]
+           ([ItemType]
+           ,[ItemCode]
+           ,[ItemDescription]
+           ,[Remark]
+           ,[Created]
+           ,[Creator]
+           ,[Modified]
+           ,[Modify])
+     VALUES
+           ('Bed'
+           ,'Bed'
+           ,N'一加大床 (Queen Size)'
+           ,'1加大床'
+           ,GETDATE() 
+           ,34
+           ,GETDATE() 
+           ,34)
+GO

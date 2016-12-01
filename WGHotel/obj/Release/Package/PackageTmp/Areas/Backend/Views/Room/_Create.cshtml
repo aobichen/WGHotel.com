@@ -1,0 +1,200 @@
+﻿
+@model WGHotel.Areas.Backend.Models.RoomViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @*@Html.HiddenFor(model=>model.ImgKey)*@
+    <style>
+        textarea{
+            width:100%;
+            min-height:50px;
+            border-radius:5px;
+            padding:5px;
+        }
+    </style>
+
+    <input type="hidden" id='iscanedit' value="@ViewBag.IsCanEdit.ToString()" />
+    <div class="panel" id="wrapper-panel">
+        <div class="panel-body">
+            @Html.HiddenFor(model=>model.ImgKey)
+            @Html.HiddenFor(model => model.HOTELID)
+            @Html.HiddenFor(model => model.IDZH)
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="icon_house_alt"></i>Account</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="@Url.Action("/", "Hotel")">Home</a></li>
+                        <li><i class="fa fa-bed" aria-hidden="true"></i>Room</li>
+
+                    </ol>
+                </div>
+            </div>
+          
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel panel-success">
+                        <header class="panel-heading">
+                            中文基本資料
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">名稱</label>
+                                    <div class="col-sm-10">
+
+                                        @Html.EditorFor(model => model.NameZh, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">介紹</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextAreaFor(model => model.FeatureZh, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">注意事項</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextAreaFor(model => model.NoticeZh, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                </div>
+
+                              
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel panel-success">
+                        <header class="panel-heading">
+                            英文基本資料
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">名稱</label>
+                                    <div class="col-sm-10">
+
+                                        @Html.EditorFor(model => model.NameUs, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">介紹</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextAreaFor(model => model.FeatureUs, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">注意事項</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextAreaFor(model => model.NoticeUs, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel panel-success">
+                        <header class="panel-heading">
+                            房型
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                @*<div class="form-group">
+                                    <label class="col-sm-2 control-label">房型</label>
+                                    <div class="col-sm-10 col-lg-5">
+                                        @Html.DropDownList("RoomType", (SelectList)ViewBag.RoomTypes, new { @class = "form-control" })
+                                        
+                                    </div>
+                                </div>*@
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">床型</label>
+                                    <div class="col-sm-10 col-lg-5">
+                                        @*@Html.DropDownList("BedType", (SelectList)ViewBag.BedTypes, new { @class = "form-control" })*@
+                                        @Html.Partial("_BedTypes")
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">價格</label>
+                                    <div class="col-sm-10 col-lg-5">
+                                        @Html.EditorFor(model => model.Sell, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">數量</label>
+                                    <div class="col-sm-10 col-lg-5">
+                                        @Html.EditorFor(model => model.Quantiy, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">提供早餐</label>
+                                    <div class="col-sm-10">
+                                        @Html.EditorFor(model => model.HasBreakfast)
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel panel-success">
+                        <header class="panel-heading">
+                            房間圖片
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                               
+                              
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">環境照片</label>
+                                    <div class="col-sm-10">
+                                        @Html.Partial("_ImageUpload")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+            @if (((bool)ViewBag.IsCanEdit)) { 
+            <div class="row">
+                <div class="form-group">
+                    <!-- Buttons -->
+                    <div class="col-lg-offset-10 col-lg-9">
+                        <button type="submit" class="btn btn-primary">確定</button>
+
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+
+    </div>
+
+   <script type="text/javascript">
+       jQuery(function () {
+           let Iscanedit = $('#iscanedit').val().toLowerCase();
+          
+           if (Iscanedit != 'true') {
+               $('#wrapper-panel').find('*').attr('disabled', true);
+           }
+       })
+   </script>
+
+}
+
+

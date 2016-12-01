@@ -1,0 +1,62 @@
+﻿@model PagedList.IPagedList<WGHotel.Areas.Backend.Models.HotelListViewModel>
+@{
+    ViewBag.Title = "Hotel";
+    
+}
+
+<style type="text/css">
+    .pagination{
+        margin:0 0;
+    }
+</style>
+
+ <section class="wrapper">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header"><i class="icon_house_alt">
+                            </i>Hotel</h3>
+                        <ol class="breadcrumb">
+                            <li><i class="fa fa-home"></i><a href="@Url.Action("/", "Hotel")">Home</a></li>
+                            <li><i class="icon_house_alt"></i>Hotel</li>
+
+                        </ol>
+                    </div>
+                </div>
+                @if (User.IsInRole("Admin")) { 
+                    using (Html.BeginForm())
+                    {
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-lg-4 col-left">
+
+                                    <div class="input-group">
+
+                                        @Html.TextBox("SearchString", null, new { @class = "form-control", @placeholder = "Search for..." })
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary" type="submit">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                }
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        @Html.Partial("_Table", Model)
+                    </div>
+                </div>
+
+            </div>
+       </div>
+
+</section>
+
+

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WGHotelBaseModelStoreContainer" CdmEntityContainer="WGHotelBaseEntities">
+    <EntitySetMapping Name="ImageStore">
+      <EntityTypeMapping TypeName="WGHotelBaseModel.ImageStore">
+        <MappingFragment StoreEntitySet="ImageStore">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ReferIdZH" ColumnName="ReferIdZH" />
+          <ScalarProperty Name="ReferIdUS" ColumnName="ReferIdUS" />
+          <ScalarProperty Name="ReferNameZH" ColumnName="ReferNameZH" />
+          <ScalarProperty Name="ReferNameUS" ColumnName="ReferNameUS" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SysSetting">
+      <EntityTypeMapping TypeName="WGHotelBaseModel.SysSetting">
+        <MappingFragment StoreEntitySet="SysSetting">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

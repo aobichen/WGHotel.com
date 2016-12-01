@@ -1,0 +1,105 @@
+﻿@model WGHotel.Areas.Backend.Models.RoomCanEditDate
+
+@{
+    ViewBag.Title = "RoomCanEditDate";
+}
+
+
+<script src="~/Content/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<link href="~/Content/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+<section class="wrapper">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header">
+                        <i class="fa fa-cogs">
+                        </i>系統
+                    </h3>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-cogs"></i>
+                            系統
+                        </li>
+                        <li><i class="fa fa-calendar-o"></i>房型開放編輯日期</li>
+
+                    </ol>
+                </div>
+            </div>
+
+            <div class="row">
+                <article class="well">
+                    設定關閉編輯功能的日期.
+                    現在日期超過設定日期會關閉以下功能
+                    <ul>
+                        <li>新增房型</li>
+                        <li>編輯房型</li>
+                        <li>關放房</li>
+                        <li>設定房價</li>
+                    </ul>
+                </article>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="panel panel-primary">
+                        <header class="panel-heading">
+                            日期設定
+                        </header>
+                        <div class="panel-body">
+                            @using (Html.BeginForm())
+                            {
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">開始日期</label>
+                                        <div class="col-sm-10 col-lg-5">
+                                            @Html.EditorFor(model => model.Begin, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Begin, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="form-group">
+
+                                        <div class="col-sm-10 col-lg-5 col-lg-offset-10">
+                                            <button type="submit" class="btn btn-primary">
+                                                確定
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+
+    jQuery(function () {
+
+            $('#Begin').datetimepicker({
+                format: 'yyyy/mm/dd',
+                autoclose: true,
+                minView: 2,
+                pickerPosition: 'bottom-left',
+            });
+
+            $('#End').datetimepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                minView: 2,
+                pickerPosition: 'bottom-left',
+            });
+
+
+    })
+
+</script>

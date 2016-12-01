@@ -1,0 +1,243 @@
+﻿@model WGHotel.Models.HotelDetail
+<script src="~/Scripts/lightgallery-all.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1995kqdkunc5cGppQX1oeod30a9g-l9c&callback=initMap"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    function initialize() {
+        initMap();
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map_canvas'), {
+                zoom: 15,
+                center: { lat: -34.397, lng: 150.644 }
+            });
+            var geocoder = new google.maps.Geocoder();
+            var address = document.getElementById('address').value;
+            console.log(address);
+            //document.getElementById('submit').addEventListener('click', function () {
+            geocodeAddress(geocoder,address, map);
+            //});
+        }
+
+        function geocodeAddress(geocoder,address, resultsMap) {
+
+            //var address = document.getElementById('address').value;
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    resultsMap.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: resultsMap,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+
+        //var secheltLoc = new google.maps.LatLng(49.47216, -123.76307);
+
+        //var myMapOptions = {
+        //    zoom: 15
+        //	,center: secheltLoc
+        //	,mapTypeId: google.maps.MapTypeId.ROADMAP
+        //};
+
+
+        //var theMap = new google.maps.Map(document.getElementById("map_canvas"), myMapOptions);
+
+
+        var marker = new google.maps.Marker({
+            map: theMap,
+            draggable: true,
+            position: new google.maps.LatLng(49.47216, -123.76307),
+            visible: true
+        });
+
+        
+    }
+</script>
+<div class="wrap">
+    <input type="hidden" id="address" value="@Model.Address" />
+    <nav class="breadcrumbs">
+       
+    </nav>
+
+<div class="row">
+    
+    <!--hotel three-fourth content-->
+    <section class="three-fourth">
+        <!--gallery-->
+        <div class="gallery">
+            @if(Model.Images!=null && Model.Images.Count>0){
+
+            <ul id="image-gallery" class="cS-hidden">
+                @foreach (var img in Model.Images)
+                {
+                    var base64 = Convert.ToBase64String(img.Image);
+                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                <li data-thumb="@imgSrc">
+                    <img src="@imgSrc" alt="" />
+                </li>
+
+                }
+            </ul>
+
+           }
+        </div>
+        <!--//gallery-->
+        <!--inner navigation-->
+        <nav class="inner-nav">
+            <ul>
+                <li class="availability"><a href="#availability" title="Rooms" data-localize="rooms">房型</a></li>
+                <li class="description"><a href="#description" title="Description" data-localize="hotelfeature">特色</a></li>
+                <li class="facilities"><a href="#facilities" title="Facilities" data-localize="facilities">設施</a></li>
+                <li class="location"><a href="#location" title="Location" data-localize="location">地點</a></li>
+                @*<li class="reviews"><a href="#reviews" title="Reviews">Reviews</a></li>*@
+                @*<li class="things-to-do"><a href="#things-to-do" title="Things to do">Things to do</a></li>*@
+            </ul>
+        </nav>
+        <!--//inner navigation-->
+        <!--availability-->
+        <section id="availability" class="tab-content">
+            <article>
+                <h2 data-localize="rooms">房型</h2>
+               
+                @Html.Partial("_RoomTypes",Model.Rooms)
+            </article>
+        </section>
+        <!--//availability-->
+        <!--description-->
+        <section id="description" class="tab-content">
+            <article>
+                <h2 data-localize="hotelfeature">旅館介紹</h2>
+                <div class="text-wrap">
+                    <p>
+                        @Model.Feature
+                    </p>
+                </div>
+
+
+            </article>
+        </section>
+        <!--//description-->
+        <!--facilities-->
+        <section id="facilities" class="tab-content">
+            <article>
+                <h2 data-localize="facilities">Facilities</h2>
+                <div class="text-wrap">
+                    <ul class="three-col">
+                        @foreach (var fa in Model.Facilities)
+                        {
+                        <li>
+                            @fa
+                        </li>
+                        }
+                       
+                    </ul>
+                </div>
+
+               
+
+            </article>
+        </section>
+        <!--//facilities-->
+        
+        <section id="location" class="tab-content">
+            <article>
+                <!--map-->
+                <div class="gmap" id="map_canvas"></div>
+                <!--//map-->
+            </article>
+        </section>
+     
+    </section>
+    <!--//hotel content-->
+    <!--sidebar-->
+    <aside class="one-fourth right-sidebar">
+        <!--hotel details-->
+        <article class="hotel-details">
+            <h1>
+                @Model.Name
+               
+            </h1>
+            <span class="address">@Model.Address</span>
+            
+            <div class="description">
+                <p>@Model.Feature</p>
+            </div>
+            <div class="tags">
+                @*<ul>
+                    <li><a href="#" title="Wellness">Wellness</a></li>
+                    <li><a href="#" title="Last minute">Last minute</a></li>
+                    <li><a href="#" title="Thailand">Thailand</a></li>
+                    <li><a href="#" title="SPA">SPA</a></li>
+                    <li><a href="#" title="Romantic">Romantic</a></li>
+                </ul>*@
+            </div>
+        </article>
+        <!--//hotel details-->
+
+        <!--Need Help Booking?-->
+        <article class="widget">
+            
+            <p class="number">@Model.Tel</p>
+        </article>
+       
+       @if (ViewBag.NearHotels !=null &&
+           ((List<WGHotel.Models.HotelDetail>)ViewBag.NearHotels).Count > 0) { 
+            <article class="widget">
+                <h4 data-localize="Neighboring">neighboring</h4>
+                @foreach (var item in (List<WGHotel.Models.HotelDetail>)ViewBag.NearHotels)
+                {
+                    <div class="deal-of-the-day">
+                        <figure>
+                            <a href="@Url.Action("Detail", new { id= item.ID })" title="">
+                                @if (item.Images.Count > 0)
+                                {
+                                    <img src="@Url.Action("HotelFirstImage", "Home", new { id = item.Images.ToList()[0].ID })" alt="" />
+                                }
+                                else
+                                {
+                                    <img src="~/images/uploads/img.jpg" />
+                                }
+                            </a>
+
+                        </figure>
+                        <h3>
+                            <a href="@Url.Action("Detail", new { id= item.ID })">
+                                @item.Name
+
+                            </a>
+                        </h3>
+                        @*<p> 只要 <span class="price">@Model.Rooms.ToList().Min(o => o.DayPrice).ToString("#,##0")<small> 起</small></span></p>*@
+                        @*<p class="number">@Model.Tel</p>*@
+                    </div>
+                }
+
+            </article>
+      
+      }
+    </aside>
+    <!--//sidebar-->
+</div>
+</div>
+<script type="text/javascript">
+    jQuery(function () {
+        $('#image-gallery').lightSlider({
+            gallery: true,
+            item: 1,
+            thumbItem: @Model.Images.Count,
+            slideMargin: 0,
+            speed: 500,
+            auto: true,
+            loop: true,
+            onSliderLoad: function () {
+                $('#image-gallery').removeClass('cS-hidden');
+            }
+        });
+
+        $('#gallery1,#gallery2,#gallery3,#gallery4').lightGallery({
+            download: false
+        });
+    })
+</script>

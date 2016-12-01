@@ -1,0 +1,72 @@
+﻿@model IEnumerable<WGHotel.Models.RoomViewList>
+@{
+    var idx = 1;
+    var gallery = "gallery";
+}
+<ul class="room-types">
+    @foreach (var item in Model) { 
+    <!--room-->
+        var id = gallery + (idx++).ToString();
+    <li>
+        <figure class="left" id="@id">
+            @foreach (var img in item.Images)
+            {
+                var base64 = Convert.ToBase64String(img.Image);
+                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                <a href="@imgSrc" data-sub-html="<p>@item.Name</p>">
+                <img src="@imgSrc" alt="" />
+											<span class="image-overlay"></span>
+                    		</a>
+            }
+        </figure>
+        <div class="meta">
+            <h3>@item.Name</h3>
+            <p>@item.Feature</p>
+            @if (!item.HasBreakfast)
+            {
+                <p >
+                    <i class="fa fa-cutlery" aria-hidden="true" style="color:#BEBEBE;"></i>
+                    <span data-localize="nonbreakfast">不含早餐</span>
+            </p>
+            }
+            else
+            {
+                <p>
+                    <i class="fa fa-cutlery" aria-hidden="true" style="color:#4eafaa"></i>
+                    <span data-localize="hasbreakfast">包含早餐</span>
+            </p>
+            }
+           
+            @*<a href="javascript:void(0)" title="more info" class="more-info">+ more info</a>*@
+        </div>
+        <div class="room-information">
+            <div class="row">
+                <span class="first" data-localize="bedtype">Max:</span>
+                <span class="second">
+                    @WGHotel.Helpers.CodeFiles.GetCodeFileForBed(item.BedType)
+                    
+                @*<i class="material-icons">&#xE7FD;</i>*@
+                </span>
+            </div>
+            <div class="row">
+                <span class="first" data-localize="roomprice">Price:</span>
+                <span class="second">@item.Sell.Value.ToString("#,##0")</span>
+            </div>
+            @*<div class="row">
+                <span class="first" data-localize="roomtype">房型:</span>
+                <span class="second">@WGHotel.Helpers.CodeFiles.GetCodeFileDescription(item.RoomType)</span>
+            </div>*@
+            <a target="_blank" href="@item.LinkUrl" class="gradient-button" title="Book">
+                <span data-localize="BookNow">Book now</span>
+            </a>
+        </div>
+        @*<div class="more-information">
+            <p>Stylish and individually designed room featuring a satellite TV, mini bar and a 24-hour room service menu.</p>
+            <p><strong>Room Facilities:</strong> Safety Deposit Box, Air Conditioning, Desk, Ironing Facilities, Seating Area, Heating, Shower, Bath, Hairdryer, Toilet, Bathroom, Pay-per-view Channels, TV, Telephone</p>
+            <p><strong>Bed Size(s):</strong> 1 Double </p>
+            <p><strong>Room Size:</strong>  16 square metres</p>
+        </div>*@
+    </li>
+  
+    }
+</ul>

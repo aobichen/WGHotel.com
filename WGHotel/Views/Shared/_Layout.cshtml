@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="2017世界大學運動會訂房平台">
+    <meta name="description" content="2017台北世界大學運動會訂房,SUMMER UNIVERSIADE 29th Hotel,2017台北世界大學運動會旅館,SUMMER UNIVERSIADE b&b,World Game of Taipei 2017">
+    <meta name="author" content="atech.tw">
+    <meta name="og:title" content="2017世大運│SUMMER UNIVERSIADE 29th│比賽住宿│世大運旅館">
+    <title>世大運訂房平台</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")  
+   
+    <link rel="stylesheet" href="~/Content/theme-turqoise.css" id="template-color" />
+   
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Roboto+Slab:400,700&subset=latin,latin-ext,greek-ext,greek,cyrillic,vietnamese,cyrillic-ext">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://use.fontawesome.com/e808bf9397.js"></script>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    @RenderSection("scripts", required: false)
+
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+    <div class="loading">
+        
+        <div class="ball-customer" style="margin-left:40%;">
+            <img class="img-responsive" src="~/images/ico/part_287_2546227_93910.gif" />
+        </div>
+        @*<div class="ball1"></div>*@
+    </div>
+    <!--- //loading animation -->
+    <!--header-->
+    
+   
+    <header class="header">
+        <div class="wrap">
+            <!--logo-->
+            <div class="logo"><a href="@Url.Action("", "Home", new  {area = "" })" title="2017世大運訂房平台l">
+    <img src="~/images/logos/wghotel.png" alt="2017世大運訂房平台" />
+</a></div>
+            <!--//logo-->
+            <!--ribbon-->
+            <div class="ribbon">
+                
+                <nav>
+                    <ul class="profile-nav">
+                        <li class="active" style="text-align:center;"><a href="@Url.Action("", "Hotel", new {area="Backend" })" title="My Account" data-localize="myaccount">飯店管理</a></li>
+                        @*<li><a href="login.html" title="Login">Login</a></li>
+                        <li><a href="my_account.html" title="Settings">Settings</a></li>*@
+                    </ul>
+                    <ul class="lang-nav">
+                        @if (ViewBag.lang == "us") { 
+                        <li id="zh" class="active" style="text-align:center;"><a href="javascript:void(0);" data-localize="zhtw"  title="繁中">繁中</a></li>
+                            
+                        }
+                        else
+                        {
+                            <li id="us" class="active" style=" text-align:center;"><a href="javascript:void(0);" data-localize="english" title="EN">EN</a></li>
+                        }
+                    </ul>
+                    @*<ul class="currency-nav">
+                        <li class="active"><a href="#" title="$US Dollar">$US Dollar</a></li>
+                        <li><a href="#" title="€ Euro">€ Euro</a></li>
+                        <li><a href="#" title="£ Pound">£ Pound</a></li>
+                    </ul>*@
+                </nav>
+            </div>
+            <!--//ribbon-->
+            <!--search-->
+            @*<div class="search">
+                <form id="search-form" method="get" action="search-form">
+                    <input type="search" placeholder="Search entire site here" name="site_search" id="site_search" />
+                    <input type="submit" id="submit-site-search" value="submit-site-search" name="submit-site-search" />
+                </form>
+            </div>*@
+            <!--//search-->
+            <!--contact-->
+           
+            <!--//contact-->
+        </div>
+
+        <!--main navigation-->
+       
+        <!--//main navigation-->
+    </header>
+@if (ViewContext.RouteData.Values["controller"] == "Home" && ViewBag.GameSite != null && ((List<SelectListItem>)ViewBag.GameSite).Count>0)
+{
+    @Html.Partial("_SliderCarousel")
+}
+    <main class="main">
+        @RenderBody()
+    </main>
+    <footer class="footer">
+        <div class="wrap">
+           
+                <div class="bottom full-width">
+                    <p class="copy">Copyright Summer Universiade 2017. All rights reserved</p>
+                    <nav>
+                        <ul>
+                            @*<li><a href="javascript:void(0)" title="About us">About us</a></li>*@
+                            @*<li><a href="javascript:void(0)" title="Contact">Contact</a></li>*@
+                            @*<li><a href="#" title="Partners">Partners</a></li>
+                            <li><a href="#" title="Customer service">Customer service</a></li>*@
+                            @*<li><a href="javascript:void(0)" title="FAQ">FAQ</a></li>*@
+                            @*<li><a href="#" title="Careers">Careers</a></li>
+                            <li><a href="#" title="Terms & Conditions">Terms &amp; Conditions</a></li>
+                            <li><a href="#" title="Privacy statement">Privacy statement</a></li>*@
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-ui.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>-->
+
+    <script type="text/javascript" src="~/Content/jquery-localize/dist/jquery.localize.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/infobox.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.slimmenu.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/lightslider.min.js"></script>
+
+    <script src="~/Scripts/lightgallery-all.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/scripts.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            $(document).ready(function () {
+                $('.form').hide();
+                $('#form1').show();
+                $('.f-item:nth-child(1)').addClass('active');
+                $('.f-item:nth-child(1) span').addClass('checked');
+
+                $('#hero-gallery').lightSlider({
+                    gallery: true,
+                    item: 1,
+                    pager: false,
+                    gallery: false,
+                    slideMargin: 0,
+                    speed: 2000,
+                    pause: 6000,
+                    mode: 'fade',
+                    auto: true,
+                    loop: true,
+                    onSliderLoad: function () {
+                        $('#hero-gallery').removeClass('cS-hidden');
+                    }
+                });
+            });
+
+
+
+            var lang = $.cookie("lang");
+            console.log(lang);
+            $("[data-localize]").localize("/Content/lang/language", { language: lang });
+
+            $('.lang-nav').delegate('li', 'click', function (e) {
+                let $self = $(this);
+                let mylang = $self.attr('id');
+                $.cookie("lang", mylang);
+                if (mylang != lang) {
+                    $('main').css({ 'opacity': '0.2' });
+                    $("[data-localize]").localize("/Content/lang/language", { language: mylang });
+                    lang = mylang;
+                    
+                    //location.href = currentURL;
+                    //console.log($('.logo').find('a').length);
+                    //$('.logo').find('a').trigger("click");
+                    //var href = $('.logo').find('a').attr('href');
+                    //window.location.href = "/";
+                    location.reload();
+                    //e.stopPropagation();
+                }
+                
+            });
+
+        })(jQuery);
+    </script>
+
+    
+    
+</body>
+</html>

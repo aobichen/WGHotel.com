@@ -1,0 +1,67 @@
+﻿
+@model WGHotel.Models.Country
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.HiddenFor(model => model.ID)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label class="control-label col-md-2">國家</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control alert-info" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">NUSF</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NUSF, new { htmlAttributes = new { @class = "form-control alert-success" } })
+                @Html.ValidationMessageFor(model => model.NUSF, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Tel1</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Tel1, new { htmlAttributes = new { @class = "form-control alert-info" } })
+                @Html.ValidationMessageFor(model => model.Tel1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tel2</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Tel2, new { htmlAttributes = new { @class = "form-control alert-success" } })
+                @Html.ValidationMessageFor(model => model.Tel2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Telmobile</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Telmobile, new { htmlAttributes = new { @class = "form-control alert-info" } })
+                @Html.ValidationMessageFor(model => model.Telmobile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Fax</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control alert-success" } })
+                @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="確定" class="btn btn-primary" />
+            </div>
+        </div>
+       
+    </div>
+}
+
+

@@ -1,0 +1,93 @@
+﻿@model WGHotel.Areas.Backend.Models.ReportModel
+@{
+    ViewBag.Title = "Export";
+}
+<script src="~/Content/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<link href="~/Content/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+<script type="text/javascript">
+    jQuery(function () {
+        $('#Begin').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            minView: 2,
+            pickerPosition: 'bottom-left',
+        });
+        $('#End').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            minView: 2,
+            pickerPosition: 'bottom-left',
+        });
+    })
+</script>
+<section class="wrapper">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header">
+                        <i class="fa fa-file-excel-o" aria-hidden="true">
+                        </i>匯出報表
+                    </h3>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                            匯出報表
+                        </li>
+
+
+                    </ol>
+                </div>
+            </div>
+
+           @*@using (Html.BeginForm("ExportData", "Report", FormMethod.Post))*@
+@using (Html.BeginForm())
+{
+               <div class="row">
+                   <div class="col-md-12">
+                       <div class="col-md-3">
+                           @Html.DropDownList("Nation", null, "--請選擇--", new { @class = "form-control" })
+                       </div>
+                       <div class="col-md-3">
+                           @Html.EditorFor(model=>model.Begin,new { htmlAttributes = new { @class = "form-control", @Value = Model.Begin.ToString("yyyy/MM/dd") } })
+                       </div>
+                       <div class="col-md-3">
+                           @Html.EditorFor(model => model.End, new { htmlAttributes = new { @class = "form-control", @Value = Model.End.ToString("yyyy/MM/dd") } })
+                       </div>
+                       <div class="col-md-3">
+                           <button type="submit" class="btn btn-primary">
+                               搜尋
+                           </button>
+                       </div>
+                   </div>
+               </div>
+           }
+
+@using (Html.BeginForm("ExportData", "Report", FormMethod.Post))
+{
+    <div class="well-sm">
+        <button type="submit" class="btn btn-primary" id="ButtonExport" name="ButtonExport">
+            匯出資料
+        </button>
+    </div>
+    <input type="hidden" name="key" value="@ViewBag.key" />
+            <div class="row">
+                <div class="col-lg-12">
+                    @Html.Partial("_Table")
+                </div>
+            </div>
+}
+        </div>
+    </div>
+
+</section>
+
+    
+
+    
+
+
+
+
+
+

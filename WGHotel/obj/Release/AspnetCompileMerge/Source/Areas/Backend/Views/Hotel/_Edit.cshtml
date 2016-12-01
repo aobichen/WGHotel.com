@@ -1,0 +1,230 @@
+﻿@model WGHotel.Areas.Backend.Models.AccountHotelViewModel
+
+@*@using (Html.BeginForm("RegisterAndCreateHotel", "Account", new { area = "" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))*@
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.AntiForgeryToken()
+    @*@Html.HiddenFor(model=>model.ImgKey)*@
+    <div class="panel">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="icon_house_alt"></i>Account</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="@Url.Action("/", "Hotel")">Home</a></li>
+                        <li><i class="icon_house_alt"></i>Hotel</li>
+
+                    </ol>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+                        <header class="panel-heading">
+                            帳號
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">帳號</label>
+                                    <div class="col-sm-10">
+                                        @*@Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        <label class="form-control"> @Model.Account</label>
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                    <label class="col-sm-2 control-label">密碼</label>
+                                    <div class="col-sm-10">
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                </div>*@
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <section class="panel panel-success">
+                        <header class="panel-heading">
+                            位址資訊
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">場次</label>
+                                    <div class="col-sm-10">
+                                        @Html.Partial("_GameSite")
+                                        @*@Html.EditorFor(model => model.Game, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">縣市</label>
+                                    <div class="col-sm-10 col-md-6 col-lg-6">
+                                        @*@Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @Html.DropDownList("City", null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">地區</label>
+                                    <div class="col-sm-10">
+                                        @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">電話</label>
+                                    <div class="col-sm-10">
+                                        @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel panel-success">
+                        <header class="panel-heading">
+                            中文資訊
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">旅館名稱</label>
+                                    <div class="col-sm-10">
+
+                                        @Html.EditorFor(model => model.Namezh, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">地址</label>
+                                    <div class="col-sm-10">
+                                        @Html.EditorFor(model => model.Addresszh, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">飯店介紹</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextAreaFor(model => model.Featurezh, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel panel-success">
+                        <header class="panel-heading">
+                            英文資訊
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">飯店名稱</label>
+                                    <div class="col-sm-10">
+                                        @Html.EditorFor(model => model.Nameus, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">地址</label>
+                                    <div class="col-sm-10">
+                                        @Html.EditorFor(model => model.Addressus, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">飯店介紹</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextAreaFor(model => model.Featureus, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="panel panel-success">
+                        <header class="panel-heading">
+                            其他
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">訂房網址</label>
+                                    <div class="col-sm-10">
+                                        @Html.EditorFor(model => model.LinkUrl, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                                <div class="form-group" id="HotelFacilty">
+                                    <label class="col-sm-2 control-label">飯店設施</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <label><input type="checkbox" id="hfselectall" />全選</label>
+                                        </div>
+                                        @Html.Partial("_HotelFacility")
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">環境照片</label>
+                                    <div class="col-sm-10">
+                                        @Html.Partial("_ImageUpload")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <!-- Buttons -->
+                    <div class="col-lg-offset-10 col-md-offset-10 col-lg-9">
+                        <button type="submit" class="btn btn-primary">確定</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+       jQuery(function () {
+           let elements = $('input[name=HotelFacility]');
+           $('#HotelFacilty').delegate("#hfselectall", "change", function () {
+               let self = $(this);
+               var ched = self.prop('checked');
+
+               if (ched) {
+                   elements.prop('checked', true);
+               } else {
+                   elements.prop('checked', false);
+               }
+           });
+
+
+       });
+    </script>
+
+
+}
+
+
+

@@ -1,0 +1,5 @@
+﻿@if (ViewBag.HotelFacility != null) { 
+<div class="full-width">
+  @Html.CheckBoxList("HotelFacility", (List<SelectListItem>)ViewBag.HotelFacility, null, WGHotel.Helpers.Position.Vertical, 5)
+</div>
+}

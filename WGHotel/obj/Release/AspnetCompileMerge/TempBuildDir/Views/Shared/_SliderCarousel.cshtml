@@ -1,0 +1,102 @@
+﻿
+<div class="slider">
+    <ul id="hero-gallery" class="cS-hidden">
+        @if (ViewBag.Banners != null && ((List<string>)ViewBag.Banners).Count > 0)
+        {
+            foreach (var banner in ((List<string>)ViewBag.Banners)) { 
+                <li data-thumb="@banner">
+                    <img src="@banner" alt="" />
+                </li>
+            }
+        }
+        @*<li data-thumb="~/images/banners/banner1.jpg">
+            <img src="~/images/banners/banner1.jpg" alt="" />
+        </li>
+        <li data-thumb="~/images/banners/banner2.jpg">
+            <img src="~/images/banners/banner2.jpg" alt="" />
+        </li>*@
+        @*<li data-thumb="Content/images/slider7.jpg">
+            <img src="Content/images/slider7.jpg" alt="" />
+        </li>*@
+    </ul>
+</div>
+<div class="main-search">
+    <div class="wrap">
+        @using (Html.BeginForm()) { 
+        @*<form id="main-search" method="post" action="search_results.html">*@
+            <div class="row">
+                <!--column-->
+                <div class="column one-third">
+                    @*<h5><span>01</span> What?</h5>*@
+                    <h5 data-localize="Sport">競賽總類</h5>
+                    <div class="row">
+                        @Html.DropDownList("Game", (List<SelectListItem>)ViewBag.GameSite)
+                    </div>
+                </div>
+                <!--//column-->
+
+                <div class="two-third">
+                    <!--form hotel-->
+                    <div class="form row" id="form1">
+                        <!--column-->
+                        <div class="column one-fourth">
+                            <h5 data-localize="KeyWord">關鍵字</h5>
+                            <div class="row">
+                                <div class="f-item full-width">
+                                    @*<label for="destination1">Your destination</label>*@
+                                    <input type="text" id="destination1" name="word" />
+                                </div>
+                            </div>
+                        </div>
+                        <!--//column-->
+                        <!--column-->
+                        <div class="column three-fourth">
+                            <h5><span style="color:#555;font-size:16px;font-weight:400;" data-localize="CheckIn">入房</span>\<span style="color:#555;font-size:16px;font-weight:400;" data-localize="CheckOut">退房</span></h5>
+                            <div class="row">
+                                <div class="f-item one-half datepicker">
+                                    @*<label for="datepicker1">Check-in date</label>*@
+                                    <div class="datepicker-wrap"><input type="text" placeholder="" id="datepicker1" name="Begin" value="@ViewBag.CheckInDate" /></div>
+                                </div>
+                                <div class="f-item one-half datepicker">
+                                    @*<label for="datepicker2">Check-out date</label>*@
+                                    <div class="datepicker-wrap"><input type="text" placeholder="" id="datepicker2" name="End" value="@ViewBag.CheckOutDate" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--//column-->
+
+                    </div>
+
+                </div>
+                <button type="submit" data-localize="Search" class="gradient-button search-submit" id="search-submit">
+                    搜尋
+                </button>
+            </div>
+        @*</form>*@
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+        (function ($) {
+            $(document).ready(function () {
+              
+
+                $('#hero-gallery').lightSlider({
+                    gallery: true,
+                    item: 1,
+                    pager: false,
+                    gallery: false,
+                    slideMargin: 0,
+                    speed: 2000,
+                    pause: 6000,
+                    mode: 'fade',
+                    auto: true,
+                    loop: true,
+                    onSliderLoad: function () {
+                        $('#hero-gallery').removeClass('cS-hidden');
+                    }
+                });
+            });
+        })(jQuery);
+</script>

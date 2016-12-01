@@ -1,0 +1,87 @@
+﻿
+@model PagedList.IPagedList<WGHotel.Models.Banner>
+<div class="alert">
+    <a class="btn btn-primary" href="@Url.Action("Edit","Banner")">
+        新增
+    </a>
+</div>
+@if (Model.Count > 0) { 
+<table class="table table-striped table-bordered table-hover">
+    @*<thead>
+            <tr>
+                <th>
+
+                </th>
+            </tr>
+        </thead>*@
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Enabled.Value == true) { 
+                    <input type="checkbox" name="bannerenabled" checked value="@item.ID" />
+                    }
+                    else
+                    {
+                        <input type="checkbox" name="bannerenabled" value="@item.ID" />
+                    }
+
+                </td>
+                <td>
+                    @item.ID
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    <img class="img-responsive" src="@item.Path" />
+                </td>
+
+                <td>
+                    <div class="btn-group">
+
+                        <a class="btn btn-success" href="@Url.Action("Edit", new { id = item.ID})">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </a>
+
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="panel-footer">
+    @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }))
+</div>
+}
+
+<script type="text/javascript">
+    jQuery(function () {
+        $('input[name=bannerenabled]').on('change', function () {
+            var self = $(this);
+            var enabled = self.prop('checked');
+            var id = self.val();
+            
+            let model = { id: id, enabled: enabled };
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Delete","Banner")',
+                data: JSON.stringify(model),
+                cache: false,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (xhr) {
+                    let success = xhr.success;                   
+                    if (success != true) {
+                        $('input[name=bannerenabled][value=' + id + ']').attr('checked',!enabled);
+                    }               
+                },
+                error: function (xhr) {
+                   
+                    console.log(xhr);
+                }
+            });
+        });
+    });
+</script>

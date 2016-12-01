@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="USModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Hotel" Type="Int32" Nullable="false" />
+    <Property Name="Room" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Nationality" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="CheckDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Creator" Type="Int32" Nullable="false" />
+    <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Modify" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="WGHotelUSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="GameSite" EntityType="USModel.GameSite" />
+    <EntitySet Name="City" EntityType="USModel.City" />
+    <EntitySet Name="Area" EntityType="USModel.Area" />
+    <AssociationSet Name="FK__Area__CID__267ABA7A" Association="USModel.FK__Area__CID__267ABA7A">
+      <End Role="City" EntitySet="City" />
+      <End Role="Area" EntitySet="Area" />
+    </AssociationSet>
+    <EntitySet Name="Facility" EntityType="USModel.Facility" />
+    <EntitySet Name="CodeFile" EntityType="USModel.CodeFile" />
+    <EntitySet Name="Room" EntityType="USModel.Room" />
+    <EntitySet Name="Hotel" EntityType="USModel.Hotel" />
+    <AssociationSet Name="FK_Room_Hotel" Association="USModel.FK_Room_Hotel">
+      <End Role="Hotel" EntitySet="Hotel" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="GameSite">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sports" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Venue" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="Int32" />
+    <NavigationProperty Name="Area" Relationship="USModel.FK__Area__CID__267ABA7A" FromRole="City" ToRole="Area" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="CID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="City" Relationship="USModel.FK__Area__CID__267ABA7A" FromRole="Area" ToRole="City" />
+  </EntityType>
+  <Association Name="FK__Area__CID__267ABA7A">
+    <End Type="USModel.City" Role="City" Multiplicity="1" />
+    <End Type="USModel.Area" Role="Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Area">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Facility">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Enabled" Type="Boolean" Nullable="false" />
+    <Property Name="ParentId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CodeFile">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemType" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="ItemDescription" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Creator" Type="Int32" Nullable="false" />
+    <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Modify" Type="Int32" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="ParentId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HOTELID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BedType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Facilities" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HasBreakfast" Type="Boolean" />
+    <Property Name="Sell" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Notice" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="Quantiy" Type="Int32" />
+    <Property Name="Enabled" Type="Boolean" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="Feature" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Hotel" Relationship="USModel.FK_Room_Hotel" FromRole="Room" ToRole="Hotel" />
+  </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Game" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="Int32" Nullable="false" />
+    <Property Name="Area" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Features" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="LinkUrl" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="Facilities" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Enabled" Type="Boolean" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" />
+    <NavigationProperty Name="Room" Relationship="USModel.FK_Room_Hotel" FromRole="Hotel" ToRole="Room" />
+  </EntityType>
+  <Association Name="FK_Room_Hotel">
+    <End Type="USModel.Hotel" Role="Hotel" Multiplicity="1" />
+    <End Type="USModel.Room" Role="Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hotel">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="HOTELID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

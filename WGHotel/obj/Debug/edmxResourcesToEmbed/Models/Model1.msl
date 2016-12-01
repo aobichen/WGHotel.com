@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WGHotelsModelStoreContainer" CdmEntityContainer="WGHotelsEntities">
+    <EntitySetMapping Name="Banner">
+      <EntityTypeMapping TypeName="WGHotelsModel.Banner">
+        <MappingFragment StoreEntitySet="Banner">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CityEN">
+      <EntityTypeMapping TypeName="WGHotelsModel.CityEN">
+        <MappingFragment StoreEntitySet="CityEN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CityZH">
+      <EntityTypeMapping TypeName="WGHotelsModel.CityZH">
+        <MappingFragment StoreEntitySet="CityZH">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodeFileEN">
+      <EntityTypeMapping TypeName="WGHotelsModel.CodeFileEN">
+        <MappingFragment StoreEntitySet="CodeFileEN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="Modify" ColumnName="Modify" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodeFileZH">
+      <EntityTypeMapping TypeName="WGHotelsModel.CodeFileZH">
+        <MappingFragment StoreEntitySet="CodeFileZH">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="Modify" ColumnName="Modify" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacilityEN">
+      <EntityTypeMapping TypeName="WGHotelsModel.FacilityEN">
+        <MappingFragment StoreEntitySet="FacilityEN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FacilityZH">
+      <EntityTypeMapping TypeName="WGHotelsModel.FacilityZH">
+        <MappingFragment StoreEntitySet="FacilityZH">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameSiteEN">
+      <EntityTypeMapping TypeName="WGHotelsModel.GameSiteEN">
+        <MappingFragment StoreEntitySet="GameSiteEN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Sports" ColumnName="Sports" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameSiteZH">
+      <EntityTypeMapping TypeName="WGHotelsModel.GameSiteZH">
+        <MappingFragment StoreEntitySet="GameSiteZH">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Sports" ColumnName="Sports" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotelEN">
+      <EntityTypeMapping TypeName="WGHotelsModel.HotelEN">
+        <MappingFragment StoreEntitySet="HotelEN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Game" ColumnName="Game" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Features" ColumnName="Features" />
+          <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+          <ScalarProperty Name="Facilities" ColumnName="Facilities" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotelZH">
+      <EntityTypeMapping TypeName="WGHotelsModel.HotelZH">
+        <MappingFragment StoreEntitySet="HotelZH">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Game" ColumnName="Game" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Features" ColumnName="Features" />
+          <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+          <ScalarProperty Name="Facilities" ColumnName="Facilities" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImageStore">
+      <EntityTypeMapping TypeName="WGHotelsModel.ImageStore">
+        <MappingFragment StoreEntitySet="ImageStore">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ReferIdZH" ColumnName="ReferIdZH" />
+          <ScalarProperty Name="ReferIdUS" ColumnName="ReferIdUS" />
+          <ScalarProperty Name="ReferNameZH" ColumnName="ReferNameZH" />
+          <ScalarProperty Name="ReferNameUS" ColumnName="ReferNameUS" />
+          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Report">
+      <EntityTypeMapping TypeName="WGHotelsModel.Report">
+        <MappingFragment StoreEntitySet="Report">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="HotelID" ColumnName="HotelID" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="NumOfPeople" ColumnName="NumOfPeople" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="Modify" ColumnName="Modify" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="FoodCost" ColumnName="FoodCost" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="OtherCost" ColumnName="OtherCost" />
+          <ScalarProperty Name="Food" ColumnName="Food" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportRooms">
+      <EntityTypeMapping TypeName="WGHotelsModel.ReportRooms">
+        <MappingFragment StoreEntitySet="ReportRooms">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+          <ScalarProperty Name="RoomName" ColumnName="RoomName" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomEN">
+      <EntityTypeMapping TypeName="WGHotelsModel.RoomEN">
+        <MappingFragment StoreEntitySet="RoomEN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HOTELID" ColumnName="HOTELID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="BedType" ColumnName="BedType" />
+          <ScalarProperty Name="Facilities" ColumnName="Facilities" />
+          <ScalarProperty Name="HasBreakfast" ColumnName="HasBreakfast" />
+          <ScalarProperty Name="Sell" ColumnName="Sell" />
+          <ScalarProperty Name="Notice" ColumnName="Notice" />
+          <ScalarProperty Name="Quantiy" ColumnName="Quantiy" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Feature" ColumnName="Feature" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomZH">
+      <EntityTypeMapping TypeName="WGHotelsModel.RoomZH">
+        <MappingFragment StoreEntitySet="RoomZH">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HOTELID" ColumnName="HOTELID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="BedType" ColumnName="BedType" />
+          <ScalarProperty Name="Facilities" ColumnName="Facilities" />
+          <ScalarProperty Name="HasBreakfast" ColumnName="HasBreakfast" />
+          <ScalarProperty Name="Sell" ColumnName="Sell" />
+          <ScalarProperty Name="Notice" ColumnName="Notice" />
+          <ScalarProperty Name="Quantiy" ColumnName="Quantiy" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Feature" ColumnName="Feature" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SysSetting">
+      <EntityTypeMapping TypeName="WGHotelsModel.SysSetting">
+        <MappingFragment StoreEntitySet="SysSetting">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Country">
+      <EntityTypeMapping TypeName="WGHotelsModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Telmobile" ColumnName="Telmobile" />
+          <ScalarProperty Name="Tel2" ColumnName="Tel2" />
+          <ScalarProperty Name="Tel1" ColumnName="Tel1" />
+          <ScalarProperty Name="NUSF" ColumnName="NUSF" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomPrice">
+      <EntityTypeMapping TypeName="WGHotelsModel.RoomPrice">
+        <MappingFragment StoreEntitySet="RoomPrice">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="SaleOff" ColumnName="SaleOff" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ROOMID" ColumnName="ROOMID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

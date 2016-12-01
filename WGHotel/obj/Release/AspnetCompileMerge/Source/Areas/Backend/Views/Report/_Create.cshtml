@@ -1,0 +1,234 @@
+﻿@model WGHotel.Areas.Backend.Models.ReportViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "AAA", new { @class = "text-danger" })
+    @Html.AntiForgeryToken()
+    @*@Html.HiddenFor(model=>model.ImgKey)*@
+    <script src="~/Content/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <link href="~/Content/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <div class="panel">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header"><i class="icon_datareport" ></i>飯店回報</h3>
+                    <ol class="breadcrumb">
+                        <li><i class="fa fa-home"></i><a href="@Url.Action("/", "Hotel")">Home</a></li>
+                        <li><i class="icon_datareport"></i>飯店回報</li>
+
+                    </ol>
+                </div>
+            </div>
+
+            
+            @Html.HiddenFor(model=>model.ID)
+            @Html.HiddenFor(model => model.HotelID)
+            <div class="row">
+                <div class="col-lg-12">
+                            
+                     <section class="panel panel-success">
+                        <header class="panel-heading">
+                            @if (ViewBag.Message != null) { 
+                                <span style="color:red;">
+                                    @ViewBag.Message
+                                </span>
+                            }
+                            <input type="hidden" id="UserType" value="@ViewBag.UserType" />
+                        </header>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">類型</label>
+                                    <div class="col-sm-10 col-lg-6 col-md-8">
+                                        <select id="SelectUser" name="UserType" class="form-control">
+                                            <option value="媒體">媒體</option>
+                                            <option value="親友">親友</option>
+                                            <option value="工作人員">工作人員</option>
+                                            <option value="其他">其他</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                
+
+
+                               
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">國籍</label>
+                                    <div class="col-sm-10 col-lg-6 col-md-8">
+                                        @*@Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @Html.DropDownList("Country", null, null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">入住人數</label>
+                                    <div class="col-sm-10 col-lg-6 col-md-8">
+                                        @Html.EditorFor(model => model.NumOfPeople, new { htmlAttributes = new { @class = "form-control",@min="1" } })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">房型</label>
+                                    <div class="col-sm-10 col-lg-6 col-md-8">
+                                        @*@Html.CheckBoxList("RoomId", (SelectList)ViewBag.RoomId, null, WGHotel.Helpers.Position.Vertical, 5)*@
+                                      
+                                          <table id="room-table" class="table">
+                                            @foreach (var item in (SelectList)ViewBag.RoomId)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        @if (Model.RoomOfReport !=null && Model.RoomOfReport.Any(o => o.RoomID == int.Parse(item.Value)))
+                                                        {
+                                                            <input type="checkbox" checked value="@item.Value" />
+                                                        }
+                                                        else { 
+                                                        <input type="checkbox" value="@item.Value" />
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @if ( Model.RoomOfReport !=null && Model.RoomOfReport.Any(o => o.RoomID == int.Parse(item.Value)))
+                                                        {
+                                                            <input type="number" min="1" value="@Model.RoomOfReport.Where(o => o.RoomID == int.Parse(item.Value)).First().Amount" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <input type="number" min="1" />
+                                                        }
+                                                       
+                                                    </td>
+                                                    <td>
+                                                        @item.Text
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </table>
+                                        <input type="hidden" name="Room" id="Rooms"/>
+                                      
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">金額</label>
+                                    <div class="col-sm-10 col-lg-6 col-md-8">
+                                        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">日期</label>
+                                    <div class="col-sm-10 col-lg-6 col-md-8">
+                                        @Html.EditorFor(model => model.CheckInDate, new { htmlAttributes = new { @class = "form-control", @Value = Model.CheckInDate.ToString("yyyy/MM/dd") } })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">餐飲</label>
+                                    <div class="col-sm-10">
+                                        <div class="col-md-6">
+                                            @Html.EditorFor(model => model.Food, new { htmlAttributes = new { @class = "form-control", @placeholder = "餐飲項目" } })
+                                        </div>
+                                        <div class="col-md-6">
+                                            @Html.EditorFor(model => model.FoodCost, new { htmlAttributes = new { @class = "form-control", @placeholder = "餐飲金額" } })
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">其他</label>
+                                    <div class="col-sm-10">
+                                        <div class="col-md-6">
+                                            @Html.EditorFor(model => model.Other, new { htmlAttributes = new { @class = "form-control", @placeholder = "其他項目" } })
+                                        </div>
+                                        <div class="col-md-6">
+                                            @Html.EditorFor(model => model.OtherCost, new { htmlAttributes = new { @class = "form-control", @placeholder = "其他金額" } })
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                                @*<div class="form-group">
+                                    <label class="col-sm-2 control-label">備註</label>
+                                    <div class="col-sm-10">
+                                        @Html.TextAreaFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                </div>*@
+                               
+
+                            </div>
+                        </div>
+                    </section>               
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <!-- Buttons -->
+                    <div class="col-lg-offset-10 col-md-offset-10 col-lg-9">
+                        <button type="submit" class="btn btn-primary">確定</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+    jQuery(function () {
+
+        $('#room-table').delegate('input[type=checkbox]', 'change', function () {
+            let self = $(this);
+            var input = $(this).closest('tr').find("td:eq(1) > input[type=number]")
+            if (self.prop('checked')) {
+                input.val(1);
+            } else {
+                input.val('');
+            }
+            Render();
+        });
+
+        function Render() {
+            let input = $('#Rooms');
+            let tr = $('#room-table tr');
+            let arr = [];
+            for (let i = 0, max = tr.length; i < max; i++) {
+                var checked = $(tr[i]).find('td:eq(0) > input').prop('checked');
+                if (checked) {
+                    var id = $(tr[i]).find('td:eq(0) > input').val();
+                    var amt = $(tr[i]).find('td:eq(1) > input').val();
+                    var name = $(tr[i]).find('td:eq(2)').text().trim();
+                    var Text = id + '^' + amt + '^' + name;
+                    arr.push(Text);
+                }
+            }
+
+            input.val(arr.join(','));
+
+        }
+
+        Render();
+
+        if ($('#UserType').val() != '') {
+
+            $("#SelectUser option:first").prop('checked');
+        } else {
+            $('#SelectUser').val($('#UserType').val());
+        }
+
+        $('#CheckInDate').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            minView: 2,
+            pickerPosition: 'bottom-left',
+        });
+
+    });
+    </script>
+
+}

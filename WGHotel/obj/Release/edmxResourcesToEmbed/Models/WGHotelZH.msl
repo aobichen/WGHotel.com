@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ZHModelStoreContainer" CdmEntityContainer="WGHotelZHEntities">
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="ZHModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Hotel" ColumnName="Hotel" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="CheckDate" ColumnName="CheckDate" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="Modify" ColumnName="Modify" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameSite">
+      <EntityTypeMapping TypeName="ZHModel.GameSite">
+        <MappingFragment StoreEntitySet="GameSite">
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Sports" ColumnName="Sports" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="ZHModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Area">
+      <EntityTypeMapping TypeName="ZHModel.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CID" ColumnName="CID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facility">
+      <EntityTypeMapping TypeName="ZHModel.Facility">
+        <MappingFragment StoreEntitySet="Facility">
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodeFile">
+      <EntityTypeMapping TypeName="ZHModel.CodeFile">
+        <MappingFragment StoreEntitySet="CodeFile">
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Modify" ColumnName="Modify" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="ItemType" ColumnName="ItemType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Room">
+      <EntityTypeMapping TypeName="ZHModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="Feature" ColumnName="Feature" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="Quantiy" ColumnName="Quantiy" />
+          <ScalarProperty Name="Notice" ColumnName="Notice" />
+          <ScalarProperty Name="Sell" ColumnName="Sell" />
+          <ScalarProperty Name="HasBreakfast" ColumnName="HasBreakfast" />
+          <ScalarProperty Name="Facilities" ColumnName="Facilities" />
+          <ScalarProperty Name="BedType" ColumnName="BedType" />
+          <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="HOTELID" ColumnName="HOTELID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hotel">
+      <EntityTypeMapping TypeName="ZHModel.Hotel">
+        <MappingFragment StoreEntitySet="Hotel">
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+          <ScalarProperty Name="Facilities" ColumnName="Facilities" />
+          <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+          <ScalarProperty Name="Features" ColumnName="Features" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Game" ColumnName="Game" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

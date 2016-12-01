@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WGHotelBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ImageStore">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="Path" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReferIdZH" Type="Int32" />
+    <Property Name="ReferIdUS" Type="Int32" />
+    <Property Name="ReferNameZH" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ReferNameUS" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Extension" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysSetting">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="WGHotelBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ImageStore" EntityType="Self.ImageStore" />
+    <EntitySet Name="SysSetting" EntityType="Self.SysSetting" />
+    <EntitySet Name="Area" EntityType="WGHotelBaseModel.Area" />
+    <EntitySet Name="City" EntityType="WGHotelBaseModel.City" />
+    <AssociationSet Name="FK__Area__CID__239E4DCF" Association="WGHotelBaseModel.FK__Area__CID__239E4DCF">
+      <End Role="City" EntitySet="City" />
+      <End Role="Area" EntitySet="Area" />
+    </AssociationSet>
+    <EntitySet Name="Country" EntityType="WGHotelBaseModel.Country" />
+    <EntitySet Name="Banner" EntityType="WGHotelBaseModel.Banner" />
+    <EntitySet Name="Report" EntityType="WGHotelBaseModel.Report" />
+    <EntitySet Name="RoomPrice" EntityType="WGHotelBaseModel.RoomPrice" />
+    <EntitySet Name="ReportRooms" EntityType="WGHotelBaseModel.ReportRooms" />
+    <AssociationSet Name="FK_ReportRooms_Report" Association="WGHotelBaseModel.FK_ReportRooms_Report">
+      <End Role="Report" EntitySet="Report" />
+      <End Role="ReportRooms" EntitySet="ReportRooms" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="CID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="City" Relationship="WGHotelBaseModel.FK__Area__CID__239E4DCF" FromRole="Area" ToRole="City" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="Int32" />
+    <NavigationProperty Name="Area" Relationship="WGHotelBaseModel.FK__Area__CID__239E4DCF" FromRole="City" ToRole="Area" />
+  </EntityType>
+  <Association Name="FK__Area__CID__239E4DCF">
+    <End Type="WGHotelBaseModel.City" Role="City" Multiplicity="1" />
+    <End Type="WGHotelBaseModel.Area" Role="Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Area">
+        <PropertyRef Name="CID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="NUSF" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Tel1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Tel2" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Telmobile" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Fax" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Banner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Extension" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Enabled" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Country" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="HotelID" Type="Int32" Nullable="false" />
+    <Property Name="RoomID" Type="Int32" Nullable="false" />
+    <Property Name="Creator" Type="Int32" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CheckInDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="NumOfPeople" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="Modified" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Modify" Type="Int32" Nullable="false" />
+    <Property Name="Room" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FoodCost" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Other" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="OtherCost" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Food" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="UserType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ReportRooms" Relationship="WGHotelBaseModel.FK_ReportRooms_Report" FromRole="Report" ToRole="ReportRooms" />
+  </EntityType>
+  <EntityType Name="RoomPrice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROOMID" Type="Int32" Nullable="false" />
+    <Property Name="ROOMIDOFUS" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SaleOff" Type="Boolean" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReportRooms">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReportID" Type="Int32" Nullable="false" />
+    <Property Name="RoomName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="RoomID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Report" Relationship="WGHotelBaseModel.FK_ReportRooms_Report" FromRole="ReportRooms" ToRole="Report" />
+  </EntityType>
+  <Association Name="FK_ReportRooms_Report">
+    <End Type="WGHotelBaseModel.Report" Role="Report" Multiplicity="1" />
+    <End Type="WGHotelBaseModel.ReportRooms" Role="ReportRooms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Report">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReportRooms">
+        <PropertyRef Name="ReportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

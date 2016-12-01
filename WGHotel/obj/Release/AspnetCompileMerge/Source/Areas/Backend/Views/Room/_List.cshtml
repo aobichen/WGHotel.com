@@ -1,0 +1,100 @@
+﻿
+@model PagedList.IPagedList<WGHotel.Areas.Backend.Models.RoomList>
+<p>
+   
+</p>
+
+@if (((bool)ViewBag.IsCanEdit))
+{
+    <div class="row">
+        <div class="form-group ">
+
+            <div class="col-sm-offset-10 col-lg-offset-10">
+                @Html.ActionLink("新增房型", "Create", new { id = ViewBag.HotelID }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="well-sm">
+            <div class="alert alert-warning">
+               房型新增和編輯功能不開放
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="col-lg-12">
+    <table class="table table-responsive table-bordered">
+        <tr>
+            <th>
+                飯店名稱
+            </th>
+            <th>
+                房名
+            </th>
+          
+            <th>
+                床型
+            </th>
+            <th>
+                價格
+            </th>
+
+            <th>
+                數量
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HotelName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+              
+                <td>
+                    @WGHotel.Helpers.CodeFiles.GetCodeFileForBed(item.BedType)
+                  
+                </td>
+
+                <td>
+                   @item.Sell.ToString("#.##")
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantiy)
+                </td>
+
+                <td>
+                    <div class="btn-group">
+
+                        <a class="btn btn-danger" href="@Url.Action("Price","Room", new { id = item.ID})">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-success" href="@Url.Action("Edit","Room", new { id = item.ID})">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </a>
+                        
+                    </div>
+                    @*@Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.ID })*@
+                </td>
+            </tr>
+}
+
+    </table>
+</div>
+<div class="panel-footer">
+    @if (Model != null && Model.Count > 0) { 
+    @Html.PagedListPager(Model, Page => Url.Action("Index", new WGHotel.Areas.Backend.Controllers.RoomController.PagedClientViewModel { Page = Page, id = Model[0].ID }))
+    }
+    </div>

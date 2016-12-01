@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WGHotel.Models.HotelViewModel>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="wrap">
+    @if (ViewBag.IsSearch == null)
+    {
+        <div class="row">
+            <div class="full-width">
+
+                <!--latest offers-->
+
+
+                <header class="s-title">
+                    <h2></h2>
+                </header>
+
+                <!--top destinations-->
+                <div class="destinations">
+                    <div class="row">
+                       @Html.Partial("_List",Model)
+                    </div>
+                </div>
+
+            </div>
+            </div>
+    }
+    else
+    {
+    @Html.Partial("_KeelungList")
+    @Html.Partial("_ListTaipei")
+    @Html.Partial("_NewTaipei")
+    @Html.Partial("_ListTaoyuan")
+    @Html.Partial("_ListHsinchuCity")
+    @Html.Partial("_ListHsinchuCountry")
+    }
+   
+</div>

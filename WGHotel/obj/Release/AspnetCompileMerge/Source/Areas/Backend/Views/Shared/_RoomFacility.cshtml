@@ -1,0 +1,17 @@
+﻿<div class="form-group">
+    @foreach (var item in (List<WGHotel.Areas.Backend.Models.RoomFacilitiesCheckList>)ViewBag.RoomFacility)
+    {
+        if (item.Checked)
+        {
+            <label class="checkbox-inline">
+                <input checked name="Facilities" type="checkbox" value="@item.ID" />@item.Name
+            </label>
+        }
+        else 
+        { 
+            <label class="checkbox-inline">
+                <input name="Facilities" type="checkbox" value="@item.ID" />@item.Name
+            </label>
+        }
+    }
+</div>

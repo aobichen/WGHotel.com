@@ -1,0 +1,68 @@
+﻿<style type="text/css">
+    .destinations article .gradient-button {
+        top: 50px;
+    }
+</style>
+
+@if (((IEnumerable<WGHotel.Models.HotelViewModel>)ViewBag.Taipei).ToList().Count > 0)
+{
+
+<div class="row">
+    <div class="full-width">
+
+        <!--latest offers-->
+      
+
+        <header class="s-title">
+            <h2 data-localize="Taipei">台北</h2>
+        </header>
+
+        <!--top destinations-->
+        <div class="destinations">
+            <div class="row">
+                @foreach (var item in (IEnumerable<WGHotel.Models.HotelViewModel>)ViewBag.Taipei)
+                {
+                    <article class="one-fourth">
+                        <figure>
+                            <a href="@Url.Action("Detail","Home",new{id = item.ID})" title="">
+
+                                <img src="@Url.Action("HotelFirstImage", "Home", new  { id = item.Image})" alt="@item.Name" />
+                            </a>
+                        </figure>
+                        <div class="details">
+                            <a href="/Detail/@item.ID" title="View all" class="gradient-button" data-localize="viewall">瀏覽</a>
+                            <h4>@item.Name</h4>
+                            <span>
+                                <i class="fa fa-phone-square" aria-hidden="true"></i>
+                                @item.Tel
+                            </span>
+                            <div class="ribbon">
+
+                                <div class="half">
+                                    <a target="_blank" href="@item.LinkUrl" title="View all" style="padding-top:12px;">
+
+                                        <span class="fa fa-globe fa-2x" aria-hidden="true" style="width:25%;text-align:left;left:0px;"></span>
+                                        <span class="price" style="width:70%;font-size:14px;text-align:right" data-localize="forward">訂房</span>
+                                    </a>
+
+                                </div>
+                                <div class="half hotel">
+                                    <a href="flights.html" title="View all">
+                                        <span class="small"></span>
+                                        @if (item.Sell.HasValue)
+                                        {
+                                            <span class="price" style="font-size:14px;">&#36; @item.Sell.Value.ToString("#,##0")</span>
+                                        }
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+        }

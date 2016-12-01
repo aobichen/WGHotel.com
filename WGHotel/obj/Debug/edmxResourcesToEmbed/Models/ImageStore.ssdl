@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WGHotelBaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ImageStore">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Image" Type="image" Nullable="false" />
+    <Property Name="Path" Type="nvarchar" MaxLength="300" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="ReferIdZH" Type="int" />
+    <Property Name="ReferIdUS" Type="int" />
+    <Property Name="ReferNameZH" Type="nvarchar" MaxLength="150" />
+    <Property Name="ReferNameUS" Type="nvarchar" MaxLength="150" />
+    <Property Name="Extension" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SysSetting">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Code" Type="nvarchar" MaxLength="5" />
+    <Property Name="Value" Type="nvarchar" MaxLength="50" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="WGHotelBaseModelStoreContainer">
+    <EntitySet Name="ImageStore" EntityType="Self.ImageStore" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SysSetting" EntityType="Self.SysSetting" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
