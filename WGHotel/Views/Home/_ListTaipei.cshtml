@@ -7,14 +7,13 @@
 @if (((IEnumerable<WGHotel.Models.HotelViewModel>)ViewBag.Taipei).ToList().Count > 0)
 {
 
-<div class="row">
-    <div class="full-width">
+
 
         <!--latest offers-->
       
 
         <header class="s-title">
-            <h2 data-localize="Taipei">台北</h2>
+            <h1 data-localize="Taipei">台北</h1>
         </header>
 
         <!--top destinations-->
@@ -22,7 +21,7 @@
             <div class="row">
                 @foreach (var item in (IEnumerable<WGHotel.Models.HotelViewModel>)ViewBag.Taipei)
                 {
-                    <article class="one-fourth">
+                    <article class="one-third">
                         <figure>
                             <a href="@Url.Action("Detail","Home",new{id = item.ID})" title="">
 
@@ -63,6 +62,5 @@
             </div>
         </div>
 
-    </div>
-</div>
+
         }

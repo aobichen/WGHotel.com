@@ -290,6 +290,8 @@
       <End Role="RoomZH" EntitySet="RoomZH" />
     </AssociationSet>
     <EntitySet Name="RoomPrice" EntityType="WGHotelsModel.RoomPrice" />
+    <EntitySet Name="VenueEN" EntityType="WGHotelsModel.VenueEN" />
+    <EntitySet Name="VenueZH" EntityType="WGHotelsModel.VenueZH" />
   </EntityContainer>
   <EntityType Name="Country">
     <Key>
@@ -349,5 +351,23 @@
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="SaleOff" Type="Boolean" Nullable="false" />
     <Property Name="Quantity" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VenueEN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Venue" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="VenueZH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Venue" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

@@ -262,6 +262,24 @@
           <Property Name="Unit" Type="nvarchar" MaxLength="50" />
           <Property Name="Remark" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="VenueEN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sport" Type="nvarchar" MaxLength="50" />
+          <Property Name="Venue" Type="nvarchar" MaxLength="150" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VenueZH">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sport" Type="nvarchar" MaxLength="50" />
+          <Property Name="Venue" Type="nvarchar" MaxLength="150" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <Association Name="FK_HotelZH_HotelZH">
           <End Role="HotelZH" Type="Self.HotelZH" Multiplicity="1" />
           <End Role="HotelZH1" Type="Self.HotelZH" Multiplicity="0..1" />
@@ -330,6 +348,8 @@
           <EntitySet Name="RoomPrice" EntityType="Self.RoomPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoomZH" EntityType="Self.RoomZH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SysSetting" EntityType="Self.SysSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VenueEN" EntityType="Self.VenueEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VenueZH" EntityType="Self.VenueZH" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_HotelZH_HotelZH" Association="Self.FK_HotelZH_HotelZH">
             <End Role="HotelZH" EntitySet="HotelZH" />
             <End Role="HotelZH1" EntitySet="HotelZH" />
@@ -641,6 +661,8 @@
             <End Role="RoomZH" EntitySet="RoomZH" />
           </AssociationSet>
           <EntitySet Name="RoomPrice" EntityType="WGHotelsModel.RoomPrice" />
+          <EntitySet Name="VenueEN" EntityType="WGHotelsModel.VenueEN" />
+          <EntitySet Name="VenueZH" EntityType="WGHotelsModel.VenueZH" />
         </EntityContainer>
         <EntityType Name="Country">
           <Key>
@@ -700,6 +722,24 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SaleOff" Type="Boolean" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VenueEN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Venue" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VenueZH">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Venue" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -979,6 +1019,26 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ROOMID" ColumnName="ROOMID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VenueEN">
+            <EntityTypeMapping TypeName="WGHotelsModel.VenueEN">
+              <MappingFragment StoreEntitySet="VenueEN">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Venue" ColumnName="Venue" />
+                <ScalarProperty Name="Sport" ColumnName="Sport" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VenueZH">
+            <EntityTypeMapping TypeName="WGHotelsModel.VenueZH">
+              <MappingFragment StoreEntitySet="VenueZH">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Venue" ColumnName="Venue" />
+                <ScalarProperty Name="Sport" ColumnName="Sport" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

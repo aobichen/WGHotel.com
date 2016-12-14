@@ -12,10 +12,11 @@ namespace WGHotel.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CityEN
+    public partial class VenueZH
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> Location { get; set; }
+        public string Sport { get; set; }
+        public string Venue { get; set; }
+        public string Type { get; set; }
     }
 }

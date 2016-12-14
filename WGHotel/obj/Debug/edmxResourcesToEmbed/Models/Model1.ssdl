@@ -257,6 +257,24 @@
     <Property Name="Unit" Type="nvarchar" MaxLength="50" />
     <Property Name="Remark" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="VenueEN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sport" Type="nvarchar" MaxLength="50" />
+    <Property Name="Venue" Type="nvarchar" MaxLength="150" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="VenueZH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sport" Type="nvarchar" MaxLength="50" />
+    <Property Name="Venue" Type="nvarchar" MaxLength="150" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <Association Name="FK_HotelZH_HotelZH">
     <End Role="HotelZH" Type="Self.HotelZH" Multiplicity="1" />
     <End Role="HotelZH1" Type="Self.HotelZH" Multiplicity="0..1" />
@@ -325,6 +343,8 @@
     <EntitySet Name="RoomPrice" EntityType="Self.RoomPrice" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoomZH" EntityType="Self.RoomZH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SysSetting" EntityType="Self.SysSetting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VenueEN" EntityType="Self.VenueEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VenueZH" EntityType="Self.VenueZH" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_HotelZH_HotelZH" Association="Self.FK_HotelZH_HotelZH">
       <End Role="HotelZH" EntitySet="HotelZH" />
       <End Role="HotelZH1" EntitySet="HotelZH" />

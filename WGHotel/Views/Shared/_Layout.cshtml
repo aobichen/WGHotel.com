@@ -30,7 +30,14 @@
     @RenderSection("scripts", required: false)
 
     <style type="text/css">
-
+        body{
+             font-family: Meiryo, "微軟正黑體", "Microsoft JhengHei";
+        }
+        .s-title h2,h1 {
+            font-family:"Yu Gothic", SimHei;
+            color:#41afaa;
+            text-shadow:1px 2px #aaaaaa;
+        }
     </style>
 </head>
 <body>
@@ -71,58 +78,61 @@
                             <li id="us" class="active" style=" text-align:center;"><a href="javascript:void(0);" data-localize="english" title="EN">EN</a></li>
                         }
                     </ul>
-                    @*<ul class="currency-nav">
-                        <li class="active"><a href="#" title="$US Dollar">$US Dollar</a></li>
-                        <li><a href="#" title="€ Euro">€ Euro</a></li>
-                        <li><a href="#" title="£ Pound">£ Pound</a></li>
-                    </ul>*@
+                    
                 </nav>
             </div>
-            <!--//ribbon-->
-            <!--search-->
-            @*<div class="search">
-                <form id="search-form" method="get" action="search-form">
-                    <input type="search" placeholder="Search entire site here" name="site_search" id="site_search" />
-                    <input type="submit" id="submit-site-search" value="submit-site-search" name="submit-site-search" />
-                </form>
-            </div>*@
-            <!--//search-->
-            <!--contact-->
-           
-            <!--//contact-->
+            
         </div>
 
-        <!--main navigation-->
-       
-        <!--//main navigation-->
     </header>
-@if (ViewContext.RouteData.Values["controller"] == "Home" && ViewBag.GameSite != null && ((List<SelectListItem>)ViewBag.GameSite).Count>0)
+@if (ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewBag.GameSite != null && ((List<DropDownListItem>)ViewBag.GameSite).Count>0)
 {
     @Html.Partial("_SliderCarousel")
 }
     <main class="main">
-        @RenderBody()
+        
+           
+           
+                <div class="full-width">
+                    <aside class="one-fourth left-sidebar">
+                        @*<article class="widget refine-search-results">*@
+                            <article class="widget">
+                                <h4 data-localize="RefineSearchResults">Refine search results</h4>
+                                <dl>
+                                    <!--Price (per night)-->
+                                    <dt class="active"><h5 data-localize="KeyWord">關鍵字</h5></dt>
+                                    <dd style="height: auto;">
+
+
+                                        <div class="row">
+                                            <div class="f-item full-width">
+                                                @*<label for="destination1">Your destination</label>*@
+                                                <input type="text" id="keyword" name="word" />
+                                            </div>
+                                        </div>
+
+                                    </dd>
+                                    <!--//Price (per night)-->
+
+                                </dl>
+                            </article>
+                    </aside>
+                    <div class="three-fourth">
+                        @RenderBody()
+                    </div>
+                </div>
+            
+        
     </main>
     <footer class="footer">
         <div class="wrap">
            
                 <div class="bottom full-width">
                     <p class="copy">Copyright Summer Universiade 2017. All rights reserved</p>
-                    <nav>
-                        <ul>
-                            @*<li><a href="javascript:void(0)" title="About us">About us</a></li>*@
-                            @*<li><a href="javascript:void(0)" title="Contact">Contact</a></li>*@
-                            @*<li><a href="#" title="Partners">Partners</a></li>
-                            <li><a href="#" title="Customer service">Customer service</a></li>*@
-                            @*<li><a href="javascript:void(0)" title="FAQ">FAQ</a></li>*@
-                            @*<li><a href="#" title="Careers">Careers</a></li>
-                            <li><a href="#" title="Terms & Conditions">Terms &amp; Conditions</a></li>
-                            <li><a href="#" title="Privacy statement">Privacy statement</a></li>*@
-                        </ul>
-                    </nav>
+                   
                 </div>
             </div>
-        </div>
+       
     </footer>
     
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
@@ -167,7 +177,13 @@
 
 
             var lang = $.cookie("lang");
-            console.log(lang);
+            if (typeof lang === "undefined") {
+                
+                $.cookie("lang", "zh");
+                lang = zh;
+            }
+
+          
             $("[data-localize]").localize("/Content/lang/language", { language: lang });
 
             $('.lang-nav').delegate('li', 'click', function (e) {

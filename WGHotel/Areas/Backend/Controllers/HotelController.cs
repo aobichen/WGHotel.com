@@ -75,7 +75,8 @@ namespace WGHotel.Areas.Backend.Controllers
             ViewBag.ImgKey = AccountAndImgKey;
             Session[AccountAndImgKey] = new List<ImageViewModel>();
             //model.ImgKey = AccountAndImgKey;
-            ViewBag.GameSites = new GameSiteModel().SelectList();
+            //ViewBag.GameSites = new GameSiteModel().SelectList();
+            ViewBag.GameSites = new VenueModel().SelectList();
             ViewBag.City = new GameSiteModel().Citys();
             return View(model);
         }
@@ -166,7 +167,7 @@ namespace WGHotel.Areas.Backend.Controllers
             var Facilies = string.IsNullOrEmpty(HotelZH.Facilities) ? null : HotelZH.Facilities.Split(',').Select(int.Parse).ToList();
             var GameSite = string.IsNullOrEmpty(HotelZH.Game)?null : HotelZH.Game.Split(',').Select(int.Parse).ToList();
             ViewBag.HotelFacility = new Facilities().Facility(Facilies);
-            ViewBag.GameSites = new GameSiteModel().SelectList(GameSite);
+            ViewBag.GameSites = new VenueModel().SelectList(GameSite);
             ViewBag.City = new GameSiteModel().Citys(HotelZH.City);
             return View(model);
         }

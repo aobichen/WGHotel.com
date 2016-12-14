@@ -24,8 +24,8 @@
     "Neighboring": "鄰近",
     "BookNow" : "訂房",
 	"Sport" : "競賽總類",
-	"CheckIn" : "入房",
-	"CheckOut" : "退房",
+	"CheckIn" : "入房日期",
+	"CheckOut" : "退房日期",
 	"KeyWord" : "關鍵字",
 	"Search" : "搜尋"
 }
