@@ -169,6 +169,15 @@
           <Property Name="Created" Type="datetime" Nullable="false" />
           <Property Name="Deleted" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguZH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LanguEN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Report">
           <Key>
             <PropertyRef Name="ID" />
@@ -342,6 +351,7 @@
           <EntitySet Name="HotelEN" EntityType="Self.HotelEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HotelZH" EntityType="Self.HotelZH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageStore" EntityType="Self.ImageStore" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReportRooms" EntityType="Self.ReportRooms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoomEN" EntityType="Self.RoomEN" Schema="dbo" store:Type="Tables" />
@@ -663,6 +673,7 @@
           <EntitySet Name="RoomPrice" EntityType="WGHotelsModel.RoomPrice" />
           <EntitySet Name="VenueEN" EntityType="WGHotelsModel.VenueEN" />
           <EntitySet Name="VenueZH" EntityType="WGHotelsModel.VenueZH" />
+          <EntitySet Name="Language" EntityType="WGHotelsModel.Language" />
         </EntityContainer>
         <EntityType Name="Country">
           <Key>
@@ -740,6 +751,15 @@
           <Property Name="Sport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Venue" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguZH" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LanguEN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1039,6 +1059,16 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Venue" ColumnName="Venue" />
                 <ScalarProperty Name="Sport" ColumnName="Sport" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Language">
+            <EntityTypeMapping TypeName="WGHotelsModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="LanguEN" ColumnName="LanguEN" />
+                <ScalarProperty Name="LanguZH" ColumnName="LanguZH" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

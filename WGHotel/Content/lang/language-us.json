@@ -26,5 +26,7 @@
   "CheckOut": "Check Out",
   "KeyWord": "Keyword",
   "Search": "Search",
-  "RefineSearchResults": "Refine search results"
+    "RefineSearchResults": "Refine search results",
+    "ReceptionLanguage": "Reception language",
+    "PriceRange": "Price range"
 }

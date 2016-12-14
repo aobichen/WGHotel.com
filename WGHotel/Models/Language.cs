@@ -12,11 +12,11 @@ namespace WGHotel.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class FacilityZH
+    public partial class Language
     {
         public int ID { get; set; }
-        public string Name { get; set; }
-        public bool Enabled { get; set; }
-        public Nullable<int> ParentId { get; set; }
+        public string LanguZH { get; set; }
+        public string LanguEN { get; set; }
+        public bool Deleted { get; set; }
     }
 }

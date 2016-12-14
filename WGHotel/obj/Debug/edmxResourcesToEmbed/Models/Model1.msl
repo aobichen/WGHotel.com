@@ -297,5 +297,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Language">
+      <EntityTypeMapping TypeName="WGHotelsModel.Language">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="LanguEN" ColumnName="LanguEN" />
+          <ScalarProperty Name="LanguZH" ColumnName="LanguZH" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

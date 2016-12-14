@@ -91,31 +91,66 @@
 }
     <main class="main">
         
-           
+          
            
                 <div class="full-width">
                     <aside class="one-fourth left-sidebar">
-                        @*<article class="widget refine-search-results">*@
-                            <article class="widget">
-                                <h4 data-localize="RefineSearchResults">Refine search results</h4>
-                                <dl>
-                                    <!--Price (per night)-->
-                                    <dt class="active"><h5 data-localize="KeyWord">關鍵字</h5></dt>
-                                    <dd style="height: auto;">
-
-
-                                        <div class="row">
-                                            <div class="f-item full-width">
-                                                @*<label for="destination1">Your destination</label>*@
-                                                <input type="text" id="keyword" name="word" />
-                                            </div>
+                        <article class="widget refine-search-results">
+                            <h4 data-localize="RefineSearchResults">進階搜尋</h4>
+                            <dl>
+                                <!--Price (per night)-->
+                                <dt class="active" data-localize="PriceRange">價格範圍</dt>
+                                <dd style="display: block; height: auto;">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch1" name="price" />
+                                        <label for="ch1">0 - 999</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch2" name="price" />
+                                        <label for="ch2">1000 - 1999 </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch3" name="price" />
+                                        <label for="ch3">2000 - 2999 </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch4" name="price" />
+                                        <label for="ch4">3000 - 3999 </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch5" name="price" />
+                                        <label for="ch5">4000 - 4999</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch6" name="price" />
+                                        <label for="ch6">5000 +</label>
+                                    </div>
+                                </dd>
+                                <!--//Price (per night)-->
+                                <!--Accommodation type-->
+                                <dt class="active" data-localize="ReceptionLanguage">接待語系</dt>
+                                <dd>
+                                    @foreach (var item in (List<SelectListItem>)ViewBag.Language)
+                                    {
+                                        <div class="checkbox">
+                                            <input type="checkbox" id="@item.Value" name="accommodation" />
+                                            <label for="@item.Value">@item.Text</label>
                                         </div>
-
-                                    </dd>
-                                    <!--//Price (per night)-->
-
-                                </dl>
-                            </article>
+                                    }
+                                    
+                                   
+                                </dd>
+                                <!--//Accommodation type-->
+                                <!--Star rating-->
+                                <dd>
+                                    <button class="gradient-button" style="border-radius:4px;">
+                                        SEARCH
+                                    </button>
+                                </dd>
+                                
+                                <!--//Payment options-->
+                            </dl>
+                        </article>
                     </aside>
                     <div class="three-fourth">
                         @RenderBody()
@@ -148,7 +183,7 @@
     <script type="text/javascript" src="~/Scripts/lightslider.min.js"></script>
 
     <script src="~/Scripts/lightgallery-all.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/scripts.js"></script>
+    <script type="text/javascript" src="~/Scripts/scripts.js?v1.0"></script>
     <script type="text/javascript">
         (function ($) {
             $(document).ready(function () {
@@ -173,8 +208,7 @@
                     }
                 });
             });
-
-
+           
 
             var lang = $.cookie("lang");
             if (typeof lang === "undefined") {
@@ -182,7 +216,8 @@
                 $.cookie("lang", "zh");
                 lang = zh;
             }
-
+           
+            $($('dt')[0]).trigger('click');
           
             $("[data-localize]").localize("/Content/lang/language", { language: lang });
 
@@ -206,6 +241,7 @@
                 
             });
 
+           
         })(jQuery);
     </script>
 

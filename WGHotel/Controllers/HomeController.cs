@@ -53,6 +53,8 @@ namespace WGHotel.Controllers
             //ViewBag.GameSite = new GameSiteModel().SelectList();
             ViewBag.VenueType = VenueViewModel.VenueTypeList;
             ViewBag.GameSite = new VenueModel().SelectListItem();
+            ViewBag.Sport = new VenueModel().SelectSportListItem();
+            ViewBag.Language = new LanguageModel().ListItems;
             var CheckInDate = search.Begin <= DateTime.MinValue ? DateTime.Now : search.Begin;
             var CheckOutDate = search.End <= DateTime.MinValue ? DateTime.Now.AddDays(1) : search.End;
 

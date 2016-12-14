@@ -208,6 +208,7 @@
     <Compile Include="Areas\Backend\Controllers\FacilityController.cs" />
     <Compile Include="Areas\Backend\Controllers\GameSiteController.cs" />
     <Compile Include="Areas\Backend\Controllers\HotelController.cs" />
+    <Compile Include="Areas\Backend\Controllers\LanguageController.cs" />
     <Compile Include="Areas\Backend\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Backend\Controllers\ReportController.cs" />
     <Compile Include="Areas\Backend\Controllers\RoomController.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Areas\Backend\Models\CodeFiles.cs" />
     <Compile Include="Areas\Backend\Models\FacilityViewModel.cs" />
     <Compile Include="Areas\Backend\Models\GameSiteViewModel.cs" />
+    <Compile Include="Areas\Backend\Models\LanguageViewModel.cs" />
     <Compile Include="Areas\Backend\Models\ReportViewModel.cs" />
     <Compile Include="Areas\Backend\Models\RoomViewModel.cs" />
     <Compile Include="Areas\Backend\Models\SysSetting.cs" />
@@ -280,6 +282,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ImageViewModel.cs" />
+    <Compile Include="Models\Language.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -1052,6 +1057,10 @@
     <Content Include="Areas\Backend\Views\Venue\_List.cshtml" />
     <Content Include="Areas\Backend\Views\Venue\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Venue\_Create.cshtml" />
+    <Content Include="Areas\Backend\Views\Language\Index.cshtml" />
+    <Content Include="Areas\Backend\Views\Language\_List.cshtml" />
+    <Content Include="Areas\Backend\Views\Language\Edit.cshtml" />
+    <Content Include="Areas\Backend\Views\Language\_Create.cshtml" />
     <None Include="Properties\PublishProfiles\wghotel.pubxml" />
     <None Include="Properties\PublishProfiles\WGHotel.TW.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -1121,6 +1130,13 @@
     <Content Include="Views\Home\_ListHsinchuCity.cshtml" />
     <Content Include="Views\Home\_ListHsinchuCountry.cshtml" />
     <Content Include="Views\Shared\_VenueTypeList.cshtml" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

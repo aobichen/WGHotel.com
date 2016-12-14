@@ -30,12 +30,17 @@
                     @*<h5><span>01</span> What?</h5>*@
                     <h5 data-localize="Sport">競賽總類</h5>
                     <div class="row">
-                        <div class="one-half">
+                        <div class="one-third">
                             @Html.DropDownList("VenueType")
                         </div>
-                        <div class="one-half">
+                        
+                        <div class="one-third">
+                            @Html.DropDownItemList("Sport", (List<DropDownListItem>)ViewBag.Sport)
+                        </div>
+                        <div class="one-third">
                             @Html.DropDownItemList("Game", (List<DropDownListItem>)ViewBag.GameSite)
-                            </div>
+                        </div>
+                       
                         </div>
                 </div>
                 <!--//column-->
@@ -97,23 +102,35 @@
             });
 
             let venueType = $('#VenueType');
+            let Sport = $('#Sport');
             let Game = $('#Game');
             var venueTypeItem = venueType.val();
-            ChangeVenues();
-            function ChangeVenues() {
+            ChangeSport();
+            function ChangeSport() {
                 var venueTypeItem = venueType.val();
                 //Game.val('');
-                Game.find('option').hide();
-                Game.find('option[data-id=' + venueTypeItem + ']').show();
-                var selected = $('#Game option[style!="display:none"]:first').val();
-                Game.val(selected);
-                console.log($('#Game option[style!="display:none"]:first').length);
+                Sport.find('option').hide();
+                Sport.find('option[data-id=' + venueTypeItem + ']').show();
+                var selected = $('#Sport option[style!="display:none"]:first').val();
+                Sport.val(selected);
+                ChangeVenue();
             }
 
             venueType.on('change', function () {
-                ChangeVenues();
+                ChangeSport();
             });
-            //console.log(venueType.val());
+            Sport.on('change', function () {
+                ChangeVenue();
+            });
 
+            function ChangeVenue() {
+                var sportItem = Sport.val();
+                console.log(sportItem);
+                Game.find('option').hide();
+                Game.find('option[data-id=' + sportItem + ']').show();
+                var selected = $('#Game option[style!="display:none"]:first').val();
+                Sport.val(selected);              
+            }
+           
         })(jQuery);
 </script>

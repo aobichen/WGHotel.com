@@ -164,6 +164,15 @@
     <Property Name="Created" Type="datetime" Nullable="false" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LanguZH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LanguEN" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Deleted" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="Report">
     <Key>
       <PropertyRef Name="ID" />
@@ -337,6 +346,7 @@
     <EntitySet Name="HotelEN" EntityType="Self.HotelEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HotelZH" EntityType="Self.HotelZH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ImageStore" EntityType="Self.ImageStore" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ReportRooms" EntityType="Self.ReportRooms" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoomEN" EntityType="Self.RoomEN" Schema="dbo" store:Type="Tables" />

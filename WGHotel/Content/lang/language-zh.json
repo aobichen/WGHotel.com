@@ -28,5 +28,7 @@
   "CheckOut": "退房日期",
   "KeyWord": "關鍵字",
   "Search": "搜尋",
-  "RefineSearchResults": "優化搜尋結果"
+    "RefineSearchResults": "進階搜尋",
+    "ReceptionLanguage": "接待語言",
+    "PriceRange": "價格範圍"
 }

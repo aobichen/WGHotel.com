@@ -178,14 +178,92 @@ namespace WGHotel.Areas.Backend.Models
                 Games = _db.VenueEN.ToList();
             }
             var SelectList = new List<DropDownListItem>();
+
+            if (lang.Equals("zh"))
+            {
+               
+                foreach (var i in (List<VenueZH>)Games)
+                {
+                    SelectList.Add(item: new DropDownListItem
+                    {
+                        Text = "--請選擇--",
+                        Value = "0",
+                        DataAttr = "",
+                        Selected = true
+                    });
+                    SelectList.Add(item: new DropDownListItem
+                    {
+                        Text = string.Format("{0}/{1}", i.Venue, i.Sport),
+                        Value = i.ID.ToString(),
+                        DataAttr = i.Sport,
+                        Selected = Selected == null
+                           ? false
+                           : Selected.Contains(i.ID)
+                    });
+                }
+            }
+            else
+            {
+                foreach (var i in (List<VenueEN>)Games)
+                {
+                    SelectList.Add(item: new DropDownListItem
+                    {
+                        Text = "--Please select--",
+                        Value = "0",
+                        DataAttr = "",
+                        Selected = true
+                    });
+                    SelectList.Add(item: new DropDownListItem
+                    {
+                        Text = string.Format("{0}/{1}", i.Venue, i.Sport),
+                        Value = i.ID.ToString(),
+                        DataAttr = i.Sport,
+                        Selected = Selected == null
+                           ? false
+                           : Selected.Contains(i.ID)
+                    });
+                }
+            }
+
+
+
+            return SelectList;
+        }
+
+        public List<DropDownListItem> SelectSportListItem(List<int> Selected = null)
+        {
+            var lang = HttpContext.Current.Request.Cookies["lang"].Value.ToLower();
+
+            //var Items = new List<GameSiteViewModel>();
+            var _db = new WGHotelsEntities();
+
+
+            object Games = null;
+            if (lang.Equals("zh"))
+            {
+                Games = _db.VenueZH.ToList();
+            }
+            else
+            {
+                Games = _db.VenueEN.ToList();
+            }
+            var SelectList = new List<DropDownListItem>();
             if (lang.Equals("zh"))
             {
                 foreach (var i in (List<VenueZH>)Games)
                 {
                     SelectList.Add(item: new DropDownListItem
                     {
-                        Text = string.Format("{0}/{1}", i.Venue, i.Sport),
-                        Value = i.ID.ToString(),
+                        Text = "--請選擇--",
+                        Value = "0",
+                        DataAttr = "",
+                        Selected = true
+                    });
+                    SelectList.Add(item: new DropDownListItem
+                    {
+
+                        Text = string.Format("{0}",i.Sport),
+                        Value = i.Sport,
                         DataAttr = i.Type,
                         Selected = Selected == null
                            ? false
@@ -199,8 +277,15 @@ namespace WGHotel.Areas.Backend.Models
                 {
                     SelectList.Add(item: new DropDownListItem
                     {
-                        Text = string.Format("{0}/{1}", i.Venue, i.Sport),
-                        Value = i.ID.ToString(),
+                        Text = "--Please select--",
+                        Value = "0",
+                        DataAttr = "",
+                        Selected = true
+                    });
+                    SelectList.Add(item: new DropDownListItem
+                    {
+                        Text = string.Format("{0}", i.Sport),
+                        Value = i.Sport,
                         DataAttr = i.Type,
                         Selected = Selected == null
                            ? false
@@ -244,21 +329,41 @@ namespace WGHotel.Areas.Backend.Models
         }
         public static List<SelectListItem> VenueTypeList { get { return GetTypeList(); } }
 
-       
+        //public static List<SelectListItem> VenueSportList { get { return GetTypeList(); } }
+
 
 
         public static List<SelectListItem> GetTypeList(List<string> Selected)
         {
+            var lang = HttpContext.Current.Request.Cookies["lang"].Value.ToLower();
             var SelectListItem = new List<SelectListItem>();
             var items = new string[] { "競賽類", "非競賽類" };
-            foreach (var item in items)
+            var itemsEN = new string[] { "Competition", "NonCompetition" };
+            if (lang.Equals("zh"))
             {
-                SelectListItem.Add(new SelectListItem {
-                    Text = item,
-                    Value = item,
-                    Selected = (Selected==null || Selected.Count <=0)?false:
-                    Selected.Contains(item)
-                });
+                foreach (var item in items)
+                {
+                    SelectListItem.Add(new SelectListItem
+                    {
+                        Text = item,
+                        Value = item,
+                        Selected = (Selected == null || Selected.Count <= 0) ? false :
+                        Selected.Contains(item)
+                    });
+                }
+            }
+            else
+            {
+                foreach (var item in itemsEN)
+                {
+                    SelectListItem.Add(new SelectListItem
+                    {
+                        Text = item,
+                        Value = item,
+                        Selected = (Selected == null || Selected.Count <= 0) ? false :
+                        Selected.Contains(item)
+                    });
+                }
             }
 
             return SelectListItem;
@@ -271,6 +376,18 @@ namespace WGHotel.Areas.Backend.Models
             foreach(var item in items)
             {
                 SelectListItem.Add(new SelectListItem { Text = item,Value = item });
+            }
+
+            return SelectListItem;
+        }
+
+        public static List<SelectListItem> GetSportList()
+        {
+            var SelectListItem = new List<SelectListItem>();
+            var items = new string[] { "競賽類", "非競賽類" };
+            foreach (var item in items)
+            {
+                SelectListItem.Add(new SelectListItem { Text = item, Value = item });
             }
 
             return SelectListItem;

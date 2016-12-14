@@ -125,7 +125,7 @@ namespace WGHotel.Areas.Backend.Models
                 });
             }
 
-
+            _db.Dispose();
 
             return SelectList;
         }
