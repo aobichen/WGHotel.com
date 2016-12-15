@@ -277,5 +277,35 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="VenueEN">
+      <EntityTypeMapping TypeName="WGHotelsModel.VenueEN">
+        <MappingFragment StoreEntitySet="VenueEN">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="Sport" ColumnName="Sport" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VenueZH">
+      <EntityTypeMapping TypeName="WGHotelsModel.VenueZH">
+        <MappingFragment StoreEntitySet="VenueZH">
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Venue" ColumnName="Venue" />
+          <ScalarProperty Name="Sport" ColumnName="Sport" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Language">
+      <EntityTypeMapping TypeName="WGHotelsModel.Language">
+        <MappingFragment StoreEntitySet="Language">
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="LanguEN" ColumnName="LanguEN" />
+          <ScalarProperty Name="LanguZH" ColumnName="LanguZH" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

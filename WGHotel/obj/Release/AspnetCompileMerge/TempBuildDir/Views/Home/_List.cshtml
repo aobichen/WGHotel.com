@@ -13,10 +13,10 @@
 @if (Model != null && Model.ToList().Count > 0) { 
 foreach (var item in Model)
 {
-    <article class="one-fourth">
+    <article class="one-third">
         <figure>
             <a href="@Url.Action("Detail","Home",new{id = item.ID})" title="">
-                <img style="min-height:220px;" src="@Url.Action("HotelFirstImage", "Home", new  { id = item.Image})" alt="@item.Name" />
+                <img src="@Url.Action("HotelFirstImage", "Home", new  { id = item.Image})" alt="@item.Name" />
             </a>
         </figure>
         <div class="details">

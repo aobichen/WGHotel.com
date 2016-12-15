@@ -40,6 +40,17 @@
 				tis.toggleClass('active',state);
 				});
 			});
+
+			$('.refine-search-results .active').each(function () {
+			    var tis = $(this), state = false, answer = tis.next('.refine-search-results dd').show().css('height', 'auto').slideDown();
+			    //tis.click(function () {
+			    //    state = !state;
+			    //    answer.slideToggle(state);
+			    //    tis.toggleClass('active', state);
+			    //});
+			});
+
+			
 			
 			// MOBILE MENU
 			$('#nav').slimmenu({

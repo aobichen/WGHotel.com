@@ -5,8 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="2017世界大學運動會訂房平台">
-    <meta name="description" content="2017世界大學運動會訂房平台,比賽場次旅館飯店住宿">
-    <meta name="author" content="themeenergy.com">
+    <meta name="description" content="2017台北世界大學運動會訂房,SUMMER UNIVERSIADE 29th Hotel,2017台北世界大學運動會旅館,SUMMER UNIVERSIADE b&b,World Game of Taipei 2017">
+    <meta name="author" content="atech.tw">
+    <meta name="og:title" content="2017世大運│SUMMER UNIVERSIADE 29th│比賽住宿│世大運旅館">
     <title>世大運訂房平台</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -29,7 +30,14 @@
     @RenderSection("scripts", required: false)
 
     <style type="text/css">
-
+        body{
+             font-family: Meiryo, "微軟正黑體", "Microsoft JhengHei";
+        }
+        /*.s-title h2,h1 {
+            font-family:"Yu Gothic", SimHei;
+            color:#41afaa;
+            text-shadow:1px 2px #aaaaaa;
+        }*/
     </style>
 </head>
 <body>
@@ -70,58 +78,105 @@
                             <li id="us" class="active" style=" text-align:center;"><a href="javascript:void(0);" data-localize="english" title="EN">EN</a></li>
                         }
                     </ul>
-                    @*<ul class="currency-nav">
-                        <li class="active"><a href="#" title="$US Dollar">$US Dollar</a></li>
-                        <li><a href="#" title="€ Euro">€ Euro</a></li>
-                        <li><a href="#" title="£ Pound">£ Pound</a></li>
-                    </ul>*@
+                    
                 </nav>
             </div>
-            <!--//ribbon-->
-            <!--search-->
-            @*<div class="search">
-                <form id="search-form" method="get" action="search-form">
-                    <input type="search" placeholder="Search entire site here" name="site_search" id="site_search" />
-                    <input type="submit" id="submit-site-search" value="submit-site-search" name="submit-site-search" />
-                </form>
-            </div>*@
-            <!--//search-->
-            <!--contact-->
-           
-            <!--//contact-->
+            
         </div>
 
-        <!--main navigation-->
-       
-        <!--//main navigation-->
     </header>
-@if (ViewContext.RouteData.Values["controller"] == "Home" && ViewBag.GameSite != null && ((List<SelectListItem>)ViewBag.GameSite).Count>0)
+@if (ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewBag.GameSite != null && ((List<DropDownListItem>)ViewBag.GameSite).Count>0)
 {
     @Html.Partial("_SliderCarousel")
 }
     <main class="main">
-        @RenderBody()
+        
+          
+           
+                <div class="full-width">
+                    <aside class="one-fourth left-sidebar">
+                        @using (Html.BeginForm()) { 
+                        <article class="widget refine-search-results">
+                            <h4 data-localize="RefineSearchResults">進階搜尋</h4>
+                            
+                            <dl>
+                                <dt class="active" data-localize="">關鍵字</dt>
+                                <dd>
+                                   
+                                        <input type="text" id="destination1" name="word" placeholder="飯店，城市，街道" />
+                                   
+                                </dd>
+                                <!--Price (per night)-->
+                                <dt class="active" data-localize="PriceRange">價格範圍</dt>
+                                <dd style="display: block; height: auto;">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch1" value="1" name="price" />
+                                        <label for="ch1">0 - 999</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch2" value="2" name="price" />
+                                        <label for="ch2">1000 - 1999 </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch3" value="3" name="price" />
+                                        <label for="ch3">2000 - 2999 </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch4" value="4" name="price" />
+                                        <label for="ch4">3000 - 3999 </label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch5" value="5"  name="price" />
+                                        <label for="ch5">4000 - 4999</label>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="ch6" value="6" name="price" />
+                                        <label for="ch6">5000 +</label>
+                                    </div>
+                                </dd>
+                                <!--//Price (per night)-->
+                                <!--Accommodation type-->
+                                <dt class="active" data-localize="ReceptionLanguage">接待語系</dt>
+                                <dd>
+                                    @foreach (var item in (List<SelectListItem>)ViewBag.Language)
+                                    {
+                                        <div class="checkbox">
+                                            <input type="checkbox" value="@item.Value" id="@item.Value" name="Language" />
+                                            <label for="@item.Value">@item.Text</label>
+                                        </div>
+                                    }
+                                    
+                                   
+                                </dd>
+                                <!--//Accommodation type-->
+                                <!--Star rating-->
+                                <dd>
+                                    <button type="submit" class="gradient-button" style="border-radius:4px;">
+                                        SEARCH
+                                    </button>
+                                </dd>
+                                
+                                <!--//Payment options-->
+                            </dl>
+                        </article>
+                        }
+                    </aside>
+                    <div class="three-fourth">
+                        @RenderBody()
+                    </div>
+                </div>
+            
+        
     </main>
     <footer class="footer">
         <div class="wrap">
            
                 <div class="bottom full-width">
                     <p class="copy">Copyright Summer Universiade 2017. All rights reserved</p>
-                    <nav>
-                        <ul>
-                            @*<li><a href="javascript:void(0)" title="About us">About us</a></li>*@
-                            @*<li><a href="javascript:void(0)" title="Contact">Contact</a></li>*@
-                            @*<li><a href="#" title="Partners">Partners</a></li>
-                            <li><a href="#" title="Customer service">Customer service</a></li>*@
-                            @*<li><a href="javascript:void(0)" title="FAQ">FAQ</a></li>*@
-                            @*<li><a href="#" title="Careers">Careers</a></li>
-                            <li><a href="#" title="Terms & Conditions">Terms &amp; Conditions</a></li>
-                            <li><a href="#" title="Privacy statement">Privacy statement</a></li>*@
-                        </ul>
-                    </nav>
+                   
                 </div>
             </div>
-        </div>
+       
     </footer>
     
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
@@ -137,7 +192,7 @@
     <script type="text/javascript" src="~/Scripts/lightslider.min.js"></script>
 
     <script src="~/Scripts/lightgallery-all.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/scripts.js"></script>
+    <script type="text/javascript" src="~/Scripts/scripts.js?v1.0"></script>
     <script type="text/javascript">
         (function ($) {
             $(document).ready(function () {
@@ -162,11 +217,30 @@
                     }
                 });
             });
-
-
+           
 
             var lang = $.cookie("lang");
-            console.log(lang);
+            if (typeof lang === "undefined") {
+                
+                $.cookie("lang", "zh");
+                lang = zh;
+            }
+           
+            $('input[name="price"]').on('change', function () {
+                let self = $(this);
+               
+                if (self.prop("checked")) {
+                    
+                    $('input[name="price"]').each(function () {
+                        $(this).closest('span').removeClass("checked");
+                        $(this).attr("checked", false);
+                    });
+                    self.closest('span').addClass("checked");
+                    self.prop("checked", true);
+                }
+                
+            });
+          
             $("[data-localize]").localize("/Content/lang/language", { language: lang });
 
             $('.lang-nav').delegate('li', 'click', function (e) {
@@ -178,17 +252,13 @@
                     $("[data-localize]").localize("/Content/lang/language", { language: mylang });
                     lang = mylang;
                     
-                    //location.href = currentURL;
-                    //console.log($('.logo').find('a').length);
-                    //$('.logo').find('a').trigger("click");
-                    //var href = $('.logo').find('a').attr('href');
-                    //window.location.href = "/";
                     location.reload();
-                    //e.stopPropagation();
+                   
                 }
                 
             });
 
+           
         })(jQuery);
     </script>
 

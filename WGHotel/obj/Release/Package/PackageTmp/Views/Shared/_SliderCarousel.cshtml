@@ -26,31 +26,33 @@
         @*<form id="main-search" method="post" action="search_results.html">*@
             <div class="row">
                 <!--column-->
-                <div class="column one-third">
+                <div class="column one-half">
                     @*<h5><span>01</span> What?</h5>*@
                     <h5 data-localize="Sport">競賽總類</h5>
                     <div class="row">
-                        @Html.DropDownList("Game", (List<SelectListItem>)ViewBag.GameSite)
-                    </div>
+                        <div class="one-third">
+                            @Html.DropDownList("VenueType")
+                        </div>
+                        
+                        <div class="one-third">
+                            @Html.DropDownItemList("Sport", (List<DropDownListItem>)ViewBag.Sport)
+                        </div>
+                        <div class="one-third">
+                            @Html.DropDownItemList("Game", (List<DropDownListItem>)ViewBag.GameSite)
+                        </div>
+                       
+                        </div>
                 </div>
                 <!--//column-->
 
-                <div class="two-third">
+                <div class="one-half">
                     <!--form hotel-->
                     <div class="form row" id="form1">
                         <!--column-->
-                        <div class="column one-fourth">
-                            <h5 data-localize="KeyWord">關鍵字</h5>
-                            <div class="row">
-                                <div class="f-item full-width">
-                                    @*<label for="destination1">Your destination</label>*@
-                                    <input type="text" id="destination1" name="word" />
-                                </div>
-                            </div>
-                        </div>
+                       
                         <!--//column-->
                         <!--column-->
-                        <div class="column three-fourth">
+                        <div class="column one-half">
                             <h5><span style="color:#555;font-size:16px;font-weight:400;" data-localize="CheckIn">入房</span>\<span style="color:#555;font-size:16px;font-weight:400;" data-localize="CheckOut">退房</span></h5>
                             <div class="row">
                                 <div class="f-item one-half datepicker">
@@ -98,5 +100,37 @@
                     }
                 });
             });
+
+            let venueType = $('#VenueType');
+            let Sport = $('#Sport');
+            let Game = $('#Game');
+            var venueTypeItem = venueType.val();
+            ChangeSport();
+            function ChangeSport() {
+                var venueTypeItem = venueType.val();
+                //Game.val('');
+                Sport.find('option').hide();
+                Sport.find('option[data-id=' + venueTypeItem + ']').show();
+                var selected = $('#Sport option[style!="display:none"]:first').val();
+                Sport.val(selected);
+                ChangeVenue();
+            }
+
+            venueType.on('change', function () {
+                ChangeSport();
+            });
+            Sport.on('change', function () {
+                ChangeVenue();
+            });
+
+            function ChangeVenue() {
+                var sportItem = Sport.val();
+                console.log(sportItem);
+                Game.find('option').hide();
+                Game.find('option[data-id=' + sportItem + ']').show();
+                var selected = $('#Game option[style!="display:none"]:first').val();
+                Sport.val(selected);              
+            }
+           
         })(jQuery);
 </script>
