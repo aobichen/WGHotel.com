@@ -33,11 +33,11 @@
         body{
              font-family: Meiryo, "微軟正黑體", "Microsoft JhengHei";
         }
-        .s-title h2,h1 {
+        /*.s-title h2,h1 {
             font-family:"Yu Gothic", SimHei;
             color:#41afaa;
             text-shadow:1px 2px #aaaaaa;
-        }
+        }*/
     </style>
 </head>
 <body>
@@ -95,6 +95,7 @@
            
                 <div class="full-width">
                     <aside class="one-fourth left-sidebar">
+                        @using (Html.BeginForm()) { 
                         <article class="widget refine-search-results">
                             <h4 data-localize="RefineSearchResults">進階搜尋</h4>
                             <dl>
@@ -102,27 +103,27 @@
                                 <dt class="active" data-localize="PriceRange">價格範圍</dt>
                                 <dd style="display: block; height: auto;">
                                     <div class="checkbox">
-                                        <input type="checkbox" id="ch1" name="price" />
+                                        <input type="checkbox" id="ch1" value="1" name="price" />
                                         <label for="ch1">0 - 999</label>
                                     </div>
                                     <div class="checkbox">
-                                        <input type="checkbox" id="ch2" name="price" />
+                                        <input type="checkbox" id="ch2" value="2" name="price" />
                                         <label for="ch2">1000 - 1999 </label>
                                     </div>
                                     <div class="checkbox">
-                                        <input type="checkbox" id="ch3" name="price" />
+                                        <input type="checkbox" id="ch3" value="3" name="price" />
                                         <label for="ch3">2000 - 2999 </label>
                                     </div>
                                     <div class="checkbox">
-                                        <input type="checkbox" id="ch4" name="price" />
+                                        <input type="checkbox" id="ch4" value="4" name="price" />
                                         <label for="ch4">3000 - 3999 </label>
                                     </div>
                                     <div class="checkbox">
-                                        <input type="checkbox" id="ch5" name="price" />
+                                        <input type="checkbox" id="ch5" value="5"  name="price" />
                                         <label for="ch5">4000 - 4999</label>
                                     </div>
                                     <div class="checkbox">
-                                        <input type="checkbox" id="ch6" name="price" />
+                                        <input type="checkbox" id="ch6" value="6" name="price" />
                                         <label for="ch6">5000 +</label>
                                     </div>
                                 </dd>
@@ -133,7 +134,7 @@
                                     @foreach (var item in (List<SelectListItem>)ViewBag.Language)
                                     {
                                         <div class="checkbox">
-                                            <input type="checkbox" id="@item.Value" name="accommodation" />
+                                            <input type="checkbox" value="@item.Value" id="@item.Value" name="Language" />
                                             <label for="@item.Value">@item.Text</label>
                                         </div>
                                     }
@@ -143,7 +144,7 @@
                                 <!--//Accommodation type-->
                                 <!--Star rating-->
                                 <dd>
-                                    <button class="gradient-button" style="border-radius:4px;">
+                                    <button type="submit" class="gradient-button" style="border-radius:4px;">
                                         SEARCH
                                     </button>
                                 </dd>
@@ -151,6 +152,7 @@
                                 <!--//Payment options-->
                             </dl>
                         </article>
+                        }
                     </aside>
                     <div class="three-fourth">
                         @RenderBody()
@@ -217,7 +219,20 @@
                 lang = zh;
             }
            
-            $($('dt')[0]).trigger('click');
+            $('input[name="price"]').on('change', function () {
+                let self = $(this);
+               
+                if (self.prop("checked")) {
+                    
+                    $('input[name="price"]').each(function () {
+                        $(this).closest('span').removeClass("checked");
+                        $(this).attr("checked", false);
+                    });
+                    self.closest('span').addClass("checked");
+                    self.prop("checked", true);
+                }
+                
+            });
           
             $("[data-localize]").localize("/Content/lang/language", { language: lang });
 
@@ -230,13 +245,8 @@
                     $("[data-localize]").localize("/Content/lang/language", { language: mylang });
                     lang = mylang;
                     
-                    //location.href = currentURL;
-                    //console.log($('.logo').find('a').length);
-                    //$('.logo').find('a').trigger("click");
-                    //var href = $('.logo').find('a').attr('href');
-                    //window.location.href = "/";
                     location.reload();
-                    //e.stopPropagation();
+                   
                 }
                 
             });

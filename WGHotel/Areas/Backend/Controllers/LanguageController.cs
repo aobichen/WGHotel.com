@@ -52,7 +52,7 @@ namespace WGHotel.Areas.Backend.Controllers
             //if(ModelState.IsValid){
                 model.Edit();
             //}
-            return View();
+                return RedirectToAction("Index");
         }
     }
 }

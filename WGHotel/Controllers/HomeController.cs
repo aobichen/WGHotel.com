@@ -21,6 +21,9 @@ namespace WGHotel.Controllers
             public DateTime End { get; set; }
 
             public string Game { get; set; }
+
+            public int Price { get; set; }
+            public List<string> Language { get; set; }
         }
 
         private List<HotelViewModel> RenderImages(List<HotelViewModel> model)
@@ -64,7 +67,9 @@ namespace WGHotel.Controllers
 
             
 
-            if (string.IsNullOrEmpty(search.word) &&
+            if (search.Price <=0 &&
+                search.Language == null &&
+                string.IsNullOrEmpty(search.word) &&
                 string.IsNullOrEmpty(search.Game)&&
                 search.Begin == DateTime.MinValue &&
                 search.End == DateTime.MinValue)
@@ -283,7 +288,36 @@ namespace WGHotel.Controllers
 
             #endregion
 
-           
+           var MinPrice = 0M;
+            var MaxPrice = 0M;
+            switch(search.Price){
+                case 1:
+                    MinPrice = 0;
+                    MaxPrice = 999;
+                    break;
+                case 2:
+                    MinPrice = 1000;
+                    MaxPrice = 1999;
+                    break;
+                case 3:
+                    MinPrice = 2000;
+                    MaxPrice = 2999;
+                    break;
+                case 4:
+                    MinPrice = 3000;
+                    MaxPrice = 3999;
+                    break;
+                case 5:
+                    MinPrice = 4000;
+                    MaxPrice = 4999;
+                    break;
+                case 6:
+                    MinPrice = 5000;
+                    MaxPrice = 999999;
+                    break;
+
+            }
+
             var CityModel = _db.CityZH.Where(o => o.Name.Contains(search.word)).FirstOrDefault();
             var City = CityModel == null ? 0 : CityModel.ID;
             if (CurrentLanguage.Equals("us"))
@@ -294,6 +328,7 @@ namespace WGHotel.Controllers
                              (City == 0 || h.City == City) ||
                              (string.IsNullOrEmpty(search.word) || h.Name.Contains(search.word))
                              && (string.IsNullOrEmpty(search.Game) || h.Game.Contains(search.Game))
+                             
                              select h).OrderBy(x => Guid.NewGuid()).ToList();
                 var checkInDate = search.Begin == DateTime.MinValue ? DateTime.Now : search.Begin;
                 foreach (var h in hotel)
@@ -310,29 +345,67 @@ namespace WGHotel.Controllers
                             ).OrderBy(o => o.Price).FirstOrDefault();
                         if (HasRoomPrice == null)
                         {
-                            model.Add(new HotelViewModel
+                            var Amt = h.RoomEN.Min(o => o.Sell);
+                            if (search.Price > 0)
                             {
-                                ID = h.ID,
-                                Name = h.Name,
-                                Game = h.Game,
-                                Sell = h.RoomEN.Min(o => o.Sell),
-                                Tel = h.Tel,
-                                LinkUrl = h.LinkUrl
-                            });
-                        }
-                        else
-                        {
-                            if (HasRoomPrice.SaleOff == true)
+                                if (Amt >= MinPrice && Amt <= MaxPrice)
+                                {
+                                    model.Add(new HotelViewModel
+                                    {
+                                        ID = h.ID,
+                                        Name = h.Name,
+                                        Game = h.Game,
+                                        Sell = Amt,
+                                        Tel = h.Tel,
+                                        LinkUrl = h.LinkUrl
+                                    });
+                                }
+                            }
+                            else
                             {
                                 model.Add(new HotelViewModel
                                 {
                                     ID = h.ID,
                                     Name = h.Name,
                                     Game = h.Game,
-                                    Sell = HasRoomPrice.Price,
+                                    Sell = Amt,
                                     Tel = h.Tel,
                                     LinkUrl = h.LinkUrl
                                 });
+                            }
+                        }
+                        else
+                        {
+                            if (HasRoomPrice.SaleOff == true)
+                            {
+                                var Amt = HasRoomPrice.Price;
+                                if (search.Price > 0)
+                                {
+                                    if (Amt >= MinPrice && Amt <= MaxPrice)
+                                    {
+                                        model.Add(new HotelViewModel
+                                        {
+                                            ID = h.ID,
+                                            Name = h.Name,
+                                            Game = h.Game,
+                                            Sell = Amt,
+                                            Tel = h.Tel,
+                                            LinkUrl = h.LinkUrl
+                                        });
+                                    }
+                                }
+                                else
+                                {
+                                    model.Add(new HotelViewModel
+                                    {
+                                        ID = h.ID,
+                                        Name = h.Name,
+                                        Game = h.Game,
+                                        Sell = Amt,
+                                        Tel = h.Tel,
+                                        LinkUrl = h.LinkUrl
+                                    });
+                                }
                             }
                         }
                     }
@@ -363,31 +436,70 @@ namespace WGHotel.Controllers
                             o => Room.Contains(o.ROOMID) && o.SaleOff == true && (
                              DateTime.Compare(o.Date, checkInDate) == 0)
                             ).OrderBy(o=>o.Price).FirstOrDefault();
+
                         if (HasRoomPrice == null)
                         {
-                            model.Add(new HotelViewModel
+                            var Amt = h.RoomZH.Min(o => o.Sell);
+                            if (search.Price > 0)
                             {
-                                ID = h.ID,
-                                Name = h.Name,
-                                Game = h.Game,
-                                Sell = h.RoomZH.Min(o => o.Sell),
-                                Tel = h.Tel,
-                                LinkUrl = h.LinkUrl
-                            });
-                        }
-                        else
-                        {
-                            if (HasRoomPrice.SaleOff == true)
+                                if (Amt >= MinPrice && Amt <= MaxPrice)
+                                {
+                                    model.Add(new HotelViewModel
+                                    {
+                                        ID = h.ID,
+                                        Name = h.Name,
+                                        Game = h.Game,
+                                        Sell = Amt,
+                                        Tel = h.Tel,
+                                        LinkUrl = h.LinkUrl
+                                    });
+                                }
+                            }
+                            else
                             {
                                 model.Add(new HotelViewModel
                                 {
                                     ID = h.ID,
                                     Name = h.Name,
                                     Game = h.Game,
-                                    Sell = HasRoomPrice.Price,
+                                    Sell = Amt,
                                     Tel = h.Tel,
                                     LinkUrl = h.LinkUrl
                                 });
+                            }
+                        }
+                        else
+                        {
+                            if (HasRoomPrice.SaleOff == true)
+                            {
+                                var Amt = HasRoomPrice.Price;
+                                if (search.Price > 0)
+                                {
+                                    if (Amt >= MinPrice && Amt <= MaxPrice)
+                                    {
+                                        model.Add(new HotelViewModel
+                                        {
+                                            ID = h.ID,
+                                            Name = h.Name,
+                                            Game = h.Game,
+                                            Sell = Amt,
+                                            Tel = h.Tel,
+                                            LinkUrl = h.LinkUrl
+                                        });
+                                    }
+                                }
+                                else
+                                {
+                                    model.Add(new HotelViewModel
+                                    {
+                                        ID = h.ID,
+                                        Name = h.Name,
+                                        Game = h.Game,
+                                        Sell = Amt,
+                                        Tel = h.Tel,
+                                        LinkUrl = h.LinkUrl
+                                    });
+                                }
                             }
                         }
                     }

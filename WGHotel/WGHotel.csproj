@@ -1141,9 +1141,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\assets\jquery-file-upload\server\php\files\thumbnail\" />
-    <Folder Include="Views\Base\" />
-    <Folder Include="Views\ImageUpload\" />
-    <Folder Include="Views\Room\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
