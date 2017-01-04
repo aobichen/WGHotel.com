@@ -110,52 +110,33 @@ namespace WGHotel.Areas.Backend.Models
 
         public List<SelectListItem> SelectList(List<int> Selected = null)
         {
-            var lang = HttpContext.Current.Request.Cookies["lang"].Value.ToLower();
-
+            
             var Items = new List<GameSiteViewModel>();
             var _db = new WGHotelsEntities();
             
 
             object Games = null;
-            if (lang.Equals("zh"))
-            {
-                Games = _db.VenueZH.ToList();
-            }
-            else
-            {
-                Games = _db.VenueEN.ToList();
-            }
+            
+            Games = _db.VenueZH.ToList();
+            
+            
             var SelectList = new List<SelectListItem>();
-            if (lang.Equals("zh"))
-            {
+            
                 foreach (var i in (List<VenueZH>)Games)
                 {
                     SelectList.Add(item: new SelectListItem
                     {
-                        Text = string.Format("{0}/{1}", i.Venue, i.Sport),
+                        Text = string.Format("{0}/{1}/{2}",i.Type, i.Venue, i.Sport),
                         Value = i.ID.ToString(),
                         Selected = Selected == null
                            ? false
                            : Selected.Contains(i.ID)
                     });
                 }
-            }
-            else
-            {
-                foreach (var i in (List<VenueEN>)Games)
-                {
-                    SelectList.Add(item: new SelectListItem
-                    {
-                        Text = string.Format("{0}/{1}", i.Venue, i.Sport),
-                        Value = i.ID.ToString(),
-                        Selected = Selected == null
-                           ? false
-                           : Selected.Contains(i.ID)
-                    });
-                }
-            }
 
 
+
+                _db.Dispose();
 
             return SelectList;
         }
@@ -341,8 +322,10 @@ namespace WGHotel.Areas.Backend.Models
             var itemsEN = new string[] { "Competition", "NonCompetition" };
             if (lang.Equals("zh"))
             {
+                
                 foreach (var item in items)
                 {
+                    
                     SelectListItem.Add(new SelectListItem
                     {
                         Text = item,
@@ -354,8 +337,10 @@ namespace WGHotel.Areas.Backend.Models
             }
             else
             {
+               
                 foreach (var item in itemsEN)
                 {
+
                     SelectListItem.Add(new SelectListItem
                     {
                         Text = item,
@@ -371,11 +356,47 @@ namespace WGHotel.Areas.Backend.Models
 
         public static List<SelectListItem> GetTypeList()
         {
+            var lang = HttpContext.Current.Request.Cookies["lang"].Value.ToLower();
             var SelectListItem = new List<SelectListItem>();
             var items = new string[] { "競賽類", "非競賽類" };
-            foreach(var item in items)
+            var itemsEN = new string[] { "Competition", "NonCompetition" };
+            if (lang.Equals("zh"))
             {
-                SelectListItem.Add(new SelectListItem { Text = item,Value = item });
+                SelectListItem.Add(new SelectListItem
+                {
+                    Text = "請選擇",
+                    Value = "0",
+                    Selected = true
+                });
+                foreach (var item in items)
+                {
+
+                    SelectListItem.Add(new SelectListItem
+                    {
+                        Text = item,
+                        Value = item,
+                        Selected = false
+                    });
+                }
+            }
+            else
+            {
+                SelectListItem.Add(new SelectListItem
+                {
+                    Text = "Please select",
+                    Value = "0",
+                    Selected = true
+                });
+                foreach (var item in itemsEN)
+                {
+
+                    SelectListItem.Add(new SelectListItem
+                    {
+                        Text = item,
+                        Value = item,
+                        Selected = false
+                    });
+                }
             }
 
             return SelectListItem;

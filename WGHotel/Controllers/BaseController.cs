@@ -60,6 +60,8 @@ namespace WGHotel.Controllers
             {
                 _db = new WGHotelsEntities();
             }
+
+            ViewBag.Language = new LanguageModel().ListItems;
         }
 
         protected ApplicationDbContext Account_db

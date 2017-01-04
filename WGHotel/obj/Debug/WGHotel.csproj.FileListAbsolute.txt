@@ -585,10 +585,10 @@ C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\obj\Debug\WGHotel.csproj
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\obj\Debug\WGHotel.dll
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\obj\Debug\WGHotel.pdb
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\WGHotel.dll.config
+C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\WGHotel.dll.config
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\WGHotel.dll
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\WGHotel.pdb
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\Antlr3.Runtime.dll
-C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\AutoMapped.dll
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\ClosedXML.dll
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\DocumentFormat.OpenXml.dll
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\EntityFramework.dll
@@ -618,7 +618,6 @@ C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\System.Web.WebPages
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\System.Web.WebPages.dll
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\System.Web.WebPages.Razor.dll
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\WebGrease.dll
-C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\AutoMapped.pdb
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\ClosedXML.xml
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\PagedList.xml
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\PagedList.Mvc.xml
@@ -669,4 +668,3 @@ C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\obj\Debug\WGHotel.cspro
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\obj\Debug\WGHotel.dll
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\obj\Debug\WGHotel.pdb
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\obj\Debug\WGHotel.csprojResolveAssemblyReference.cache
-C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\bin\WGHotel.dll.config

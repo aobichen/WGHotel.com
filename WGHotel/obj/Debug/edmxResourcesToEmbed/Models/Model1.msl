@@ -112,6 +112,7 @@
     <EntitySetMapping Name="HotelEN">
       <EntityTypeMapping TypeName="WGHotelsModel.HotelEN">
         <MappingFragment StoreEntitySet="HotelEN">
+          <ScalarProperty Name="Language" ColumnName="Language" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Game" ColumnName="Game" />
@@ -131,6 +132,7 @@
     <EntitySetMapping Name="HotelZH">
       <EntityTypeMapping TypeName="WGHotelsModel.HotelZH">
         <MappingFragment StoreEntitySet="HotelZH">
+          <ScalarProperty Name="Language" ColumnName="Language" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Game" ColumnName="Game" />

@@ -82,13 +82,13 @@
       <publishTime>12/14/2016 18:57:28</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Hotel/_Create.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>12/20/2016 22:10:38</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Hotel/_Edit.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>12/20/2016 22:34:36</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Hotel/_MyHotel.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>12/20/2016 22:34:31</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Hotel/_Table.cshtml">
       <publishTime>12/14/2016 18:57:28</publishTime>
@@ -160,13 +160,16 @@
       <publishTime>12/14/2016 18:57:28</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Shared/_HotelFacility.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>12/20/2016 22:14:45</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Shared/_ImageUpload.cshtml">
       <publishTime>12/14/2016 18:57:28</publishTime>
     </File>
+    <File Include="Areas/Backend/Views/Shared/_Language.cshtml">
+      <publishTime>12/20/2016 22:14:59</publishTime>
+    </File>
     <File Include="Areas/Backend/Views/Shared/_Layout.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>12/15/2016 20:05:19</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Shared/_RoomFacility.cshtml">
       <publishTime>12/14/2016 18:57:28</publishTime>
@@ -208,16 +211,16 @@
       <publishTime>12/14/2016 18:57:31</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>12/15/2016 19:50:00</publishTime>
+      <publishTime>01/04/2017 23:15:52</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>12/15/2016 19:50:00</publishTime>
+      <publishTime>01/04/2017 23:15:51</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.compiled">
-      <publishTime>12/15/2016 19:50:00</publishTime>
+      <publishTime>01/04/2017 23:15:51</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.dll">
-      <publishTime>12/15/2016 19:50:00</publishTime>
+      <publishTime>01/04/2017 23:15:51</publishTime>
     </File>
     <File Include="bin/AutoMapped.dll">
       <publishTime>09/20/2016 23:57:56</publishTime>
@@ -319,7 +322,7 @@
       <publishTime>12/14/2016 18:57:32</publishTime>
     </File>
     <File Include="bin/WGHotel.dll">
-      <publishTime>12/15/2016 19:40:38</publishTime>
+      <publishTime>01/04/2017 22:42:08</publishTime>
     </File>
     <File Include="bin/zh-Hant/EntityFramework.resources.dll">
       <publishTime>12/14/2016 18:57:31</publishTime>
@@ -2104,10 +2107,10 @@
       <publishTime>12/14/2016 18:57:28</publishTime>
     </File>
     <File Include="Content/style-rtl.css">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>12/15/2016 20:42:46</publishTime>
     </File>
     <File Include="Content/style.css">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>12/15/2016 21:09:54</publishTime>
     </File>
     <File Include="Content/theme-black.css">
       <publishTime>12/14/2016 18:57:28</publishTime>
@@ -2293,7 +2296,7 @@
       <publishTime>12/14/2016 18:57:31</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>12/15/2016 19:49:58</publishTime>
+      <publishTime>01/04/2017 23:15:45</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>12/14/2016 18:57:28</publishTime>
@@ -2419,25 +2422,25 @@
       <publishTime>12/14/2016 18:57:28</publishTime>
     </File>
     <File Include="Views/Home/_KeelungList.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>01/04/2017 22:39:08</publishTime>
     </File>
     <File Include="Views/Home/_List.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>01/04/2017 22:39:08</publishTime>
     </File>
     <File Include="Views/Home/_ListHsinchuCity.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>01/04/2017 22:39:34</publishTime>
     </File>
     <File Include="Views/Home/_ListHsinchuCountry.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>01/04/2017 22:40:01</publishTime>
     </File>
     <File Include="Views/Home/_ListTaipei.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>01/04/2017 22:40:52</publishTime>
     </File>
     <File Include="Views/Home/_ListTaoyuan.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>01/04/2017 22:40:52</publishTime>
     </File>
     <File Include="Views/Home/_NewTaipei.cshtml">
-      <publishTime>12/14/2016 18:57:28</publishTime>
+      <publishTime>01/04/2017 22:40:52</publishTime>
     </File>
     <File Include="Views/Home/_RoomTypes.cshtml">
       <publishTime>12/14/2016 18:57:28</publishTime>
@@ -2470,7 +2473,7 @@
       <publishTime>12/14/2016 18:57:28</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>12/15/2016 19:49:20</publishTime>
+      <publishTime>12/20/2016 22:48:34</publishTime>
     </File>
     <File Include="Views/Shared/_Layout2.cshtml">
       <publishTime>12/14/2016 18:57:28</publishTime>
@@ -2479,7 +2482,7 @@
       <publishTime>12/14/2016 18:57:28</publishTime>
     </File>
     <File Include="Views/Shared/_SliderCarousel.cshtml">
-      <publishTime>12/15/2016 19:44:53</publishTime>
+      <publishTime>01/04/2017 23:14:55</publishTime>
     </File>
     <File Include="Views/Shared/_VenueTypeList.cshtml">
       <publishTime>12/14/2016 18:57:28</publishTime>
@@ -2491,7 +2494,7 @@
       <publishTime>12/14/2016 18:57:28</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/15/2016 19:41:02</publishTime>
+      <publishTime>01/04/2017 22:42:11</publishTime>
     </File>
     <File Include="Xss.html">
       <publishTime>12/14/2016 18:57:28</publishTime>

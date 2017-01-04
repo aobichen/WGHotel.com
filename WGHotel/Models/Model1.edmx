@@ -133,6 +133,7 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Tel" Type="nvarchar" MaxLength="20" />
           <Property Name="ParentId" Type="int" />
+          <Property Name="Language" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="HotelZH">
           <Key>
@@ -151,6 +152,7 @@
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Tel" Type="nvarchar" MaxLength="20" />
           <Property Name="ParentId" Type="int" />
+          <Property Name="Language" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ImageStore">
           <Key>
@@ -498,6 +500,7 @@
           <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ParentId" Type="Int32" />
           <NavigationProperty Name="RoomEN" Relationship="WGHotelsModel.FK_RoomEN_HotelEN" FromRole="HotelEN" ToRole="RoomEN" />
+          <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HotelZH">
           <Key>
@@ -519,6 +522,7 @@
           <NavigationProperty Name="HotelZH1" Relationship="WGHotelsModel.FK_HotelZH_HotelZH" FromRole="HotelZH" ToRole="HotelZH1" />
           <NavigationProperty Name="HotelZH2" Relationship="WGHotelsModel.FK_HotelZH_HotelZH" FromRole="HotelZH1" ToRole="HotelZH" />
           <NavigationProperty Name="RoomZH" Relationship="WGHotelsModel.FK_RoomZH_HotelZH" FromRole="HotelZH" ToRole="RoomZH" />
+          <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ImageStore">
           <Key>
@@ -878,6 +882,7 @@
           <EntitySetMapping Name="HotelEN">
             <EntityTypeMapping TypeName="WGHotelsModel.HotelEN">
               <MappingFragment StoreEntitySet="HotelEN">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Game" ColumnName="Game" />
@@ -897,6 +902,7 @@
           <EntitySetMapping Name="HotelZH">
             <EntityTypeMapping TypeName="WGHotelsModel.HotelZH">
               <MappingFragment StoreEntitySet="HotelZH">
+                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Game" ColumnName="Game" />

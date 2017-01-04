@@ -3,9 +3,10 @@
     <ul id="hero-gallery" class="cS-hidden">
         @if (ViewBag.Banners != null && ((List<string>)ViewBag.Banners).Count > 0)
         {
-            foreach (var banner in ((List<string>)ViewBag.Banners)) { 
-                <li data-thumb="@banner">
-                    <img src="@banner" alt="" />
+            foreach (var banner in ((List<string>)ViewBag.Banners))
+            {
+                <li data-thumb="@Url.Content(banner)">
+                    <img src="@Url.Content(banner)" alt="" />
                 </li>
             }
         }
@@ -45,21 +46,26 @@
                 </div>
                 <!--//column-->
 
-                <div class="one-half">
+                <div class="column one-half">
                     <!--form hotel-->
                     <div class="form row" id="form1">
                         <!--column-->
-                       
                         <!--//column-->
                         <!--column-->
-                        <div class="column one-half">
+                        <div class="full-width">
                             <h5><span style="color:#555;font-size:16px;font-weight:400;" data-localize="CheckIn">入房</span>\<span style="color:#555;font-size:16px;font-weight:400;" data-localize="CheckOut">退房</span></h5>
                             <div class="row">
-                                <div class="f-item one-half datepicker">
+                                <div class="f-item one-third">
+                                    @*<label for="datepicker1">Check-in date</label>*@
+                                    <div class="">
+                                        <input type="text" id="destination1" name="word" placeholder="飯店、城市、街道" />
+                                    </div>
+                                </div>
+                                <div class="f-item one-third datepicker">
                                     @*<label for="datepicker1">Check-in date</label>*@
                                     <div class="datepicker-wrap"><input type="text" placeholder="" id="datepicker1" name="Begin" value="@ViewBag.CheckInDate" /></div>
                                 </div>
-                                <div class="f-item one-half datepicker">
+                                <div class="f-item one-third datepicker">
                                     @*<label for="datepicker2">Check-out date</label>*@
                                     <div class="datepicker-wrap"><input type="text" placeholder="" id="datepicker2" name="End" value="@ViewBag.CheckOutDate" /></div>
                                 </div>
@@ -110,7 +116,19 @@
                 var venueTypeItem = venueType.val();
                 //Game.val('');
                 Sport.find('option').hide();
-                Sport.find('option[data-id=' + venueTypeItem + ']').show();
+                let sports = Sport.find('option[data-id=' + venueTypeItem + ']');
+                let SportArr = [];
+                for (let s = 0, max = sports.length; s < max; s++) {
+                    let text = $(sports[s]).text();
+                    if (SportArr.length <= 0 || SportArr.indexOf(text) <= 0) {
+                        SportArr.push(text);
+                        $(sports[s]).show();
+                    }
+                   
+                }
+
+                //console.log(SportArr);
+                //Sport.find('option[data-id=' + venueTypeItem + ']').show();
                 var selected = $('#Sport option[style!="display:none"]:first').val();
                 Sport.val(selected);
                 ChangeVenue();
@@ -125,11 +143,11 @@
 
             function ChangeVenue() {
                 var sportItem = Sport.val();
-                console.log(sportItem);
+               
                 Game.find('option').hide();
                 Game.find('option[data-id=' + sportItem + ']').show();
                 var selected = $('#Game option[style!="display:none"]:first').val();
-                Sport.val(selected);              
+                Sport.val(sportItem);
             }
            
         })(jQuery);

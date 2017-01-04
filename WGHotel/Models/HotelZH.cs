@@ -33,6 +33,7 @@ namespace WGHotel.Models
         public int UserId { get; set; }
         public string Tel { get; set; }
         public Nullable<int> ParentId { get; set; }
+        public string Language { get; set; }
     
         public virtual HotelZH HotelZH1 { get; set; }
         public virtual HotelZH HotelZH2 { get; set; }

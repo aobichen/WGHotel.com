@@ -117,6 +117,7 @@
     <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="ParentId" Type="Int32" />
     <NavigationProperty Name="RoomEN" Relationship="WGHotelsModel.FK_RoomEN_HotelEN" FromRole="HotelEN" ToRole="RoomEN" />
+    <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="HotelZH">
     <Key>
@@ -138,6 +139,7 @@
     <NavigationProperty Name="HotelZH1" Relationship="WGHotelsModel.FK_HotelZH_HotelZH" FromRole="HotelZH" ToRole="HotelZH1" />
     <NavigationProperty Name="HotelZH2" Relationship="WGHotelsModel.FK_HotelZH_HotelZH" FromRole="HotelZH1" ToRole="HotelZH" />
     <NavigationProperty Name="RoomZH" Relationship="WGHotelsModel.FK_RoomZH_HotelZH" FromRole="HotelZH" ToRole="RoomZH" />
+    <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ImageStore">
     <Key>

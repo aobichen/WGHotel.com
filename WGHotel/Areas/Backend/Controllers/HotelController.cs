@@ -78,6 +78,7 @@ namespace WGHotel.Areas.Backend.Controllers
             //ViewBag.GameSites = new GameSiteModel().SelectList();
             ViewBag.GameSites = new VenueModel().SelectList();
             ViewBag.City = new GameSiteModel().Citys();
+            ViewBag.Language = new LanguageModel().SelectListItem();
             return View(model);
         }
 
@@ -92,7 +93,7 @@ namespace WGHotel.Areas.Backend.Controllers
             model.Game = (model.GameSite == null || model.GameSite.Count <= 0) ? string.Empty : string.Join(",", model.GameSite);
 
 
-           
+            model.Languages = (model.Language == null || model.Language.Count <= 0) ? string.Empty : string.Join(",", model.Language);
 
            if (ModelState.IsValid)
             {
@@ -169,6 +170,8 @@ namespace WGHotel.Areas.Backend.Controllers
             ViewBag.HotelFacility = new Facilities().Facility(Facilies);
             ViewBag.GameSites = new VenueModel().SelectList(GameSite);
             ViewBag.City = new GameSiteModel().Citys(HotelZH.City);
+            var Language = string.IsNullOrEmpty(HotelZH.Language) ? null : HotelZH.Language.Split(',').Select(int.Parse).ToList();
+            ViewBag.Language = new LanguageModel().SelectListItem(Language);
             return View(model);
         }
 
@@ -188,7 +191,7 @@ namespace WGHotel.Areas.Backend.Controllers
           
 
             model.Game = (model.GameSite == null || model.GameSite.Count <= 0) ? string.Empty : string.Join(",", model.GameSite);
-            
+            model.Languages = (model.Language == null || model.Language.Count <= 0) ? string.Empty : string.Join(",", model.Language);
             model.Edit();
                 
             return RedirectToAction("Edit", new { id = model.ID });
@@ -240,8 +243,10 @@ namespace WGHotel.Areas.Backend.Controllers
             var Facilies = HotelZH.Facilities.Split(',').Select(int.Parse).ToList();
             var GameSite = HotelZH.Game.Split(',').Select(int.Parse).ToList();
             ViewBag.HotelFacility = new Facilities().Facility(Facilies);
-            ViewBag.GameSites = new GameSiteModel().SelectList(GameSite);
+            ViewBag.GameSites = new VenueModel().SelectList(GameSite);
             ViewBag.City = new GameSiteModel().Citys(HotelZH.City);
+            var Language = string.IsNullOrEmpty(HotelZH.Language) ? null : HotelZH.Language.Split(',').Select(int.Parse).ToList();
+            ViewBag.Language = new LanguageModel().SelectListItem(Language);
             return View(model);
             
         }

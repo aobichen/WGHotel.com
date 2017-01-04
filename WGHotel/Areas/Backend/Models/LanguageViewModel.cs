@@ -74,5 +74,29 @@ namespace WGHotel.Areas.Backend.Models
             }
 
         }
+
+        public List<SelectListItem> SelectListItem(List<int> Selected = null)
+        {
+            using (var db = new WGHotelsEntities())
+            {
+                var SelectListItem = new List<SelectListItem>();
+                var items = db.Language.ToList();
+                
+                foreach (var item in items)
+                {
+                    
+                   
+                        SelectListItem.Add(new SelectListItem
+                        {
+                            Text = item.LanguZH,
+                            Value = item.ID.ToString(),
+                            Selected = Selected == null ? false : Selected.Contains(item.ID)
+                        });
+                    
+                }
+                return SelectListItem;
+            }
+
+        }
     }
 }

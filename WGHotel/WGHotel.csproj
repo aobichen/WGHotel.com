@@ -337,7 +337,6 @@
     <Compile Include="WepApi\RoomController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Bed.txt" />
     <Content Include="Content\Admin\assets\ckeditor\lang\en.js" />
     <Content Include="Content\Admin\assets\ckeditor\lang\zh.js" />
     <Content Include="images\ico\part_287_2546227_93910.gif" />
@@ -883,7 +882,6 @@
     <Content Include="images\uploads\slider.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="example-fr.json" />
     <Content Include="Content\lang\example-fr.json" />
     <Content Include="Content\lang\example-zh.json" />
     <Content Include="Content\lang\language-zh.json" />
@@ -1061,6 +1059,7 @@
     <Content Include="Areas\Backend\Views\Language\_List.cshtml" />
     <Content Include="Areas\Backend\Views\Language\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Language\_Create.cshtml" />
+    <Content Include="Areas\Backend\Views\Shared\_Language.cshtml" />
     <None Include="Properties\PublishProfiles\wghotel.pubxml" />
     <None Include="Properties\PublishProfiles\WGHotel.TW.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

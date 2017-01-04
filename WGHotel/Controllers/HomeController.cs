@@ -51,6 +51,10 @@ namespace WGHotel.Controllers
 
         public ActionResult Index(SearchModel search=null)
         {
+            if (search.Language == null)
+            {
+                search.Language = new List<string>();
+            }
             ViewBag.Banners = _db.Banner.Where(o => o.Enabled == true).Select(o => o.Path).ToList();
             var model = new List<HotelViewModel>();
             //ViewBag.GameSite = new GameSiteModel().SelectList();
@@ -325,10 +329,10 @@ namespace WGHotel.Controllers
                 #region *** 英文搜尋結果 **
                 var hotel = (from h in _db.HotelEN
                              where
-                             (City == 0 || h.City == City) ||
+                             (City == 0 || h.City == City) &&
                              (string.IsNullOrEmpty(search.word) || h.Name.Contains(search.word))
                              && (string.IsNullOrEmpty(search.Game) || h.Game.Contains(search.Game))
-                             
+                             && ((search.Language.Count <= 0) || search.Language.All(l => h.Language.Contains(l)))
                              select h).OrderBy(x => Guid.NewGuid()).ToList();
                 var checkInDate = search.Begin == DateTime.MinValue ? DateTime.Now : search.Begin;
                 foreach (var h in hotel)
@@ -416,11 +420,13 @@ namespace WGHotel.Controllers
             else
             {
                 #region ** 中文搜尋結果 **
+                //(model.Facility.Count <= 0 || model.Facility.All(w => h.Facility.Contains(w)))
                 var hotel = (from h in _db.HotelZH
                              where
-                             (City == 0 || h.City == City) ||
+                             (City == 0 || h.City == City) &&
                              (string.IsNullOrEmpty(search.word) || h.Name.Contains(search.word))
-                             && (string.IsNullOrEmpty(search.Game) || h.Game.Contains(search.Game))
+                             && ((string.IsNullOrEmpty(search.Game) || search.Game.Equals("0")) || h.Game.Contains(search.Game))
+                             && ((search.Language.Count <=0) || search.Language.All(l => h.Language.Contains(l)))
                              select h).OrderBy(x => Guid.NewGuid()).ToList();
                 var checkInDate = search.Begin == DateTime.MinValue ? DateTime.Now : search.Begin;
                 foreach (var h in hotel)

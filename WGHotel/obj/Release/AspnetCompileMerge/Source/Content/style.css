@@ -322,7 +322,25 @@ aside .widget h5			{font:700 14px 'Open Sans', Helvetica, Arial, sans-serif;padd
 .main-search div.checker input 									{width:20px;height:20px;}
 .main-search div.checker span.checked:before		{left:0;top:-1px;}
 
-.main-search .gradient-button				{position:absolute;left:41.5%;bottom:-1px;width:17%;height:34px;border:none;-webkit-border-radius:17px 17px 0 0;-moz-border-radius:17px 17px 0 0;border-radius:17px 17px 0 0;}
+.main-search .gradient-button 
+{
+    position:absolute;
+    left:41.5%;bottom:-1px;
+    width:17%;
+    height:34px;
+    border:none;
+     -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+    border-image: initial;
+    /*-webkit-border-radius:17px 17px 0 0;
+    -moz-border-radius:17px 17px 0 0;
+    border-radius:17px 17px 0 0;*/
+
+}
 
 /* 06 Header */
 .header 	{float:left;background:#fff;margin:0 0 20px;width:100%;height:120px;position:relative;z-index:999;}
@@ -1130,7 +1148,7 @@ section.error 		{text-align:center;}
 
 @media screen and (max-width: 500px) {
 .logo img {max-width:60%;}		
-.main-search .gradient-button		{left:25%;}
+.main-search .gradient-button		{left:40%;/*left:25%;*/}
 .get_inspired li {width:100%;height:300px;}
 
 .comment .third,

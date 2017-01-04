@@ -77,7 +77,7 @@ namespace WGHotel.WepApi
             var Extension = Path.GetExtension(model.name);
             Images.Add(new ImageViewModel { Image = bytes, Name = model.name, Extension = Extension });
             Current.Session[key] = Images;
-            List<ImageViewModel> mm = (List<ImageViewModel>)Current.Session[key];
+            
             return Json(new {message = "OK" });
         }
 

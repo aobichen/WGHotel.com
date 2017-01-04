@@ -42,6 +42,8 @@ namespace WGHotel.Areas.Backend.Models
 
         public string Facilies { get; set; }
 
+        public string Languages { get; set; }
+
         public int UserId { get; set; }
         //public List<CodeFile> HotelFacility { get { return new CodeFiles().GetHotelFacility(); } }
 
@@ -49,6 +51,7 @@ namespace WGHotel.Areas.Backend.Models
 
         public List<string> HotelFacility { get; set; }
         public List<string> GameSite { get; set; }
+        public List<string> Language { get; set; }
         public void Create()
         {
             using (var scope = new TransactionScope())
@@ -67,7 +70,7 @@ namespace WGHotel.Areas.Backend.Models
                     zhHotel.Game = Game;
                     zhHotel.Tel = Tel;
                     zhHotel.UserId = UserId;
-
+                    zhHotel.Language = Languages;
 
                     _db.HotelZH.Add(zhHotel);
                     _db.SaveChanges();
@@ -89,7 +92,8 @@ namespace WGHotel.Areas.Backend.Models
                         Game = Game,
                         //UserId = 0,
                         Tel = Tel,
-                        ParentId = zhHotel.ID
+                        ParentId = zhHotel.ID,
+                        Language = Languages
                     };
 
                     _db.HotelEN.Add(HotelEN);
@@ -147,6 +151,7 @@ namespace WGHotel.Areas.Backend.Models
                     zhHotel.LinkUrl = LinkUrl;
                     zhHotel.Game = Game;
                     zhHotel.Tel = Tel;
+                    zhHotel.Language = Languages;
 
                     var HotelEN = _db.HotelEN.Where(o => o.ParentId == zhHotel.ID).FirstOrDefault();
                     HotelEN.Name = Nameus;
@@ -160,7 +165,7 @@ namespace WGHotel.Areas.Backend.Models
                     HotelEN.Game = Game;
                     HotelEN.Tel = Tel;
                     HotelEN.ParentId = zhHotel.ID;
-
+                    HotelEN.Language = Languages;
                     #region # Images
                     if (Session[ImgKey] != null)
                     {
