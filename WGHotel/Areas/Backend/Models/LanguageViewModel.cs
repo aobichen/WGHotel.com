@@ -48,7 +48,12 @@ namespace WGHotel.Areas.Backend.Models
             {
                 var SelectListItem = new List<SelectListItem>();
                 var items = db.Language.ToList();
-                var lang = HttpContext.Current.Request.Cookies["lang"].Value.ToLower();
+                var lang = "zh";
+                if (HttpContext.Current.Request.Cookies["lang"] != null)
+                {
+                    lang = HttpContext.Current.Request.Cookies["lang"].Value.ToLower();
+                }
+               
                 foreach (var item in items)
                 {
                     if (lang == "us")

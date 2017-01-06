@@ -38,12 +38,19 @@
             color:#41afaa;
             text-shadow:1px 2px #aaaaaa;
         }*/
+
+       
+
+         .ball-customer img{
+             margin:auto;
+         }
+        
     </style>
 </head>
 <body>
     <div class="loading">
         
-        <div class="ball-customer" style="margin-left:40%;">
+        <div class="ball-customer">
             <img class="img-responsive" src="~/images/ico/part_287_2546227_93910.gif" />
         </div>
         @*<div class="ball1"></div>*@
@@ -94,6 +101,8 @@
           
            
                 <div class="full-width">
+@if (ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewBag.GameSite != null && ((List<DropDownListItem>)ViewBag.GameSite).Count>0)
+{
                     <aside class="one-fourth left-sidebar">
                         @using (Html.BeginForm()) { 
                         <article class="widget refine-search-results">
@@ -161,9 +170,18 @@
                         </article>
                         }
                     </aside>
+
                     <div class="three-fourth">
                         @RenderBody()
                     </div>
+}
+else
+{
+    <div class="full-width">
+        @RenderBody()
+    </div>
+}
+
                 </div>
             
         

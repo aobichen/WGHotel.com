@@ -183,6 +183,7 @@ namespace WGHotel.Areas.Backend.Models
                 ZHModel.HOTELID = HOTELID;
                 ZHModel.Facilities = string.Empty;
                 ZHModel.Quantiy = Quantiy;
+                ZHModel.Feature = FeatureZh;
 
                 USModel.BedType = BedTypes;
                 USModel.RoomType = RoomType;
@@ -191,7 +192,7 @@ namespace WGHotel.Areas.Backend.Models
                 USModel.HasBreakfast = HasBreakfast;
                 USModel.Facilities = string.Empty;
                 USModel.Quantiy = Quantiy;
-
+                USModel.Feature = FeatureUs;
 
                 _db.SaveChanges();
 

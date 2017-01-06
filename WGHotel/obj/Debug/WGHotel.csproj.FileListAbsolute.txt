@@ -533,7 +533,6 @@ C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\System.Web.WebPages.
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\System.Web.WebPages.dll
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\System.Web.WebPages.Razor.dll
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\WebGrease.dll
-C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\AutoMapped.pdb
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\ClosedXML.xml
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\PagedList.xml
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\PagedList.Mvc.xml
