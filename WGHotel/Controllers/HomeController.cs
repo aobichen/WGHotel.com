@@ -72,9 +72,9 @@ namespace WGHotel.Controllers
             
 
             if (search.Price <=0 &&
-                search.Language == null &&
+                (search.Language == null || search.Language.Count>=0) &&
                 string.IsNullOrEmpty(search.word) &&
-                string.IsNullOrEmpty(search.Game)&&
+                (string.IsNullOrEmpty(search.Game) || search.Game.Equals("0"))&&
                 search.Begin == DateTime.MinValue &&
                 search.End == DateTime.MinValue)
             {
@@ -331,10 +331,14 @@ namespace WGHotel.Controllers
                              where
                              (City == 0 || h.City == City) &&
                              (string.IsNullOrEmpty(search.word) || h.Name.Contains(search.word))
-                             && (string.IsNullOrEmpty(search.Game) || h.Game.Contains(search.Game))
+                             && ((string.IsNullOrEmpty(search.Game) || search.Game.Equals("0")) || h.Game.Contains(search.Game))
                              && ((search.Language.Count <= 0) || search.Language.All(l => h.Language.Contains(l)))
                              select h).OrderBy(x => Guid.NewGuid()).ToList();
                 var checkInDate = search.Begin == DateTime.MinValue ? DateTime.Now : search.Begin;
+
+                var hh = hotel[0].ID;
+                var name = hotel[0].Name;
+
                 foreach (var h in hotel)
                 {
                     
@@ -621,7 +625,7 @@ namespace WGHotel.Controllers
             if (CurrentLanguage.Equals("us"))
             {
                 Rooms = (from r in _db.RoomEN
-                         where rooms.Contains(r.ID)
+                         where rooms.Contains(r.ParentId.Value)
                          select new RoomViewList
                          {
                              Feature = r.Feature,
