@@ -363,6 +363,7 @@
     <Property Name="Sport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Venue" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Deleted" Type="Boolean" />
   </EntityType>
   <EntityType Name="VenueZH">
     <Key>
@@ -372,6 +373,7 @@
     <Property Name="Sport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Venue" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Deleted" Type="Boolean" />
   </EntityType>
   <EntityType Name="Language">
     <Key>

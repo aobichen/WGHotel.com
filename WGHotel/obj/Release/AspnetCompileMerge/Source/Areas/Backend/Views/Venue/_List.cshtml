@@ -27,6 +27,9 @@
                     Type
                 </th>
                 <th>
+                    狀態
+                </th>
+                <th>
 
                 </th>
             </tr>
@@ -55,6 +58,16 @@
                 </td>
                 <td>
                     @item.TypeEN
+                </td>
+                <td>
+                    @if (item.Deleted)
+                    {
+                        <span class="text-danger">已刪除</span>
+                    }
+                    else
+                    {
+                        <span class=""></span>
+                    }
                 </td>
                 <td>
                     <div class="btn-group">

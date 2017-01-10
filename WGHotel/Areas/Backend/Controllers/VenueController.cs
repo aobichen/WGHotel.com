@@ -40,6 +40,7 @@ namespace WGHotel.Areas.Backend.Controllers
                 Venue.VenueZH = Venue_ZH.Venue;
                 Venue.IDZH = Venue_ZH.ID;
                 Venue.IDEN = Venue_EN.ID;
+                Venue.Deleted = Venue_ZH.Deleted.Value;
                 ViewData.Model = Venue;
                 return View();
             }

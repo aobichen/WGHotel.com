@@ -281,6 +281,7 @@
           <Property Name="Sport" Type="nvarchar" MaxLength="50" />
           <Property Name="Venue" Type="nvarchar" MaxLength="150" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deleted" Type="bit" />
         </EntityType>
         <EntityType Name="VenueZH">
           <Key>
@@ -290,6 +291,7 @@
           <Property Name="Sport" Type="nvarchar" MaxLength="50" />
           <Property Name="Venue" Type="nvarchar" MaxLength="150" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Deleted" Type="bit" />
         </EntityType>
         <Association Name="FK_HotelZH_HotelZH">
           <End Role="HotelZH" Type="Self.HotelZH" Multiplicity="1" />
@@ -746,6 +748,7 @@
           <Property Name="Sport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Venue" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="VenueZH">
           <Key>
@@ -755,6 +758,7 @@
           <Property Name="Sport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Venue" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="Language">
           <Key>
@@ -1052,6 +1056,7 @@
           <EntitySetMapping Name="VenueEN">
             <EntityTypeMapping TypeName="WGHotelsModel.VenueEN">
               <MappingFragment StoreEntitySet="VenueEN">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Venue" ColumnName="Venue" />
                 <ScalarProperty Name="Sport" ColumnName="Sport" />
@@ -1062,6 +1067,7 @@
           <EntitySetMapping Name="VenueZH">
             <EntityTypeMapping TypeName="WGHotelsModel.VenueZH">
               <MappingFragment StoreEntitySet="VenueZH">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Venue" ColumnName="Venue" />
                 <ScalarProperty Name="Sport" ColumnName="Sport" />

@@ -52,6 +52,14 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label class="control-label col-md-2">刪除</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Deleted, new { htmlAttributes = new { @class = "" } })
+                @Html.ValidationMessageFor(model => model.Deleted, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
      
 
         <div class="form-group">

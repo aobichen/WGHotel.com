@@ -276,6 +276,7 @@
     <Property Name="Sport" Type="nvarchar" MaxLength="50" />
     <Property Name="Venue" Type="nvarchar" MaxLength="150" />
     <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Deleted" Type="bit" />
   </EntityType>
   <EntityType Name="VenueZH">
     <Key>
@@ -285,6 +286,7 @@
     <Property Name="Sport" Type="nvarchar" MaxLength="50" />
     <Property Name="Venue" Type="nvarchar" MaxLength="150" />
     <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Deleted" Type="bit" />
   </EntityType>
   <Association Name="FK_HotelZH_HotelZH">
     <End Role="HotelZH" Type="Self.HotelZH" Multiplicity="1" />

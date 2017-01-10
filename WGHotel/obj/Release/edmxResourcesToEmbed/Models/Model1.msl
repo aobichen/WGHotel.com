@@ -282,6 +282,7 @@
     <EntitySetMapping Name="VenueEN">
       <EntityTypeMapping TypeName="WGHotelsModel.VenueEN">
         <MappingFragment StoreEntitySet="VenueEN">
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Venue" ColumnName="Venue" />
           <ScalarProperty Name="Sport" ColumnName="Sport" />
@@ -292,6 +293,7 @@
     <EntitySetMapping Name="VenueZH">
       <EntityTypeMapping TypeName="WGHotelsModel.VenueZH">
         <MappingFragment StoreEntitySet="VenueZH">
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
           <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Venue" ColumnName="Venue" />
           <ScalarProperty Name="Sport" ColumnName="Sport" />

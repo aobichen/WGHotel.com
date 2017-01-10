@@ -21,6 +21,8 @@ namespace WGHotel.Areas.Backend.Models
         public string SportEN { get; set; }
         public string TypeEN { get; set; }
         public string VenueEN { get; set; }
+
+        public bool Deleted { get; set; }
         //public string RemarkUS { get; set; }
 
         public List<VenueModel> List()
@@ -52,7 +54,8 @@ namespace WGHotel.Areas.Backend.Models
                     VenueEN = VenueEN[i].Venue,
                     VenueZH = VenueZH[i].Venue,
                     IDZH = VenueZH[i].ID,
-                    IDEN = VenueEN[i].ID
+                    IDEN = VenueEN[i].ID,
+                    Deleted = !VenueZH[i].Deleted.HasValue ? false : VenueZH[i].Deleted.Value
                 });
             }
 
@@ -71,10 +74,12 @@ namespace WGHotel.Areas.Backend.Models
                     Venue_ZH.Sport = SportZH;
                     Venue_ZH.Type = TypeZH;
                     Venue_ZH.Venue = VenueZH;
-                    _db.SaveChanges();
+                    Venue_ZH.Deleted = Deleted;
+                    //_db.SaveChanges();
 
                     Venue_EN.Venue = VenueEN;
                     Venue_EN.Sport = SportEN;
+                    Venue_EN.Deleted = Deleted;
                     Venue_EN.Type = VenueViewModel.GetTypeEN(TypeZH);
                     _db.SaveChanges();
                     scope.Complete();
@@ -94,13 +99,15 @@ namespace WGHotel.Areas.Backend.Models
                     Venue_ZH.Sport = SportZH;
                     Venue_ZH.Type = TypeZH;
                     Venue_ZH.Venue = VenueZH;
+                    Venue_ZH.Deleted = Deleted;
                     _db.VenueZH.Add(Venue_ZH);
-                    _db.SaveChanges();
+                    //_db.SaveChanges();
 
                     var Venue_EN = new VenueEN();                    
                     Venue_EN.Sport = SportEN;
                     Venue_EN.Type = VenueViewModel.GetTypeEN(TypeZH);
                     Venue_EN.Venue = VenueEN;
+                    Venue_ZH.Deleted = Deleted;
                     _db.VenueEN.Add(Venue_EN);
                     _db.SaveChanges();
                     scope.Complete();
@@ -152,26 +159,26 @@ namespace WGHotel.Areas.Backend.Models
             object Games = null;
             if (lang.Equals("zh"))
             {
-                Games = _db.VenueZH.ToList();
+                Games = _db.VenueZH.Where(o => o.Deleted != true).ToList();
             }
             else
             {
-                Games = _db.VenueEN.ToList();
+                Games = _db.VenueEN.Where(o => o.Deleted != true).ToList();
             }
             var SelectList = new List<DropDownListItem>();
 
             if (lang.Equals("zh"))
             {
-               
+                SelectList.Add(item: new DropDownListItem
+                {
+                    Text = "--請選擇--",
+                    Value = "0",
+                    DataAttr = "",
+                    Selected = true
+                });
                 foreach (var i in (List<VenueZH>)Games)
                 {
-                    SelectList.Add(item: new DropDownListItem
-                    {
-                        Text = "--請選擇--",
-                        Value = "0",
-                        DataAttr = "",
-                        Selected = true
-                    });
+                   
                     SelectList.Add(item: new DropDownListItem
                     {
                         Text = string.Format("{0}/{1}", i.Venue, i.Sport),
@@ -185,15 +192,16 @@ namespace WGHotel.Areas.Backend.Models
             }
             else
             {
+                SelectList.Add(item: new DropDownListItem
+                {
+                    Text = "--Please select--",
+                    Value = "0",
+                    DataAttr = "",
+                    Selected = true
+                });
                 foreach (var i in (List<VenueEN>)Games)
                 {
-                    SelectList.Add(item: new DropDownListItem
-                    {
-                        Text = "--Please select--",
-                        Value = "0",
-                        DataAttr = "",
-                        Selected = true
-                    });
+                    
                     SelectList.Add(item: new DropDownListItem
                     {
                         Text = string.Format("{0}/{1}", i.Venue, i.Sport),
@@ -222,24 +230,25 @@ namespace WGHotel.Areas.Backend.Models
             object Games = null;
             if (lang.Equals("zh"))
             {
-                Games = _db.VenueZH.ToList();
+                Games = _db.VenueZH.Where(o => o.Deleted != true).ToList();
             }
             else
             {
-                Games = _db.VenueEN.ToList();
+                Games = _db.VenueEN.Where(o => o.Deleted != true).ToList();
             }
             var SelectList = new List<DropDownListItem>();
             if (lang.Equals("zh"))
             {
+                SelectList.Add(item: new DropDownListItem
+                {
+                    Text = "--請選擇--",
+                    Value = "0",
+                    DataAttr = "",
+                    Selected = true
+                });
                 foreach (var i in (List<VenueZH>)Games)
                 {
-                    SelectList.Add(item: new DropDownListItem
-                    {
-                        Text = "--請選擇--",
-                        Value = "0",
-                        DataAttr = "",
-                        Selected = true
-                    });
+                    
                     SelectList.Add(item: new DropDownListItem
                     {
 
@@ -254,15 +263,16 @@ namespace WGHotel.Areas.Backend.Models
             }
             else
             {
+                SelectList.Add(item: new DropDownListItem
+                {
+                    Text = "--Please select--",
+                    Value = "0",
+                    DataAttr = "",
+                    Selected = true
+                });
                 foreach (var i in (List<VenueEN>)Games)
                 {
-                    SelectList.Add(item: new DropDownListItem
-                    {
-                        Text = "--Please select--",
-                        Value = "0",
-                        DataAttr = "",
-                        Selected = true
-                    });
+                    
                     SelectList.Add(item: new DropDownListItem
                     {
                         Text = string.Format("{0}", i.Sport),
