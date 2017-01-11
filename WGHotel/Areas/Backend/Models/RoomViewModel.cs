@@ -100,7 +100,6 @@ namespace WGHotel.Areas.Backend.Models
             using (var scope = new TransactionScope())
             {
 
-
                 var RoomZH = new RoomZH();
                 RoomZH.Name = NameZh;
                 RoomZH.Notice = NoticeZh;
@@ -118,8 +117,6 @@ namespace WGHotel.Areas.Backend.Models
                 _db.SaveChanges();
                 ZHID = RoomZH.ID;
                 ZHHotelID = RoomZH.HOTELID;
-
-
 
                 var RoomEN = new RoomEN();
                 RoomEN.Name = NameUs;
@@ -140,11 +137,7 @@ namespace WGHotel.Areas.Backend.Models
                 SaveImageStore(ZHID, USID);
                 scope.Complete();
             }
-
-                
-            
-            
-
+                          
         }
 
         public void Edit()

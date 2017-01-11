@@ -77,8 +77,8 @@ namespace WGHotel
         }
         else
         {
-            //ctx.Response.Write(errorInfo);
-            ctx.Response.Redirect("~/404.html");
+            ctx.Response.Write(errorInfo);
+            //ctx.Response.Redirect("~/404.html");
         }
 
         // --------------------------------------------------

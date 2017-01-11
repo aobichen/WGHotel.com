@@ -211,16 +211,16 @@
       <publishTime>10/20/2016 08:56:40</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>01/10/2017 10:04:58</publishTime>
+      <publishTime>01/11/2017 13:46:49</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>01/10/2017 10:04:58</publishTime>
+      <publishTime>01/11/2017 13:46:49</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.compiled">
-      <publishTime>01/10/2017 10:04:58</publishTime>
+      <publishTime>01/11/2017 13:46:48</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.dll">
-      <publishTime>01/10/2017 10:04:58</publishTime>
+      <publishTime>01/11/2017 13:46:48</publishTime>
     </File>
     <File Include="bin/AutoMapped.dll">
       <publishTime>09/20/2016 23:57:56</publishTime>
@@ -322,7 +322,7 @@
       <publishTime>10/20/2016 08:56:47</publishTime>
     </File>
     <File Include="bin/WGHotel.dll">
-      <publishTime>01/10/2017 10:04:48</publishTime>
+      <publishTime>01/11/2017 13:46:40</publishTime>
     </File>
     <File Include="bin/zh-Hant/EntityFramework.resources.dll">
       <publishTime>10/20/2016 08:56:41</publishTime>
@@ -2296,7 +2296,7 @@
       <publishTime>11/16/2016 08:26:34</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/10/2017 10:04:52</publishTime>
+      <publishTime>01/11/2017 13:46:44</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>10/13/2016 11:23:00</publishTime>
@@ -2494,7 +2494,7 @@
       <publishTime>10/13/2016 11:23:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/10/2017 10:04:48</publishTime>
+      <publishTime>01/11/2017 13:43:35</publishTime>
     </File>
     <File Include="Xss.html">
       <publishTime>11/15/2016 08:36:43</publishTime>

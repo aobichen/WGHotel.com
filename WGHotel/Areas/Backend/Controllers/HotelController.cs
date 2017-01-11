@@ -86,6 +86,16 @@ namespace WGHotel.Areas.Backend.Controllers
         [Authorize(Roles = "Admin,System")]
         public ActionResult Create(AccountHotelViewModel model)
         {
+            ViewBag.HotelFacility = new Facilities().Facility();
+            ViewBag.ImgKey = model.ImgKey;
+            Session[model.ImgKey] = new List<ImageViewModel>();
+            //model.ImgKey = AccountAndImgKey;
+            ViewBag.GameSites = new GameSiteModel().SelectList();
+            ViewBag.City = new GameSiteModel().Citys();
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             
           
             model.Facilies = (model.HotelFacility == null || model.HotelFacility.Count <= 0) ? string.Empty : string.Join(",", model.HotelFacility);
@@ -112,12 +122,7 @@ namespace WGHotel.Areas.Backend.Controllers
             }
 
 
-           ViewBag.HotelFacility = new Facilities().Facility();
-            ViewBag.ImgKey = model.ImgKey;
-            Session[model.ImgKey] = new List<ImageViewModel>();
-            //model.ImgKey = AccountAndImgKey;
-            ViewBag.GameSites = new GameSiteModel().SelectList();
-            ViewBag.City = new GameSiteModel().Citys();
+          
             ModelState.AddModelError("", "錯誤!請檢查資料");
             return View();
         }

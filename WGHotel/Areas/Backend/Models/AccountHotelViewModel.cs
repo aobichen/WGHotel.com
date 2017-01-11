@@ -17,9 +17,11 @@ namespace WGHotel.Areas.Backend.Models
         public string Account { get; set; }
         [Required]
         public string Password { get; set; }
-        //[Required(ErrorMessage="必填項目")]
+        
+        [Required(ErrorMessage="必填項目")]
         public string Namezh { get; set; }
         //[Required(ErrorMessage = "必填項目")]
+        [Required(ErrorMessage = "必填項目")]
         public string Nameus { get; set; }
         public string Featurezh { get; set; }
         public string Featureus { get; set; }
