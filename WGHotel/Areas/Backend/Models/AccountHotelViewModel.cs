@@ -24,6 +24,8 @@ namespace WGHotel.Areas.Backend.Models
         [Required(ErrorMessage = "必填項目")]
         public string Nameus { get; set; }
         public string Featurezh { get; set; }
+
+        
         public string Featureus { get; set; }
 
         public string Addresszh { get; set; }

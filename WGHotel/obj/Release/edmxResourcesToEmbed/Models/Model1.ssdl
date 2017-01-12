@@ -121,7 +121,7 @@
     <Property Name="City" Type="int" Nullable="false" />
     <Property Name="Area" Type="nvarchar" MaxLength="10" />
     <Property Name="Address" Type="nvarchar" MaxLength="200" />
-    <Property Name="Features" Type="nvarchar" MaxLength="1500" />
+    <Property Name="Features" Type="nvarchar" MaxLength="3000" />
     <Property Name="LinkUrl" Type="nvarchar" MaxLength="1500" />
     <Property Name="Facilities" Type="nvarchar" MaxLength="200" />
     <Property Name="Enabled" Type="bit" />
@@ -140,7 +140,7 @@
     <Property Name="City" Type="int" Nullable="false" />
     <Property Name="Area" Type="nvarchar" MaxLength="10" />
     <Property Name="Address" Type="nvarchar" MaxLength="200" />
-    <Property Name="Features" Type="nvarchar" MaxLength="1500" />
+    <Property Name="Features" Type="nvarchar" MaxLength="3000" />
     <Property Name="LinkUrl" Type="nvarchar" MaxLength="1500" />
     <Property Name="Facilities" Type="nvarchar" MaxLength="200" />
     <Property Name="Enabled" Type="bit" />

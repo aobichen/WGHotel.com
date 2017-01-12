@@ -109,7 +109,7 @@
     <Property Name="City" Type="Int32" Nullable="false" />
     <Property Name="Area" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Features" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="Features" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
     <Property Name="LinkUrl" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
     <Property Name="Facilities" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Enabled" Type="Boolean" />
@@ -129,7 +129,7 @@
     <Property Name="City" Type="Int32" Nullable="false" />
     <Property Name="Area" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Features" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+    <Property Name="Features" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
     <Property Name="LinkUrl" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
     <Property Name="Facilities" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Enabled" Type="Boolean" />

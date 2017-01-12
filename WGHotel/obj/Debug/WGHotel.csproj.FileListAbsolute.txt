@@ -578,7 +578,6 @@ C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\zh-Hant\Microsoft.Ow
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\zh-Hant\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\zh-Hant\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\zh-Hant\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\obj\Debug\WGHotel.csprojResolveAssemblyReference.cache
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\obj\Debug\WGHotel.App_GlobalResources.Resource-zh.resources
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\obj\Debug\WGHotel.csproj.GenerateResource.Cache
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\obj\Debug\WGHotel.dll
@@ -667,3 +666,4 @@ C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\obj\Debug\WGHotel.dll
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\obj\Debug\WGHotel.pdb
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\obj\Debug\WGHotel.csprojResolveAssemblyReference.cache
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\WGHotel.dll.config
+C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\obj\Debug\WGHotel.csprojResolveAssemblyReference.cache

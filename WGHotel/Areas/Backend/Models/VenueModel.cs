@@ -123,8 +123,8 @@ namespace WGHotel.Areas.Backend.Models
             
 
             object Games = null;
-            
-            Games = _db.VenueZH.ToList();
+
+            Games = _db.VenueZH.Where(o => o.Deleted != true).ToList();
             
             
             var SelectList = new List<SelectListItem>();
