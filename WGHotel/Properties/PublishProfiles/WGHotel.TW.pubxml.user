@@ -211,16 +211,16 @@
       <publishTime>10/20/2016 08:56:40</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>01/12/2017 09:55:00</publishTime>
+      <publishTime>01/16/2017 16:18:17</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>01/12/2017 09:55:00</publishTime>
+      <publishTime>01/16/2017 16:18:17</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.compiled">
-      <publishTime>01/12/2017 09:55:00</publishTime>
+      <publishTime>01/16/2017 16:18:17</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.dll">
-      <publishTime>01/12/2017 09:55:00</publishTime>
+      <publishTime>01/16/2017 16:18:17</publishTime>
     </File>
     <File Include="bin/AutoMapped.dll">
       <publishTime>09/20/2016 23:57:56</publishTime>
@@ -322,7 +322,7 @@
       <publishTime>10/20/2016 08:56:47</publishTime>
     </File>
     <File Include="bin/WGHotel.dll">
-      <publishTime>01/12/2017 09:54:52</publishTime>
+      <publishTime>01/16/2017 15:56:29</publishTime>
     </File>
     <File Include="bin/zh-Hant/EntityFramework.resources.dll">
       <publishTime>10/20/2016 08:56:41</publishTime>
@@ -2290,13 +2290,13 @@
       <publishTime>10/14/2016 14:05:08</publishTime>
     </File>
     <File Include="Models/Model1.edmx.diagram">
-      <publishTime>12/15/2016 15:09:45</publishTime>
+      <publishTime>01/12/2017 10:18:23</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>11/16/2016 08:26:34</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/12/2017 09:54:55</publishTime>
+      <publishTime>01/16/2017 16:18:13</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>10/13/2016 11:23:00</publishTime>
@@ -2365,7 +2365,7 @@
       <publishTime>10/13/2016 11:23:01</publishTime>
     </File>
     <File Include="Scripts/scripts.js">
-      <publishTime>12/15/2016 15:09:45</publishTime>
+      <publishTime>01/16/2017 16:12:43</publishTime>
     </File>
     <File Include="Scripts/search.js">
       <publishTime>10/14/2016 11:40:21</publishTime>
@@ -2416,7 +2416,7 @@
       <publishTime>10/13/2016 11:23:01</publishTime>
     </File>
     <File Include="Views/Home/Detail.cshtml">
-      <publishTime>11/15/2016 08:36:43</publishTime>
+      <publishTime>01/16/2017 15:56:14</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>11/15/2016 08:36:43</publishTime>
@@ -2473,7 +2473,7 @@
       <publishTime>12/07/2016 15:34:09</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/06/2017 13:16:52</publishTime>
+      <publishTime>01/16/2017 15:57:32</publishTime>
     </File>
     <File Include="Views/Shared/_Layout2.cshtml">
       <publishTime>10/18/2016 08:24:49</publishTime>
@@ -2482,7 +2482,7 @@
       <publishTime>10/13/2016 11:23:01</publishTime>
     </File>
     <File Include="Views/Shared/_SliderCarousel.cshtml">
-      <publishTime>01/05/2017 12:49:00</publishTime>
+      <publishTime>01/16/2017 15:38:12</publishTime>
     </File>
     <File Include="Views/Shared/_VenueTypeList.cshtml">
       <publishTime>12/07/2016 16:00:58</publishTime>
@@ -2494,7 +2494,7 @@
       <publishTime>10/13/2016 11:23:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/12/2017 09:52:11</publishTime>
+      <publishTime>01/16/2017 15:56:30</publishTime>
     </File>
     <File Include="Xss.html">
       <publishTime>11/15/2016 08:36:43</publishTime>

@@ -129,7 +129,7 @@
     <Property Name="City" Type="Int32" Nullable="false" />
     <Property Name="Area" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Features" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="Features" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
     <Property Name="LinkUrl" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
     <Property Name="Facilities" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Enabled" Type="Boolean" />
@@ -291,10 +291,10 @@
       <End Role="HotelZH" EntitySet="HotelZH" />
       <End Role="RoomZH" EntitySet="RoomZH" />
     </AssociationSet>
-    <EntitySet Name="RoomPrice" EntityType="WGHotelsModel.RoomPrice" />
     <EntitySet Name="VenueEN" EntityType="WGHotelsModel.VenueEN" />
     <EntitySet Name="VenueZH" EntityType="WGHotelsModel.VenueZH" />
     <EntitySet Name="Language" EntityType="WGHotelsModel.Language" />
+    <EntitySet Name="RoomPrice" EntityType="WGHotelsModel.RoomPrice" />
   </EntityContainer>
   <EntityType Name="Country">
     <Key>
@@ -344,17 +344,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="RoomPrice">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ROOMID" Type="Int32" Nullable="false" />
-    <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="SaleOff" Type="Boolean" Nullable="false" />
-    <Property Name="Quantity" Type="Int32" Nullable="false" />
-  </EntityType>
   <EntityType Name="VenueEN">
     <Key>
       <PropertyRef Name="ID" />
@@ -383,5 +372,16 @@
     <Property Name="LanguZH" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="LanguEN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Deleted" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoomPrice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROOMID" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SaleOff" Type="Boolean" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
   </EntityType>
 </Schema>

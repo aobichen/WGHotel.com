@@ -70,11 +70,38 @@
 			//UI FORM ELEMENTS
 			var spinner = $('.spinner input').spinner({ min: 0 });
 			
-			$('.datepicker-wrap input').datepicker({
-				showOn: 'button',
-				buttonImage: 'images/ico/calendar.png',
-				buttonImageOnly: true,
-                dateFormat: 'yy/mm/dd'
+			//$('.datepicker-wrap input').datepicker({
+			//	showOn: 'button',
+			//	buttonImage: 'images/ico/calendar.png',
+			//	buttonImageOnly: true,
+            //    dateFormat: 'yy/mm/dd'
+			//});
+
+			let datepicker2 = $('#datepicker2');
+
+			$('#datepicker1').datepicker({
+			    showOn: 'button',
+			    buttonImage: 'images/ico/calendar.png',
+			    buttonImageOnly: true,
+			    dateFormat: 'yy/mm/dd',
+			    minDate: new Date(),
+			    onSelect: function (startDate) {
+			        const BeginDate = new Date(startDate);
+			        const date = BeginDate.getDate()+1;
+			       
+			        const currentDate = `${BeginDate.getFullYear()}/${BeginDate.getMonth()+1}/${date}`;
+			       
+			        datepicker2.datepicker("option", "minDate", currentDate);
+
+			    }
+			});
+
+			datepicker2.datepicker({
+			    showOn: 'button',
+			    buttonImage: 'images/ico/calendar.png',
+			    buttonImageOnly: true,
+			    dateFormat: 'yy/mm/dd',
+			    minDate: new Date()
 			});
 			
 			$( '#slider' ).slider({

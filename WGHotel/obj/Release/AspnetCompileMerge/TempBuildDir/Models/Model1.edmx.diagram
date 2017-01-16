@@ -27,10 +27,10 @@
         <AssociationConnector Association="WGHotelsModel.FK_RoomEN_HotelEN" />
         <AssociationConnector Association="WGHotelsModel.FK_HotelZH_HotelZH" />
         <AssociationConnector Association="WGHotelsModel.FK_RoomZH_HotelZH" />
-        <EntityTypeShape EntityType="WGHotelsModel.RoomPrice" Width="1.5" PointX="13.375" PointY="7.75" />
         <EntityTypeShape EntityType="WGHotelsModel.VenueEN" Width="1.5" PointX="13.375" PointY="10.75" />
         <EntityTypeShape EntityType="WGHotelsModel.VenueZH" Width="1.5" PointX="13.375" PointY="13.75" />
         <EntityTypeShape EntityType="WGHotelsModel.Language" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WGHotelsModel.RoomPrice" Width="1.5" PointX="13.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

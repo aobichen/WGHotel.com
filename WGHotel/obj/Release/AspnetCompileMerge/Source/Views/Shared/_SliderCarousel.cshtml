@@ -87,7 +87,7 @@
 
 <script type="text/javascript">
         (function ($) {
-            $(document).ready(function () {
+           // $(document).ready(function () {
               
 
                 $('#hero-gallery').lightSlider({
@@ -105,7 +105,7 @@
                         $('#hero-gallery').removeClass('cS-hidden');
                     }
                 });
-            });
+            //});
 
             let venueType = $('#VenueType');
             let Sport = $('#Sport');
@@ -149,6 +149,7 @@
                 var selected = $('#Game option[style!="display:none"]:first').val();
                 Sport.val(sportItem);
             }
+
            
         })(jQuery);
 </script>

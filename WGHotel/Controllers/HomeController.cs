@@ -72,7 +72,7 @@ namespace WGHotel.Controllers
             
 
             if (search.Price <=0 &&
-                (search.Language == null || search.Language.Count>=0) &&
+                (search.Language == null || search.Language.Count<=0) &&
                 string.IsNullOrEmpty(search.word) &&
                 (string.IsNullOrEmpty(search.Game) || search.Game.Equals("0"))&&
                 search.Begin == DateTime.MinValue &&

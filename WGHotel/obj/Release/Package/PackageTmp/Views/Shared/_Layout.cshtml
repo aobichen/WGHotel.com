@@ -160,8 +160,8 @@
                                 <!--//Accommodation type-->
                                 <!--Star rating-->
                                 <dd>
-                                    <button type="submit" class="gradient-button" style="border-radius:4px;">
-                                        SEARCH
+                                    <button data-localize="Search" type="submit" class="gradient-button" style="border-radius:4px;">
+                                        搜尋
                                     </button>
                                 </dd>
                                 
@@ -210,10 +210,10 @@ else
     <script type="text/javascript" src="~/Scripts/lightslider.min.js"></script>
 
     <script src="~/Scripts/lightgallery-all.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/scripts.js?v1.0"></script>
+    <script type="text/javascript" src="~/Scripts/scripts.js?v1.1"></script>
     <script type="text/javascript">
         (function ($) {
-            $(document).ready(function () {
+           // $(document).ready(function () {
                 $('.form').hide();
                 $('#form1').show();
                 $('.f-item:nth-child(1)').addClass('active');
@@ -234,7 +234,7 @@ else
                         $('#hero-gallery').removeClass('cS-hidden');
                     }
                 });
-            });
+           // });
            
 
             var lang = $.cookie("lang");
@@ -242,6 +242,10 @@ else
                 
                 $.cookie("lang", "zh");
                 lang = zh;
+            }
+
+            if (lang === 'us') {
+                $('#destination1').attr('placeholder','Hotel，City，Street');
             }
            
             $('input[name="price"]').on('change', function () {

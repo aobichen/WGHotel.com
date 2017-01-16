@@ -236,7 +236,11 @@
             }
         });
 
-        $('#gallery1,#gallery2,#gallery3,#gallery4').lightGallery({
+        //$('#gallery1,#gallery2,#gallery3,#gallery4').lightGallery({
+        //    download: false
+        //});
+
+        $('figure[id^="gallery"]').lightGallery({
             download: false
         });
     })
