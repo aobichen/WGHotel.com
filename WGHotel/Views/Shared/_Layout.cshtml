@@ -207,34 +207,34 @@ else
     <script src="~/Scripts/infobox.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.uniform.min.js"></script>
     <script type="text/javascript" src="~/Scripts/jquery.slimmenu.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/lightslider.min.js"></script>
-
+    <script type="text/javascript" src="~/Scripts/lightgallery-all.min.js"></script>
+    <script src="~/Scripts/lightslider.min.js"></script>
     <script src="~/Scripts/lightgallery-all.min.js"></script>
     <script type="text/javascript" src="~/Scripts/scripts.js?v1.1"></script>
     <script type="text/javascript">
         (function ($) {
-           // $(document).ready(function () {
+            //$(document).ready(function () {
                 $('.form').hide();
                 $('#form1').show();
                 $('.f-item:nth-child(1)').addClass('active');
                 $('.f-item:nth-child(1) span').addClass('checked');
 
-                //$('#hero-gallery').lightSlider({
-                //    gallery: true,
-                //    item: 1,
-                //    pager: false,
-                //    gallery: false,
-                //    slideMargin: 0,
-                //    speed: 2000,
-                //    pause: 6000,
-                //    mode: 'fade',
-                //    auto: true,
-                //    loop: true,
-                //    onSliderLoad: function () {
-                //        $('#hero-gallery').removeClass('cS-hidden');
-                //    }
-                //});
-           // });
+                $('#hero-gallery').lightSlider({
+                    gallery: true,
+                    item: 1,
+                    pager: false,
+                    gallery: false,
+                    slideMargin: 0,
+                    speed: 2000,
+                    pause: 6000,
+                    mode: 'fade',
+                    auto: true,
+                    loop: true,
+                    onSliderLoad: function () {
+                        $('#hero-gallery').removeClass('cS-hidden');
+                    }
+                });
+            //});
            
 
             var lang = $.cookie("lang");
