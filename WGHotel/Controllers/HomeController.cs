@@ -33,7 +33,7 @@ namespace WGHotel.Controllers
                 foreach (var m in model)
                 {
 
-                    var image = _db.ImageStore.Where(o => o.ReferIdUS == m.ID).FirstOrDefault();
+                    var image = _db.ImageStore.Where(o => o.ReferIdUS == m.ID && o.Type.Equals("Hotel")).FirstOrDefault();
 
                     m.Image = image == null ? 0 : image.ID;
                 }
@@ -42,7 +42,7 @@ namespace WGHotel.Controllers
             {
                 foreach (var m in model)
                 {
-                    var image = _db.ImageStore.Where(o => o.ReferIdZH == m.ID).FirstOrDefault();
+                    var image = _db.ImageStore.Where(o => o.ReferIdZH == m.ID && o.Type.Equals("Hotel")).FirstOrDefault();
                     m.Image = image == null ? 0 : image.ID;
                 }
             }
@@ -524,7 +524,7 @@ namespace WGHotel.Controllers
                 foreach (var m in model)
                 {
 
-                    var Image = _db.ImageStore.Where(o => o.ReferIdUS == m.ID).FirstOrDefault();
+                    var Image = _db.ImageStore.Where(o => o.ReferIdUS == m.ID && o.Type.Equals("Hotel") ).FirstOrDefault();
                     if (Image != null)
                     {
                         m.Image = Image.ID;
@@ -535,7 +535,7 @@ namespace WGHotel.Controllers
             {
                 foreach (var m in model)
                 {
-                    var image = _db.ImageStore.Where(o => o.ReferIdZH == m.ID).FirstOrDefault();
+                    var image = _db.ImageStore.Where(o => o.ReferIdZH == m.ID && o.Type.Equals("Hotel")).FirstOrDefault();
                     m.Image = image == null ? 0 : image.ID;
                 }
             }
@@ -716,11 +716,11 @@ namespace WGHotel.Controllers
                 var ReferIdZH = item.ID;
                 if (CurrentLanguage.Equals("us"))
                 {
-                    item.Images = _db.ImageStore.Where(o => o.ReferIdUS == ReferIdZH).ToList();
+                    item.Images = _db.ImageStore.Where(o => o.ReferIdUS == ReferIdZH && o.Type.Equals("Hotel")).ToList();
                 }
                 else
                 {
-                    item.Images = _db.ImageStore.Where(o => o.ReferIdZH == ReferIdZH).ToList();
+                    item.Images = _db.ImageStore.Where(o => o.ReferIdZH == ReferIdZH && o.Type.Equals("Hotel")).ToList();
                 }
 
             }

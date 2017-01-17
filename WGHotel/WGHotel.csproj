@@ -339,6 +339,7 @@
   <ItemGroup>
     <Content Include="Content\Admin\assets\ckeditor\lang\en.js" />
     <Content Include="Content\Admin\assets\ckeditor\lang\zh.js" />
+    <Content Include="htaccess.txt" />
     <Content Include="images\ico\part_287_2546227_93910.gif" />
     <Content Include="images\uploads\error.jpg" />
     <Content Include="Models\Model1.Context.tt">

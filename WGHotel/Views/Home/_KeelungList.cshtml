@@ -8,6 +8,17 @@
             .destinations article .gradient-button {              
                 top: 50px;                
             }
+
+             .details .hotelName{
+        overflow:hidden;
+        text-overflow:ellipsis;
+      
+    }
+
+    .destinations article h4 {
+   
+     padding: 4px 0 15px 0 !important;   
+}
         </style>
         <!--latest offers-->
 
@@ -29,25 +40,25 @@
                         </figure>
                         <div class="details">
                             <a href="@Url.Action("Detail",new{id = item.ID})" title="" style="top:50px;" class="gradient-button"  data-localize="viewall">房型</a>
-                            <h4>@item.Name</h4>
+                            <h4 class="hotelName"><nobr> @item.Name</nobr></h4>
                             <span>
                                 <i class="fa fa-phone-square" aria-hidden="true"></i>
                                    @item.Tel
                             </span>
 
                             <div class="ribbon">
-                               
+
                                 <div class="half">
-                                    
-                                    <a target="_blank" href="@item.LinkUrl" title="" style="padding-top:12px;">
+                                    <a target="_blank" href="@item.LinkUrl" title="View all" style="padding-top:12px;">
 
                                         <span class="fa fa-globe fa-2x" aria-hidden="true" style="width:25%;text-align:left;left:0px;"></span>
-                                        <span class="price" style="width:70%;font-size:14px;text-align:right" data-localize="forward">訂房</span>
+
+                                        <span class="price" style="width:70%;font-size:14px;text-align:right;" data-localize="forward">訂房</span>
                                     </a>
 
                                 </div>
                                 <div class="half hotel">
-                                    <a href="@Url.Action("Detail",new{id = item.ID})" title="">
+                                    <a href="@Url.Action("Detail",new{id = item.ID})">
                                         <span class="small"></span>
                                         @if (item.Sell.HasValue)
                                         {

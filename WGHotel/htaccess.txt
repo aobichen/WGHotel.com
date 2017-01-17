@@ -1,0 +1,5 @@
+﻿SetEnvIfNoCase User-Agent "^Baidu" bad_bot
+SetEnvIfNoCase User-Agent "^sogou" bad_bot
+SetEnvIfNoCase User-Agent "^Bloghoo" bad_bot
+SetEnvIfNoCase User-Agent "^Scooter" bad_bot
+Deny from env=bad_bot
