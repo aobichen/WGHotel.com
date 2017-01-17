@@ -94,7 +94,7 @@ namespace WGHotel.Areas.Backend.Models
                         Enabled = true,
                         LinkUrl = LinkUrl,
                         Game = Game,
-                        //UserId = 0,
+                        UserId = UserId,
                         Tel = Tel,
                         ParentId = zhHotel.ID,
                         Language = Languages
