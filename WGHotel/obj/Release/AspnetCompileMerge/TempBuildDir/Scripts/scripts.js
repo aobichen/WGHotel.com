@@ -1,7 +1,11 @@
+
+
 (function($){
 
 	"use strict";
 	  
+	
+
 	$(document).ready(function () {
 		bookyourtravel.init();
 	});
@@ -77,32 +81,7 @@
             //    dateFormat: 'yy/mm/dd'
 			//});
 
-			let datepicker2 = $('#datepicker2');
-
-			$('#datepicker1').datepicker({
-			    showOn: 'button',
-			    buttonImage: 'images/ico/calendar.png',
-			    buttonImageOnly: true,
-			    dateFormat: 'yy/mm/dd',
-			    minDate: new Date(),
-			    onSelect: function (startDate) {
-			        const BeginDate = new Date(startDate);
-			        const date = BeginDate.getDate()+1;
-			       
-			        const currentDate = `${BeginDate.getFullYear()}/${BeginDate.getMonth()+1}/${date}`;
-			       
-			        datepicker2.datepicker("option", "minDate", currentDate);
-
-			    }
-			});
-
-			datepicker2.datepicker({
-			    showOn: 'button',
-			    buttonImage: 'images/ico/calendar.png',
-			    buttonImageOnly: true,
-			    dateFormat: 'yy/mm/dd',
-			    minDate: new Date()
-			});
+			
 			
 			$( '#slider' ).slider({
 				range: "min",
@@ -182,6 +161,7 @@
 				$('.edit_field').hide(400);
 			});
 			
+			
 			//CONTACT FORM
 			$('#contactform').submit(function(){
 				var action = $(this).attr('action');
@@ -225,5 +205,32 @@
 			$('.deals article .details').height(maxHeight);	
 		}
 	}
+
+	let datepicker2 = $('#datepicker2');
+
+	$('#datepicker1').datepicker({
+	    showOn: 'button',
+	    buttonImage: 'images/ico/calendar.png',
+	    buttonImageOnly: true,
+	    dateFormat: 'yy/mm/dd',
+	    minDate: new Date(),
+	    onSelect: function (startDate) {
+	        const BeginDate = new Date(startDate);
+	        const date = BeginDate.getDate()+1;
+			       
+	        const currentDate = BeginDate.getFullYear()+'/'+(BeginDate.getMonth()+1)+'/'+date;
+			       
+	        datepicker2.datepicker("option", "minDate", currentDate);
+
+	    }
+	});
+
+	datepicker2.datepicker({
+	    showOn: 'button',
+	    buttonImage: 'images/ico/calendar.png',
+	    buttonImageOnly: true,
+	    dateFormat: 'yy/mm/dd',
+	    minDate: new Date()
+	});
 
 })(jQuery);

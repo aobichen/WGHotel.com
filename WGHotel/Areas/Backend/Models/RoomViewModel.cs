@@ -158,7 +158,7 @@ namespace WGHotel.Areas.Backend.Models
             ZHModel.Notice = NoticeZh;
 
             USModel.Name = NameUs;
-            USModel.Notice = NameUs;
+            USModel.Notice = NoticeUs;
 
             
             var BedTypes = string.Empty;

@@ -145,7 +145,7 @@
           <Property Name="City" Type="int" Nullable="false" />
           <Property Name="Area" Type="nvarchar" MaxLength="10" />
           <Property Name="Address" Type="nvarchar" MaxLength="200" />
-          <Property Name="Features" Type="nvarchar" MaxLength="1500" />
+          <Property Name="Features" Type="nvarchar" MaxLength="3000" />
           <Property Name="LinkUrl" Type="nvarchar" MaxLength="1500" />
           <Property Name="Facilities" Type="nvarchar" MaxLength="200" />
           <Property Name="Enabled" Type="bit" />
@@ -227,11 +227,11 @@
           <Property Name="Facilities" Type="nvarchar" MaxLength="50" />
           <Property Name="HasBreakfast" Type="bit" />
           <Property Name="Sell" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="Notice" Type="nvarchar" MaxLength="1500" />
+          <Property Name="Notice" Type="nvarchar" MaxLength="3500" />
           <Property Name="Quantiy" Type="int" />
           <Property Name="Enabled" Type="bit" />
           <Property Name="ParentId" Type="int" />
-          <Property Name="Feature" Type="nvarchar" MaxLength="1500" />
+          <Property Name="Feature" Type="nvarchar" MaxLength="3500" />
         </EntityType>
         <EntityType Name="RoomPrice">
           <Key>
@@ -256,11 +256,11 @@
           <Property Name="Facilities" Type="nvarchar" MaxLength="50" />
           <Property Name="HasBreakfast" Type="bit" />
           <Property Name="Sell" Type="decimal" Precision="10" Scale="2" />
-          <Property Name="Notice" Type="nvarchar" MaxLength="1500" />
+          <Property Name="Notice" Type="nvarchar" MaxLength="3500" />
           <Property Name="Quantiy" Type="int" />
           <Property Name="Enabled" Type="bit" />
           <Property Name="ParentId" Type="int" />
-          <Property Name="Feature" Type="nvarchar" MaxLength="1500" />
+          <Property Name="Feature" Type="nvarchar" MaxLength="3500" />
         </EntityType>
         <EntityType Name="SysSetting">
           <Key>
@@ -293,6 +293,54 @@
           <Property Name="Type" Type="nvarchar" MaxLength="50" />
           <Property Name="Deleted" Type="bit" />
         </EntityType>
+        <Association Name="FK_HotelZH_HotelZH">
+          <End Role="HotelZH" Type="Self.HotelZH" Multiplicity="1" />
+          <End Role="HotelZH1" Type="Self.HotelZH" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="HotelZH">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HotelZH1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportRooms_Report">
+          <End Role="Report" Type="Self.Report" Multiplicity="1" />
+          <End Role="ReportRooms" Type="Self.ReportRooms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Report">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReportRooms">
+              <PropertyRef Name="ReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomEN_HotelEN">
+          <End Role="HotelEN" Type="Self.HotelEN" Multiplicity="1" />
+          <End Role="RoomEN" Type="Self.RoomEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelEN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoomEN">
+              <PropertyRef Name="HOTELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomZH_HotelZH">
+          <End Role="HotelZH" Type="Self.HotelZH" Multiplicity="1" />
+          <End Role="RoomZH" Type="Self.RoomZH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelZH">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoomZH">
+              <PropertyRef Name="HOTELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="WGHotelsModelStoreContainer">
           <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CityEN" EntityType="Self.CityEN" Schema="dbo" store:Type="Tables" />
@@ -316,6 +364,22 @@
           <EntitySet Name="SysSetting" EntityType="Self.SysSetting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VenueEN" EntityType="Self.VenueEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VenueZH" EntityType="Self.VenueZH" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HotelZH_HotelZH" Association="Self.FK_HotelZH_HotelZH">
+            <End Role="HotelZH" EntitySet="HotelZH" />
+            <End Role="HotelZH1" EntitySet="HotelZH" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportRooms_Report" Association="Self.FK_ReportRooms_Report">
+            <End Role="Report" EntitySet="Report" />
+            <End Role="ReportRooms" EntitySet="ReportRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomEN_HotelEN" Association="Self.FK_RoomEN_HotelEN">
+            <End Role="HotelEN" EntitySet="HotelEN" />
+            <End Role="RoomEN" EntitySet="RoomEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomZH_HotelZH" Association="Self.FK_RoomZH_HotelZH">
+            <End Role="HotelZH" EntitySet="HotelZH" />
+            <End Role="RoomZH" EntitySet="RoomZH" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -437,8 +501,8 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="ParentId" Type="Int32" />
-          <NavigationProperty Name="RoomEN" Relationship="WGHotelsModel.FK_RoomEN_HotelEN" FromRole="HotelEN" ToRole="RoomEN" />
           <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoomEN" Relationship="WGHotelsModel.FK_RoomEN_HotelEN" FromRole="HotelEN" ToRole="RoomEN" />
         </EntityType>
         <EntityType Name="HotelZH">
           <Key>
@@ -450,7 +514,7 @@
           <Property Name="City" Type="Int32" Nullable="false" />
           <Property Name="Area" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Features" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Name="Features" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
           <Property Name="LinkUrl" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
           <Property Name="Facilities" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Enabled" Type="Boolean" />
@@ -459,8 +523,8 @@
           <Property Name="ParentId" Type="Int32" />
           <NavigationProperty Name="HotelZH1" Relationship="WGHotelsModel.FK_HotelZH_HotelZH" FromRole="HotelZH" ToRole="HotelZH1" />
           <NavigationProperty Name="HotelZH2" Relationship="WGHotelsModel.FK_HotelZH_HotelZH" FromRole="HotelZH1" ToRole="HotelZH" />
-          <NavigationProperty Name="RoomZH" Relationship="WGHotelsModel.FK_RoomZH_HotelZH" FromRole="HotelZH" ToRole="RoomZH" />
           <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoomZH" Relationship="WGHotelsModel.FK_RoomZH_HotelZH" FromRole="HotelZH" ToRole="RoomZH" />
         </EntityType>
         <EntityType Name="ImageStore">
           <Key>
@@ -516,44 +580,6 @@
           <Property Name="RoomID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Report" Relationship="Self.FK_ReportRooms_Report" FromRole="ReportRooms" ToRole="Report" />
         </EntityType>
-        <EntityType Name="RoomEN">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HOTELID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BedType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Facilities" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="HasBreakfast" Type="Boolean" />
-          <Property Name="Sell" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="Notice" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
-          <Property Name="Quantiy" Type="Int32" />
-          <Property Name="Enabled" Type="Boolean" />
-          <Property Name="ParentId" Type="Int32" />
-          <Property Name="Feature" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HotelEN" Relationship="WGHotelsModel.FK_RoomEN_HotelEN" FromRole="RoomEN" ToRole="HotelEN" />
-        </EntityType>
-        <EntityType Name="RoomZH">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HOTELID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BedType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Facilities" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="HasBreakfast" Type="Boolean" />
-          <Property Name="Sell" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="Notice" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
-          <Property Name="Quantiy" Type="Int32" />
-          <Property Name="Enabled" Type="Boolean" />
-          <Property Name="ParentId" Type="Int32" />
-          <Property Name="Feature" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="HotelZH" Relationship="WGHotelsModel.FK_RoomZH_HotelZH" FromRole="RoomZH" ToRole="HotelZH" />
-        </EntityType>
         <EntityType Name="SysSetting">
           <Key>
             <PropertyRef Name="ID" />
@@ -592,30 +618,30 @@
           <EntitySet Name="ImageStore" EntityType="Self.ImageStore" />
           <EntitySet Name="Report" EntityType="Self.Report" />
           <EntitySet Name="ReportRooms" EntityType="Self.ReportRooms" />
-          <EntitySet Name="RoomEN" EntityType="Self.RoomEN" />
-          <EntitySet Name="RoomZH" EntityType="Self.RoomZH" />
           <EntitySet Name="SysSetting" EntityType="Self.SysSetting" />
           <AssociationSet Name="FK_ReportRooms_Report" Association="Self.FK_ReportRooms_Report">
             <End Role="Report" EntitySet="Report" />
             <End Role="ReportRooms" EntitySet="ReportRooms" />
           </AssociationSet>
           <EntitySet Name="Country" EntityType="WGHotelsModel.Country" />
-          <AssociationSet Name="FK_RoomEN_HotelEN" Association="WGHotelsModel.FK_RoomEN_HotelEN">
-            <End Role="HotelEN" EntitySet="HotelEN" />
-            <End Role="RoomEN" EntitySet="RoomEN" />
-          </AssociationSet>
           <AssociationSet Name="FK_HotelZH_HotelZH" Association="WGHotelsModel.FK_HotelZH_HotelZH">
             <End Role="HotelZH" EntitySet="HotelZH" />
             <End Role="HotelZH1" EntitySet="HotelZH" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RoomZH_HotelZH" Association="WGHotelsModel.FK_RoomZH_HotelZH">
-            <End Role="HotelZH" EntitySet="HotelZH" />
-            <End Role="RoomZH" EntitySet="RoomZH" />
           </AssociationSet>
           <EntitySet Name="VenueEN" EntityType="WGHotelsModel.VenueEN" />
           <EntitySet Name="VenueZH" EntityType="WGHotelsModel.VenueZH" />
           <EntitySet Name="Language" EntityType="WGHotelsModel.Language" />
           <EntitySet Name="RoomPrice" EntityType="WGHotelsModel.RoomPrice" />
+          <EntitySet Name="RoomEN" EntityType="WGHotelsModel.RoomEN" />
+          <EntitySet Name="RoomZH" EntityType="WGHotelsModel.RoomZH" />
+          <AssociationSet Name="FK_RoomEN_HotelEN" Association="WGHotelsModel.FK_RoomEN_HotelEN">
+            <End Role="HotelEN" EntitySet="HotelEN" />
+            <End Role="RoomEN" EntitySet="RoomEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomZH_HotelZH" Association="WGHotelsModel.FK_RoomZH_HotelZH">
+            <End Role="HotelZH" EntitySet="HotelZH" />
+            <End Role="RoomZH" EntitySet="RoomZH" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Country">
           <Key>
@@ -629,18 +655,6 @@
           <Property Name="Telmobile" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_RoomEN_HotelEN">
-          <End Type="WGHotelsModel.HotelEN" Role="HotelEN" Multiplicity="1" />
-          <End Type="WGHotelsModel.RoomEN" Role="RoomEN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HotelEN">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RoomEN">
-              <PropertyRef Name="HOTELID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_HotelZH_HotelZH">
           <End Type="WGHotelsModel.HotelZH" Role="HotelZH" Multiplicity="1" />
           <End Type="WGHotelsModel.HotelZH" Role="HotelZH1" Multiplicity="0..1" />
@@ -650,18 +664,6 @@
             </Principal>
             <Dependent Role="HotelZH1">
               <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RoomZH_HotelZH">
-          <End Type="WGHotelsModel.HotelZH" Role="HotelZH" Multiplicity="1" />
-          <End Type="WGHotelsModel.RoomZH" Role="RoomZH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HotelZH">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RoomZH">
-              <PropertyRef Name="HOTELID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -705,6 +707,68 @@
           <Property Name="SaleOff" Type="Boolean" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="RoomEN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HOTELID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BedType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Facilities" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HasBreakfast" Type="Boolean" />
+          <Property Name="Sell" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Notice" Type="String" MaxLength="3500" FixedLength="false" Unicode="true" />
+          <Property Name="Quantiy" Type="Int32" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Feature" Type="String" MaxLength="3500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HotelEN" Relationship="WGHotelsModel.FK_RoomEN_HotelEN" FromRole="RoomEN" ToRole="HotelEN" />
+        </EntityType>
+        <EntityType Name="RoomZH">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HOTELID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RoomType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BedType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Facilities" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HasBreakfast" Type="Boolean" />
+          <Property Name="Sell" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Notice" Type="String" MaxLength="3500" FixedLength="false" Unicode="true" />
+          <Property Name="Quantiy" Type="Int32" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Feature" Type="String" MaxLength="3500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="HotelZH" Relationship="WGHotelsModel.FK_RoomZH_HotelZH" FromRole="RoomZH" ToRole="HotelZH" />
+        </EntityType>
+        <Association Name="FK_RoomEN_HotelEN">
+          <End Type="WGHotelsModel.HotelEN" Role="HotelEN" Multiplicity="1" />
+          <End Type="WGHotelsModel.RoomEN" Role="RoomEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelEN">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoomEN">
+              <PropertyRef Name="HOTELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomZH_HotelZH">
+          <End Type="WGHotelsModel.HotelZH" Role="HotelZH" Multiplicity="1" />
+          <End Type="WGHotelsModel.RoomZH" Role="RoomZH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelZH">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RoomZH">
+              <PropertyRef Name="HOTELID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -914,44 +978,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RoomEN">
-            <EntityTypeMapping TypeName="WGHotelsModel.RoomEN">
-              <MappingFragment StoreEntitySet="RoomEN">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="HOTELID" ColumnName="HOTELID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
-                <ScalarProperty Name="BedType" ColumnName="BedType" />
-                <ScalarProperty Name="Facilities" ColumnName="Facilities" />
-                <ScalarProperty Name="HasBreakfast" ColumnName="HasBreakfast" />
-                <ScalarProperty Name="Sell" ColumnName="Sell" />
-                <ScalarProperty Name="Notice" ColumnName="Notice" />
-                <ScalarProperty Name="Quantiy" ColumnName="Quantiy" />
-                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-                <ScalarProperty Name="Feature" ColumnName="Feature" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RoomZH">
-            <EntityTypeMapping TypeName="WGHotelsModel.RoomZH">
-              <MappingFragment StoreEntitySet="RoomZH">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="HOTELID" ColumnName="HOTELID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
-                <ScalarProperty Name="BedType" ColumnName="BedType" />
-                <ScalarProperty Name="Facilities" ColumnName="Facilities" />
-                <ScalarProperty Name="HasBreakfast" ColumnName="HasBreakfast" />
-                <ScalarProperty Name="Sell" ColumnName="Sell" />
-                <ScalarProperty Name="Notice" ColumnName="Notice" />
-                <ScalarProperty Name="Quantiy" ColumnName="Quantiy" />
-                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
-                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
-                <ScalarProperty Name="Feature" ColumnName="Feature" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SysSetting">
             <EntityTypeMapping TypeName="WGHotelsModel.SysSetting">
               <MappingFragment StoreEntitySet="SysSetting">
@@ -1017,6 +1043,44 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="ROOMID" ColumnName="ROOMID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomEN">
+            <EntityTypeMapping TypeName="WGHotelsModel.RoomEN">
+              <MappingFragment StoreEntitySet="RoomEN">
+                <ScalarProperty Name="Feature" ColumnName="Feature" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Quantiy" ColumnName="Quantiy" />
+                <ScalarProperty Name="Notice" ColumnName="Notice" />
+                <ScalarProperty Name="Sell" ColumnName="Sell" />
+                <ScalarProperty Name="HasBreakfast" ColumnName="HasBreakfast" />
+                <ScalarProperty Name="Facilities" ColumnName="Facilities" />
+                <ScalarProperty Name="BedType" ColumnName="BedType" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HOTELID" ColumnName="HOTELID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomZH">
+            <EntityTypeMapping TypeName="WGHotelsModel.RoomZH">
+              <MappingFragment StoreEntitySet="RoomZH">
+                <ScalarProperty Name="Feature" ColumnName="Feature" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Quantiy" ColumnName="Quantiy" />
+                <ScalarProperty Name="Notice" ColumnName="Notice" />
+                <ScalarProperty Name="Sell" ColumnName="Sell" />
+                <ScalarProperty Name="HasBreakfast" ColumnName="HasBreakfast" />
+                <ScalarProperty Name="Facilities" ColumnName="Facilities" />
+                <ScalarProperty Name="BedType" ColumnName="BedType" />
+                <ScalarProperty Name="RoomType" ColumnName="RoomType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="HOTELID" ColumnName="HOTELID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

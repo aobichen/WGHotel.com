@@ -53,14 +53,8 @@
                         <!--//column-->
                         <!--column-->
                         <div class="full-width">
-                            <h5><span style="color:#555;font-size:16px;font-weight:400;" data-localize="CheckIn">入房</span>\<span style="color:#555;font-size:16px;font-weight:400;" data-localize="CheckOut">退房</span></h5>
+                            <h5><span style="color:#555;font-size:16px;font-weight:400;" data-localize="CheckIn">入房日期</span>\<span style="color:#555;font-size:16px;font-weight:400;" data-localize="CheckOut">退房日期</span></h5>
                             <div class="row">
-                                <div class="f-item one-third">
-                                    @*<label for="datepicker1">Check-in date</label>*@
-                                    <div class="">
-                                        <input type="text" id="destination1" name="word" placeholder="飯店、城市、街道" />
-                                    </div>
-                                </div>
                                 <div class="f-item one-third datepicker">
                                     @*<label for="datepicker1">Check-in date</label>*@
                                     <div class="datepicker-wrap"><input type="text" placeholder="" id="datepicker1" name="Begin" value="@ViewBag.CheckInDate" /></div>
@@ -69,6 +63,13 @@
                                     @*<label for="datepicker2">Check-out date</label>*@
                                     <div class="datepicker-wrap"><input type="text" placeholder="" id="datepicker2" name="End" value="@ViewBag.CheckOutDate" /></div>
                                 </div>
+                                <div class="f-item one-third">
+                                    @*<label for="datepicker1">Check-in date</label>*@
+                                    <div class="">
+                                        <input type="text" id="destination1" name="word" placeholder="飯店、城市、街道" />
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                         <!--//column-->
@@ -87,25 +88,7 @@
 
 <script type="text/javascript">
         (function ($) {
-           // $(document).ready(function () {
-              
-
-                $('#hero-gallery').lightSlider({
-                    gallery: true,
-                    item: 1,
-                    pager: false,
-                    gallery: false,
-                    slideMargin: 0,
-                    speed: 2000,
-                    pause: 6000,
-                    mode: 'fade',
-                    auto: true,
-                    loop: true,
-                    onSliderLoad: function () {
-                        $('#hero-gallery').removeClass('cS-hidden');
-                    }
-                });
-            //});
+           
 
             let venueType = $('#VenueType');
             let Sport = $('#Sport');

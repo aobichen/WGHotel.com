@@ -32,18 +32,18 @@
             <div class="row">
                 @foreach (var item in (IEnumerable<WGHotel.Models.HotelViewModel>)ViewBag.Keelung)
                 {
-                    <article class="one-fourth">
+                    <article class="one-third">
                         <figure>
                             <a href="@Url.Action("Detail",new{id = item.ID})" title="">
                                 <img src="@Url.Action("HotelFirstImage", "Home", new  { id = item.Image})" alt="@item.Name" />
                             </a>
                         </figure>
                         <div class="details">
-                            <a href="@Url.Action("Detail",new{id = item.ID})" title="" style="top:50px;" class="gradient-button"  data-localize="viewall">房型</a>
+                            <a href="@Url.Action("Detail",new{id = item.ID})" title="" style="top:50px;" class="gradient-button" data-localize="viewall">房型</a>
                             <h4 class="hotelName"><nobr> @item.Name</nobr></h4>
                             <span>
                                 <i class="fa fa-phone-square" aria-hidden="true"></i>
-                                   @item.Tel
+                                @item.Tel
                             </span>
 
                             <div class="ribbon">

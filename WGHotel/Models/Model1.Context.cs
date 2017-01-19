@@ -39,13 +39,13 @@ namespace WGHotel.Models
         public virtual DbSet<ImageStore> ImageStore { get; set; }
         public virtual DbSet<Report> Report { get; set; }
         public virtual DbSet<ReportRooms> ReportRooms { get; set; }
-        public virtual DbSet<RoomEN> RoomEN { get; set; }
-        public virtual DbSet<RoomZH> RoomZH { get; set; }
         public virtual DbSet<SysSetting> SysSetting { get; set; }
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<VenueEN> VenueEN { get; set; }
         public virtual DbSet<VenueZH> VenueZH { get; set; }
         public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<RoomPrice> RoomPrice { get; set; }
+        public virtual DbSet<RoomEN> RoomEN { get; set; }
+        public virtual DbSet<RoomZH> RoomZH { get; set; }
     }
 }

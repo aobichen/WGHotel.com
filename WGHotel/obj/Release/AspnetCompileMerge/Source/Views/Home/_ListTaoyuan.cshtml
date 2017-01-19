@@ -32,7 +32,7 @@
             <div class="row">
                 @foreach (var item in (IEnumerable<WGHotel.Models.HotelViewModel>)ViewBag.Taoyuan)
                 {
-                    <article class="one-fourth">
+                    <article class="one-third">
                         <figure>
                             <a href="@Url.Action("Detail","Home",new{id = item.ID})" title="">
                                 <img src="@Url.Action("HotelFirstImage", "Home", new  { id = item.Image})" alt="@item.Name" />
@@ -51,13 +51,13 @@
                                     <a target="_blank" href="@item.LinkUrl" title="View all" style="padding-top:12px;">
 
                                         <span class="fa fa-globe fa-2x" aria-hidden="true" style="width:25%;text-align:left;left:0px;"></span>
-                                      
+
                                         <span class="price" style="width:70%;font-size:14px;text-align:right;" data-localize="forward">訂房</span>
                                     </a>
 
                                 </div>
                                 <div class="half hotel">
-                                    <a href="@Url.Action("Detail",new{id = item.ID})" >
+                                    <a href="@Url.Action("Detail",new{id = item.ID})">
                                         <span class="small"></span>
                                         @if (item.Sell.HasValue)
                                         {

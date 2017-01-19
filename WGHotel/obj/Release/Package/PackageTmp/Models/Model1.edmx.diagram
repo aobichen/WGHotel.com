@@ -19,18 +19,18 @@
         <EntityTypeShape EntityType="WGHotelsModel.ImageStore" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WGHotelsModel.Report" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="WGHotelsModel.ReportRooms" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.RoomEN" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.RoomZH" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WGHotelsModel.SysSetting" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="WGHotelsModel.FK_ReportRooms_Report" ManuallyRouted="false" />
         <EntityTypeShape EntityType="WGHotelsModel.Country" Width="1.5" PointX="13.375" PointY="3.75" />
-        <AssociationConnector Association="WGHotelsModel.FK_RoomEN_HotelEN" />
         <AssociationConnector Association="WGHotelsModel.FK_HotelZH_HotelZH" />
-        <AssociationConnector Association="WGHotelsModel.FK_RoomZH_HotelZH" />
         <EntityTypeShape EntityType="WGHotelsModel.VenueEN" Width="1.5" PointX="13.375" PointY="10.75" />
         <EntityTypeShape EntityType="WGHotelsModel.VenueZH" Width="1.5" PointX="13.375" PointY="13.75" />
         <EntityTypeShape EntityType="WGHotelsModel.Language" Width="1.5" PointX="14.375" PointY="0.75" />
         <EntityTypeShape EntityType="WGHotelsModel.RoomPrice" Width="1.5" PointX="13.375" PointY="7.75" />
+        <EntityTypeShape EntityType="WGHotelsModel.RoomEN" Width="1.5" PointX="5.75" PointY="10.75" />
+        <EntityTypeShape EntityType="WGHotelsModel.RoomZH" Width="1.5" PointX="0.75" PointY="14.75" />
+        <AssociationConnector Association="WGHotelsModel.FK_RoomEN_HotelEN" />
+        <AssociationConnector Association="WGHotelsModel.FK_RoomZH_HotelZH" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
