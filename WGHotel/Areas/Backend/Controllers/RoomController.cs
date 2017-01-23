@@ -70,6 +70,7 @@ namespace WGHotel.Areas.Backend.Controllers
                                  Sell = room.Sell.Value,
                                  BedType = room.BedType
                              }).ToList();
+               
                 var currentPage = page < 1 ? 1 : page;
                 var PageSize = 15;
 
@@ -81,17 +82,25 @@ namespace WGHotel.Areas.Backend.Controllers
 
             var Userid = CurrentUser == null ? 0 : CurrentUser.Id;
             var Hotel = Userid > 0 ? _db.HotelZH.Where(o => o.UserId == Userid).FirstOrDefault() : null;
+
+
             //var model = _dbzh.Room.Where(o=>o.HOTELID == id).ToList();
             if (Page == null || Hotel == null)
             {
                 return RedirectToAction("","Hotel");
             }
             var hotelId = (Page != null && Page.id != 0) ? Page.id : Hotel.ID;
+
+            if (!_db.HotelZH.Any(o => o.ID == hotelId && o.UserId == Userid))
+            {
+                return RedirectToAction("", "Hotel");
+            }
+
             ViewBag.HotelID = hotelId;
             var model = (from room in _db.RoomZH
                          join hotel in _db.HotelZH
                          on room.HOTELID equals hotel.ID
-                         where hotel.ID == hotelId
+                         where hotel.ID == hotelId 
                          select new RoomList
                          {
                              ID = room.ID,
@@ -103,6 +112,7 @@ namespace WGHotel.Areas.Backend.Controllers
                              Sell = room.Sell.Value,
                              BedType = room.BedType
                          }).ToList();
+           
             var currentPage1 = Page.Page < 1 ? 1 : Page.Page;
             var PageSize1 = 15;
 
@@ -119,6 +129,11 @@ namespace WGHotel.Areas.Backend.Controllers
 
             var RoomModel = new RoomViewModel();
             RoomModel.HOTELID = id;
+
+            if (!_db.HotelZH.Any(o => o.ID == id && o.UserId == CurrentUser.Id))
+            {
+                return View();
+            }
             //ViewBag.HotelID = id;
             ViewBag.RoomTypes = RoomModel.RoomTypeSelectList;
             ViewBag.BedTypes = new BedModel().SelectList();
@@ -235,14 +250,38 @@ namespace WGHotel.Areas.Backend.Controllers
         public ActionResult Price(int id)
         {
             var IsAdminUser = (User.IsInRole("Admin") || User.IsInRole("System")) ? true : false;
-            var RoomIsCanEdit = IsAdminUser ? true : IsCanEdit;
-            ViewBag.IsCanEdit = IsAdminUser ? true : IsCanEdit;
-            ViewBag.RoomId = id;
-            ViewBag.Name = _db.RoomZH.Find(id).Name;
-            var PRDate = new PRDate();
-            ViewBag.Begin = PRDate.Begin;
-            ViewBag.End = PRDate.End;
-            return View();
+            if (IsAdminUser)
+            {
+                ViewBag.IsCanEdit = true ;
+                ViewBag.RoomId = id;
+                var Room = (from room in _db.RoomZH
+                                    join hotel in _db.HotelZH on room.HOTELID equals hotel.ID
+                                    where room.ID == id
+                                    select room).FirstOrDefault();
+                ViewBag.HotelId = Room.HOTELID;
+                return View();
+            }
+            else
+            {
+                var RoomIsCanEdit = IsAdminUser ? true : IsCanEdit;
+                ViewBag.IsCanEdit = IsAdminUser ? true : IsCanEdit;
+                ViewBag.RoomId = id;
+                var Room = (from room in _db.RoomZH
+                            join hotel in _db.HotelZH on room.HOTELID equals hotel.ID
+                            where room.ID == id && hotel.UserId == CurrentUser.Id
+                            select room).FirstOrDefault();
+
+                if (Room == null)
+                {
+                    return RedirectToAction("", "Hotel");
+                }
+                ViewBag.Name = Room.Name;
+                ViewBag.HotelId = Room.HOTELID;
+                var PRDate = new PRDate();
+                ViewBag.Begin = PRDate.Begin;
+                ViewBag.End = PRDate.End;
+                return View();
+            }
         }
     }
 }

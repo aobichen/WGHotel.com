@@ -145,7 +145,7 @@
       <publishTime>11/25/2016 14:36:27</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Room/_FullCalendar.cshtml">
-      <publishTime>11/24/2016 14:23:26</publishTime>
+      <publishTime>01/20/2017 12:36:16</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Room/_List.cshtml">
       <publishTime>11/23/2016 15:49:18</publishTime>
@@ -169,7 +169,7 @@
       <publishTime>01/05/2017 12:49:00</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Shared/_Layout.cshtml">
-      <publishTime>01/10/2017 08:59:22</publishTime>
+      <publishTime>01/20/2017 12:36:16</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Shared/_RoomFacility.cshtml">
       <publishTime>10/27/2016 16:27:55</publishTime>
@@ -211,16 +211,16 @@
       <publishTime>10/20/2016 08:56:40</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>01/19/2017 14:24:57</publishTime>
+      <publishTime>01/23/2017 19:29:15</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>01/19/2017 14:24:57</publishTime>
+      <publishTime>01/23/2017 19:29:15</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.compiled">
-      <publishTime>01/19/2017 14:24:57</publishTime>
+      <publishTime>01/23/2017 19:29:15</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.dll">
-      <publishTime>01/19/2017 14:24:57</publishTime>
+      <publishTime>01/23/2017 19:29:15</publishTime>
     </File>
     <File Include="bin/AutoMapped.dll">
       <publishTime>09/20/2016 23:57:56</publishTime>
@@ -322,7 +322,7 @@
       <publishTime>10/20/2016 08:56:47</publishTime>
     </File>
     <File Include="bin/WGHotel.dll">
-      <publishTime>01/19/2017 14:24:48</publishTime>
+      <publishTime>01/23/2017 19:29:06</publishTime>
     </File>
     <File Include="bin/zh-Hant/EntityFramework.resources.dll">
       <publishTime>10/20/2016 08:56:41</publishTime>
@@ -2299,7 +2299,7 @@
       <publishTime>11/16/2016 08:26:34</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/19/2017 14:24:52</publishTime>
+      <publishTime>01/23/2017 19:29:10</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>10/13/2016 11:23:00</publishTime>
@@ -2497,7 +2497,7 @@
       <publishTime>10/13/2016 11:23:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/19/2017 11:58:14</publishTime>
+      <publishTime>01/23/2017 19:29:07</publishTime>
     </File>
     <File Include="Xss.html">
       <publishTime>11/15/2016 08:36:43</publishTime>
