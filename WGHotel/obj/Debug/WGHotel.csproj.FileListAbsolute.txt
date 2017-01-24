@@ -666,4 +666,3 @@ C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\obj\Debug\WGHotel.dll
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\obj\Debug\WGHotel.pdb
 C:\Users\aobi\Documents\SOHOProjects\WGHotel.com\WGHotel\obj\Debug\WGHotel.csprojResolveAssemblyReference.cache
 C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\obj\Debug\WGHotel.csprojResolveAssemblyReference.cache
-C:\Users\Aobi\Documents\SOHOProject\WGHotel.com\WGHotel\bin\WGHotel.dll.config

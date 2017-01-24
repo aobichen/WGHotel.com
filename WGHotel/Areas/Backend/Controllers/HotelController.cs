@@ -154,6 +154,8 @@ namespace WGHotel.Areas.Backend.Controllers
             model.Nameus = HotelEN.Name;
             model.Namezh = HotelZH.Name;
             model.LinkUrl = HotelZH.LinkUrl;
+            model.Certificate = HotelZH.Certificate;
+
             var sessionkey = Guid.NewGuid().GetHashCode().ToString("x");
             ViewBag.ImgKey = sessionkey;
             

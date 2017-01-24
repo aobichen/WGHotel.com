@@ -130,9 +130,9 @@ namespace WGHotel.Areas.Backend.Controllers
             var RoomModel = new RoomViewModel();
             RoomModel.HOTELID = id;
 
-            if (!_db.HotelZH.Any(o => o.ID == id && o.UserId == CurrentUser.Id))
+            if (!IsAdminUser && !_db.HotelZH.Any(o => o.ID == id && o.UserId == CurrentUser.Id))
             {
-                return View();
+               return RedirectToAction("", "Hotel");
             }
             //ViewBag.HotelID = id;
             ViewBag.RoomTypes = RoomModel.RoomTypeSelectList;
@@ -162,6 +162,7 @@ namespace WGHotel.Areas.Backend.Controllers
             if (ModelState.IsValid)
             {
                 model.HOTELID = model.HOTELID;
+                model.MaxPrice = (User.IsInRole("Admin") || User.IsInRole("System")) ? model.MaxPrice : null;
                 model.Create();
                 return RedirectToAction("", new {id = model.HOTELID });
             }
@@ -196,6 +197,7 @@ namespace WGHotel.Areas.Backend.Controllers
                  NameZh = RoomZH.Name,
                 FeatureUs = RoomEN.Feature,
                 FeatureZh = RoomZH.Feature,
+                MaxPrice = RoomZH.MaxPrice,
                 IDZH = RoomZH.ID,
                 ImgKey = key
             };
@@ -241,6 +243,10 @@ namespace WGHotel.Areas.Backend.Controllers
             if (ModelState.IsValid)
             {
                // model.HOTELID = 11;
+                if (!IsAdminUser)
+                {
+                    model.MaxPrice = _db.RoomZH.Find(model.IDZH).MaxPrice;
+                }
                 model.Edit();
                 return RedirectToAction("Edit", new {id=model.IDZH });
             }
@@ -259,6 +265,7 @@ namespace WGHotel.Areas.Backend.Controllers
                                     where room.ID == id
                                     select room).FirstOrDefault();
                 ViewBag.HotelId = Room.HOTELID;
+                ViewBag.MaxPrice = Room.MaxPrice.HasValue ? Room.MaxPrice.Value.ToString("#.##") : string.Empty;
                 return View();
             }
             else
@@ -277,6 +284,7 @@ namespace WGHotel.Areas.Backend.Controllers
                 }
                 ViewBag.Name = Room.Name;
                 ViewBag.HotelId = Room.HOTELID;
+                ViewBag.MaxPrice = Room.MaxPrice.HasValue ? Room.MaxPrice.Value.ToString("#.##") : string.Empty;
                 var PRDate = new PRDate();
                 ViewBag.Begin = PRDate.Begin;
                 ViewBag.End = PRDate.End;

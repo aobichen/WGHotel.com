@@ -118,6 +118,7 @@
     <Property Name="ParentId" Type="Int32" />
     <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="RoomEN" Relationship="WGHotelsModel.FK_RoomEN_HotelEN" FromRole="HotelEN" ToRole="RoomEN" />
+    <Property Name="Certificate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="HotelZH">
     <Key>
@@ -129,7 +130,7 @@
     <Property Name="City" Type="Int32" Nullable="false" />
     <Property Name="Area" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Features" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+    <Property Name="Features" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
     <Property Name="LinkUrl" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
     <Property Name="Facilities" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Enabled" Type="Boolean" />
@@ -140,6 +141,7 @@
     <NavigationProperty Name="HotelZH2" Relationship="WGHotelsModel.FK_HotelZH_HotelZH" FromRole="HotelZH1" ToRole="HotelZH" />
     <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="RoomZH" Relationship="WGHotelsModel.FK_RoomZH_HotelZH" FromRole="HotelZH" ToRole="RoomZH" />
+    <Property Name="Certificate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ImageStore">
     <Key>
@@ -340,6 +342,7 @@
     <Property Name="ParentId" Type="Int32" />
     <Property Name="Feature" Type="String" MaxLength="3500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="HotelEN" Relationship="WGHotelsModel.FK_RoomEN_HotelEN" FromRole="RoomEN" ToRole="HotelEN" />
+    <Property Name="MaxPrice" Type="Decimal" Precision="10" Scale="2" />
   </EntityType>
   <EntityType Name="RoomZH">
     <Key>
@@ -359,6 +362,7 @@
     <Property Name="ParentId" Type="Int32" />
     <Property Name="Feature" Type="String" MaxLength="3500" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="HotelZH" Relationship="WGHotelsModel.FK_RoomZH_HotelZH" FromRole="RoomZH" ToRole="HotelZH" />
+    <Property Name="MaxPrice" Type="Decimal" Precision="10" Scale="2" />
   </EntityType>
   <Association Name="FK_RoomEN_HotelEN">
     <End Type="WGHotelsModel.HotelEN" Role="HotelEN" Multiplicity="1" />

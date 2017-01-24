@@ -48,6 +48,8 @@ namespace WGHotel.Areas.Backend.Models
 
         public string Languages { get; set; }
 
+        public string Certificate { get; set; }
+
         public int UserId { get; set; }
         //public List<CodeFile> HotelFacility { get { return new CodeFiles().GetHotelFacility(); } }
 
@@ -75,6 +77,7 @@ namespace WGHotel.Areas.Backend.Models
                     zhHotel.Tel = Tel;
                     zhHotel.UserId = UserId;
                     zhHotel.Language = Languages;
+                    zhHotel.Certificate = Certificate;
 
                     _db.HotelZH.Add(zhHotel);
                     _db.SaveChanges();
@@ -97,7 +100,8 @@ namespace WGHotel.Areas.Backend.Models
                         UserId = UserId,
                         Tel = Tel,
                         ParentId = zhHotel.ID,
-                        Language = Languages
+                        Language = Languages,
+                        Certificate = Certificate
                     };
 
                     _db.HotelEN.Add(HotelEN);
@@ -156,6 +160,7 @@ namespace WGHotel.Areas.Backend.Models
                     zhHotel.Game = Game;
                     zhHotel.Tel = Tel;
                     zhHotel.Language = Languages;
+                    zhHotel.Certificate = Certificate;
 
                     var HotelEN = _db.HotelEN.Where(o => o.ParentId == zhHotel.ID).FirstOrDefault();
                     HotelEN.Name = Nameus;
@@ -170,6 +175,7 @@ namespace WGHotel.Areas.Backend.Models
                     HotelEN.Tel = Tel;
                     HotelEN.ParentId = zhHotel.ID;
                     HotelEN.Language = Languages;
+                    HotelEN.Certificate = Certificate;
                     #region # Images
                     if (Session[ImgKey] != null)
                     {

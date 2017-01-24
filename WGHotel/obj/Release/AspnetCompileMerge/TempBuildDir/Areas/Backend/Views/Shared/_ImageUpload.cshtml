@@ -90,15 +90,22 @@
                     var reader = new FileReader();
                     reader.onload = function (e) {
                         img.src = e.target.result;
-                       // reader.readAsDataURL(file);
+                        // reader.readAsDataURL(file);
+                        //const mobilecanvas = document.createElement("canvas");
                         var canvas = document.createElement("canvas");
                         var ctx = canvas.getContext('2d');
+                        //var mobilectx = mobilecanvas.getContext('2d');
                         ctx.drawImage(img, 0, 0);
                         canvas.height = MaxHeight;
                         canvas.width = MaxWidth;
-                        var ctx = canvas.getContext('2d');
+                        //var ctx = canvas.getContext('2d');
                         ctx.drawImage(img, 0, 0, MaxWidth, MaxHeight);
+
+                       // mobilecanvas.height = 300;
+                        //mobilecanvas.width = 450;
+                        //mobilectx.drawImage(img, 0, 0, 450, 300);
                         var dataUrl = canvas.toDataURL("image/jpeg");
+                        //var mobiledataUrl = mobilecanvas.toDataURL("image/jpeg",0.5);
                         var regex = new RegExp('^data:' + 'image/jpeg' + ';base64,');
                         var base64 = dataUrl.replace(regex, '');
                         //arr.push({name: file.name, image: base64,key:key });

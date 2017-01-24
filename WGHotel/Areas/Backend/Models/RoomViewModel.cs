@@ -50,6 +50,9 @@ namespace WGHotel.Areas.Backend.Models
 
         [DisplayFormat(DataFormatString = "{0:0.###}", ApplyFormatInEditMode = true)]
         public decimal Sell { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:0.###}", ApplyFormatInEditMode = true)]
+        public decimal? MaxPrice { get; set; }
         public int Quantiy { get; set; }
         public bool Enabled { get; set; }
 
@@ -112,6 +115,7 @@ namespace WGHotel.Areas.Backend.Models
                 RoomZH.HOTELID = HOTELID;
                 RoomZH.Facilities = string.Empty;
                 RoomZH.Quantiy = Quantiy;
+                RoomZH.MaxPrice = MaxPrice;
                 _db.RoomZH.Add(RoomZH);
 
                 _db.SaveChanges();
@@ -128,6 +132,7 @@ namespace WGHotel.Areas.Backend.Models
                 RoomEN.Enabled = true;
                 RoomEN.HasBreakfast = HasBreakfast;
                 RoomEN.HOTELID = HOTELID;
+                RoomEN.MaxPrice = MaxPrice;
                 RoomEN.Facilities = string.Empty;
                 RoomEN.Quantiy = Quantiy;
                 RoomEN.ParentId = ZHID;
@@ -177,6 +182,7 @@ namespace WGHotel.Areas.Backend.Models
                 ZHModel.Facilities = string.Empty;
                 ZHModel.Quantiy = Quantiy;
                 ZHModel.Feature = FeatureZh;
+                ZHModel.MaxPrice = MaxPrice;
 
                 USModel.BedType = BedTypes;
                 USModel.RoomType = RoomType;
@@ -186,6 +192,7 @@ namespace WGHotel.Areas.Backend.Models
                 USModel.Facilities = string.Empty;
                 USModel.Quantiy = Quantiy;
                 USModel.Feature = FeatureUs;
+                USModel.MaxPrice = MaxPrice;
 
                 _db.SaveChanges();
 

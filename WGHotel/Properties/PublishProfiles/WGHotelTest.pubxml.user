@@ -6,7 +6,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Users\aobi\Documents\Public\WGHotel.TW</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Users\Aobi\Documents\Public\WGHotelTEST</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="404.html">
@@ -82,10 +82,10 @@
       <publishTime>11/07/2016 08:28:19</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Hotel/_Create.cshtml">
-      <publishTime>01/12/2017 09:48:10</publishTime>
+      <publishTime>01/24/2017 16:02:56</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Hotel/_Edit.cshtml">
-      <publishTime>01/05/2017 12:49:00</publishTime>
+      <publishTime>01/24/2017 16:00:38</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Hotel/_MyHotel.cshtml">
       <publishTime>01/05/2017 12:49:00</publishTime>
@@ -139,13 +139,13 @@
       <publishTime>11/23/2016 15:30:02</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Room/Price.cshtml">
-      <publishTime>11/15/2016 08:36:43</publishTime>
+      <publishTime>01/24/2017 15:38:25</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Room/_Create.cshtml">
-      <publishTime>11/25/2016 14:36:27</publishTime>
+      <publishTime>01/24/2017 14:49:55</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Room/_FullCalendar.cshtml">
-      <publishTime>01/20/2017 12:36:16</publishTime>
+      <publishTime>01/24/2017 15:39:45</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Room/_List.cshtml">
       <publishTime>11/23/2016 15:49:18</publishTime>
@@ -163,7 +163,7 @@
       <publishTime>11/02/2016 16:32:13</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Shared/_ImageUpload.cshtml">
-      <publishTime>01/24/2017 13:53:20</publishTime>
+      <publishTime>01/24/2017 16:16:10</publishTime>
     </File>
     <File Include="Areas/Backend/Views/Shared/_Language.cshtml">
       <publishTime>01/05/2017 12:49:00</publishTime>
@@ -204,23 +204,20 @@
     <File Include="Areas/Backend/Views/_ViewStart.cshtml">
       <publishTime>10/13/2016 11:22:50</publishTime>
     </File>
-    <File Include="Bed.txt">
-      <publishTime>12/14/2016 18:57:28</publishTime>
-    </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>10/20/2016 08:56:40</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>01/24/2017 14:10:56</publishTime>
+      <publishTime>01/24/2017 16:29:37</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>01/24/2017 14:10:56</publishTime>
+      <publishTime>01/24/2017 16:29:36</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.compiled">
-      <publishTime>01/24/2017 14:10:56</publishTime>
+      <publishTime>01/24/2017 16:29:36</publishTime>
     </File>
     <File Include="bin/App_GlobalResources.dll">
-      <publishTime>01/24/2017 14:10:56</publishTime>
+      <publishTime>01/24/2017 16:29:36</publishTime>
     </File>
     <File Include="bin/AutoMapped.dll">
       <publishTime>09/20/2016 23:57:56</publishTime>
@@ -322,7 +319,7 @@
       <publishTime>10/20/2016 08:56:47</publishTime>
     </File>
     <File Include="bin/WGHotel.dll">
-      <publishTime>01/24/2017 14:10:49</publishTime>
+      <publishTime>01/24/2017 16:29:14</publishTime>
     </File>
     <File Include="bin/zh-Hant/EntityFramework.resources.dll">
       <publishTime>10/20/2016 08:56:41</publishTime>
@@ -2136,9 +2133,6 @@
     <File Include="Content/theme-yellow.css">
       <publishTime>11/21/2016 14:43:27</publishTime>
     </File>
-    <File Include="example-fr.json">
-      <publishTime>12/14/2016 18:57:29</publishTime>
-    </File>
     <File Include="favicon.ico">
       <publishTime>11/23/2016 16:52:40</publishTime>
     </File>
@@ -2299,7 +2293,7 @@
       <publishTime>11/16/2016 08:26:34</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>01/24/2017 14:10:52</publishTime>
+      <publishTime>01/24/2017 16:29:32</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>10/13/2016 11:23:00</publishTime>
@@ -2497,7 +2491,7 @@
       <publishTime>10/13/2016 11:23:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/24/2017 13:53:31</publishTime>
+      <publishTime>01/24/2017 16:29:21</publishTime>
     </File>
     <File Include="Xss.html">
       <publishTime>11/15/2016 08:36:43</publishTime>

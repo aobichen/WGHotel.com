@@ -588,7 +588,7 @@ namespace WGHotel.Controllers
             detail.Tel = model.Tel;
             detail.Address = model.Address;
             detail.Feature = model.Features;
-            var Facilities = model.Facilities.Split(',').Select(Int32.Parse).ToList();
+            var Facilities = string.IsNullOrEmpty(model.Facilities) ? new List<int>() : model.Facilities.Split(',').Select(Int32.Parse).ToList();
 
             object ObjFacility = null;
             if (CurrentLanguage.Equals("us"))

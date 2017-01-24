@@ -85,6 +85,7 @@ transition: all 2s;
 <p class="message">已儲存!</p>
 <div class="panel panel-default">
    <input id="roomid" type="hidden" value="@ViewBag.RoomId" />
+    <input id="MaxPrice" type="hidden" value="@ViewBag.MaxPrice" />
     <input id="Begin" type="hidden" value="@ViewBag.Begin" />
     <input id="End" type="hidden" value="@ViewBag.End" />
                 <div class="panel-heading">
@@ -138,7 +139,9 @@ transition: all 2s;
         let saved = true;
         let roomid = $('#roomid').val();
 
+        const MaxPrice = $('#MaxPrice').val();
 
+       
 
         let canedit = $('#canedit');
 
@@ -151,7 +154,7 @@ transition: all 2s;
         var EndDay = EndDate.getDate();
         let limitEndMonth = EndDay >= 30 ? EndMonth : EndMonth + 1;
         let limitEndYear = EndDate.getFullYear();
-        console.log(limitEndYear);
+       
         $('#calendar').fullCalendar({
             eventRender: function (event, element, view) {
                 $('.message').removeClass('active');
@@ -218,6 +221,12 @@ transition: all 2s;
                 $('.fc-day-header').delegate('.price', 'keyup', function () {
                     let $self = $(this);
                     let val = $self.val();
+                   
+                    if (val > MaxPrice) {
+                        $("#MessageModal").modal();
+                        val = MaxPrice;
+                        $self.val(MaxPrice);
+                    }
                     let idx = $self.closest('th').index();
 
                     let fcContent = $('.fc-content-skeleton');
@@ -225,6 +234,14 @@ transition: all 2s;
                     for (var i = 0, max = fcContent.length; i <= max; i++) {
                         var input = $(fcContent[i]).find('table > tbody > tr > td:eq(' + idx + ')');
                         input.find('.fc-price').val(val);
+                    }
+                });
+
+                $('.fc-price, .price').on('change', function () {
+                    var Price = $(this).val();
+                    if (Price != "" && Price > MaxPrice) {
+                        $("#MessageModal").modal();
+                        $(this).val(MaxPrice);
                     }
                 });
 
@@ -356,5 +373,7 @@ transition: all 2s;
                 return $(onSwitch);
             }
         }
+
+       
     });
 </script>
