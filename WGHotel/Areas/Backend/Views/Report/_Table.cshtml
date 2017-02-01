@@ -1,73 +1,80 @@
-﻿@if (ViewBag.ReportList!=null &&
-    ((List<WGHotel.Areas.Backend.Models.ReportListModel>)ViewBag.ReportList).Count > 0) { 
-<table class="table">
-    <thead>
-        <tr>
-        <th>
-            國籍
-        </th>
-        <th>
-            飯店
-        </th>
-        <th>
-            房型/數量
-        </th>
-        <th>
-            人數
-        </th>
-            <th>
-                金額
-            </th>
-        <th>
-            入住日期
-        </th>
-        </tr>
-    </thead>
-    @*<tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Hotel)
-            </th>
-            <th>
-                房型/數量
-            <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-
-
-        </tr>*@
-    <tbody>
-        @foreach (var item in (List<WGHotel.Areas.Backend.Models.ReportListModel>)ViewBag.ReportList)
-        {
+﻿@if (ViewBag.ReportList != null &&
+    ((List<WGHotel.Areas.Backend.Models.ReportListModel>)ViewBag.ReportList).Count > 0)
+{
+    <table class="table table-condensed table-hover table-bordered">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Hotel)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rooms)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @* @Html.DisplayFor(modelItem => item.CheckInDate.())*@
-                    @item.CheckInDate.ToShortDateString()
-                </td>
-
+                <th>
+                    國籍
+                </th>
+                <th>
+                    飯店
+                </th>
+                <th>
+                    房型
+                </th>
+                <th>
+                    數量
+                </th>
+                <th>
+                    住宿人數
+                </th>
+                <th>
+                    金額(新台幣)
+                </th>
+                <th>
+                    住宿日期
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        @*<tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hotel)
+                </th>
+                <th>
+                    房型/數量
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+
+
+            </tr>*@
+        <tbody>
+            @foreach (var item in (List<WGHotel.Areas.Backend.Models.ReportListModel>)ViewBag.ReportList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hotel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomAmount)
+                    </td>
+                    <td>
+                        @item.Price.Value.ToString("#,##0")
+                    </td>
+                    <td>
+                        @* @Html.DisplayFor(modelItem => item.CheckInDate.())*@
+                        @item.CheckInDate.ToShortDateString()
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
 
 }

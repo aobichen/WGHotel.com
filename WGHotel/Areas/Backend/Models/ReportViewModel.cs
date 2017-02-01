@@ -36,6 +36,8 @@ namespace WGHotel.Areas.Backend.Models
 
         public int RoomID { get; set; }
 
+        
+
         [DisplayFormat(DataFormatString = "{0:#.##}", ApplyFormatInEditMode = true)]   
         public Nullable<decimal> FoodCost { get; set; }
         public string Other { get; set; }
@@ -46,6 +48,15 @@ namespace WGHotel.Areas.Backend.Models
         public string UserType { get; set; }
 
         public List<ReportRooms> RoomOfReport { get; set; }
+
+        public List<int> Amount { get; set; }
+        public List<int> RoomIds { get; set; }
+        public List<int> Quantity { get; set; }
+        public List<string> RoomName { get; set; }
+
+        public List<int> ReportOfRoomIds { get; set; }
+
+        public string UserName { get; set; }
 
         public void Create(){
             using (var _db = new WGHotelsEntities())
@@ -74,18 +85,13 @@ namespace WGHotel.Areas.Backend.Models
 
                 var ReportRooms = new List<ReportRooms>();
 
-                var RoomString = Room;
-                var RoomSpilt = RoomString.Split(',');
-                foreach (var ro in RoomSpilt)
+                for (var i = 0; i < RoomIds.Count; i++)
                 {
-                    var room = ro.Split('^');
-                    var id = int.Parse(room[0]);
-                    var amt = int.Parse(room[1]);
-                    var name = room[2];
-                    ReportRooms.Add(new ReportRooms { RoomID = id, Amount = amt, RoomName = name });
+                    
+                    ReportRooms.Add(new ReportRooms { Amount = Amount[i], Quantity = Quantity[i], RoomID = RoomIds[i], RoomName = RoomName[i],Deleted = false });
                 }
 
-                Model.ReportRooms = ReportRooms;
+                 Model.ReportRooms = ReportRooms;
 
                 _db.Report.Add(Model);
                 _db.SaveChanges();
@@ -118,31 +124,76 @@ namespace WGHotel.Areas.Backend.Models
                 Model.Other = Other;
                 Model.OtherCost = OtherCost;
                 Model.UserType = UserType;
-                var ReportRooms = new List<ReportRooms>();
-                var ReportRoomsOf = new List<ReportRooms>();
-             
-                if (!string.IsNullOrEmpty(Room))
-                {
-                    var RoomString = Room;
-                    var RoomSpilt = RoomString.Split(',');
-                    foreach (var ro in RoomSpilt)
-                    {
-                        var room = ro.Split('^');
-                        var id = int.Parse(room[0]);
-                        var amt = int.Parse(room[1]);
-                        var name = room[2];
-                        ReportRoomsOf.Add(new ReportRooms { ID = ID, RoomID = id, Amount = amt, RoomName = name });
-                       
-                        ReportRooms.Add(new ReportRooms { RoomID = id, Amount = amt, RoomName = name });
-                     
-                    }
 
-                    var rrIDs = ReportRoomsOf.Select(o => o.RoomID).ToList();
-                  
-                    var removemodel = db.ReportRooms.Where(o => o.ReportID == ID).ToList();
-                    db.ReportRooms.RemoveRange(removemodel);
-                    Model.ReportRooms = ReportRooms;
+                //var ExistReprtRooms = db.ReportRooms.Where(o => o.ReportID == ID).ToList();
+                var ExistReprtRooms = (from o in db.ReportRooms
+                                       where o.ReportID == Model.ID && o.Deleted != true
+                                       select o).ToList();
+                var count = ExistReprtRooms.Count;
+                var NewReportRooms = new List<ReportRooms>();
+                var ExistExceptReportRooms = new List<ReportRooms>();
+                for (var i = 0; i < RoomIds.Count; i++)
+                {
+                    if (!ExistReprtRooms.Any(o => o.ID == ReportOfRoomIds[i]))
+                    {
+                        NewReportRooms.Add(new ReportRooms { ReportID = Model.ID, Amount = Amount[i], Quantity = Quantity[i], RoomID = RoomIds[i], RoomName = RoomName[i], Deleted = false });
+                    }
+                    else
+                    {
+                        ExistExceptReportRooms.Add(new ReportRooms { ReportID = Model.ID, ID = ReportOfRoomIds[i], Amount = Amount[i], Quantity = Quantity[i], RoomID = RoomIds[i], RoomName = RoomName[i], Deleted = false });
+                    }
                 }
+
+                var RemoveReportRooms = new List<ReportRooms>();
+                foreach (var item in ExistReprtRooms)
+                {
+                    if (!ExistExceptReportRooms.Any(o => o.ID == item.ID))
+                    {
+                        item.Deleted = true;
+                    }
+                }
+
+                //NewReportRooms 有  ExistReprtRooms 沒有 要新增
+                //var NewExceptReportRooms = NewReportRooms;
+
+                //ExistReprtRooms 有 NewReportRooms 沒有要 移除
+                //var RemoveReportRooms = ExistExceptReportRooms.Except(ExistReprtRooms).ToList();
+
+                //foreach (var item in RemoveReportRooms)
+                //{
+                //    var Rroom = db.ReportRooms.Find(item.ID);
+                //    if (Rroom != null)
+                //    {
+                //        Rroom.Deleted = true;
+                //    }
+                //}
+
+                //db.ReportRooms.AddRange(NewExceptReportRooms);
+             
+                //if (!string.IsNullOrEmpty(Room))
+                //{
+                //    var RoomString = Room;
+                //    var RoomSpilt = RoomString.Split(',');
+                //    foreach (var ro in RoomSpilt)
+                //    {
+                //        var room = ro.Split('^');
+                //        var id = int.Parse(room[0]);
+                //        var amt = int.Parse(room[1]);
+                //        var name = room[2];
+                //        ReportRoomsOf.Add(new ReportRooms { ID = ID, RoomID = id, Amount = amt, RoomName = name });
+                       
+                //        ReportRooms.Add(new ReportRooms { RoomID = id, Amount = amt, RoomName = name });
+                     
+                //    }
+
+                //    var rrIDs = ReportRoomsOf.Select(o => o.RoomID).ToList();
+                  
+                //    var removemodel = db.ReportRooms.Where(o => o.ReportID == ID).ToList();
+                //    db.ReportRooms.RemoveRange(removemodel);
+                    //Model.ReportRooms = NewExceptReportRooms.ToList();
+                //}
+                db.ReportRooms.AddRange(NewReportRooms);
+                db.Log.Add(new Log { TargetId = ID, Created = DateTime.Now, Creator = UserName, Remark = "ReportViewModel Edit", TargetType = "修改飯店回報資料" });
                
                 db.SaveChanges();
             }
@@ -155,6 +206,11 @@ namespace WGHotel.Areas.Backend.Models
         public string Country { get; set; }
         public string Hotel { get; set; }
         public string Rooms { get; set; }
+
+        public string RoomName { get; set; }
+
+        public int RoomQuantity { get; set; }
+        public int RoomAmount { get; set; }
         public int Amount { get; set; }
         public DateTime CheckInDate { get; set; }
         public decimal? Price { get; set; }
@@ -171,8 +227,17 @@ namespace WGHotel.Areas.Backend.Models
     {
         //public int ID { get; set; }
         public string 國籍 { get; set; }
+        public string 城市 { get; set; }
+        public string 地區 { get; set; }
         public string 飯店 { get; set; }
         public string 房型數量 { get; set; }
+
+        public string 房型 { get; set; }
+
+        public string 價格 { get; set; }
+
+        public int 數量 { get; set; }
+
         //public int Amount { get; set; }
         public string 入住日期 { get; set; }
         public string 金額 { get; set; }
@@ -195,5 +260,9 @@ namespace WGHotel.Areas.Backend.Models
         public DateTime End { get; set; }
 
         public int Nation { get; set; }
+
+        public int Hotel { get; set; }
+
+        public string Keyword { get; set; }
     }
 }

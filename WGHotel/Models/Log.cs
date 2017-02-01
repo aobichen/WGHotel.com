@@ -12,16 +12,13 @@ namespace WGHotel.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ReportRooms
+    public partial class Log
     {
         public int ID { get; set; }
-        public int ReportID { get; set; }
-        public string RoomName { get; set; }
-        public int Amount { get; set; }
-        public int RoomID { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public Nullable<bool> Deleted { get; set; }
-    
-        public virtual Report Report { get; set; }
+        public int TargetId { get; set; }
+        public string TargetType { get; set; }
+        public System.DateTime Created { get; set; }
+        public string Creator { get; set; }
+        public string Remark { get; set; }
     }
 }

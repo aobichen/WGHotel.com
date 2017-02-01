@@ -285,6 +285,9 @@
     <Compile Include="Models\Language.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Log.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -307,6 +310,7 @@
     <Compile Include="Models\ReportRooms.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ReportRoomsViewModel.cs" />
     <Compile Include="Models\RoomEN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -1061,6 +1065,7 @@
     <Content Include="Areas\Backend\Views\Language\Edit.cshtml" />
     <Content Include="Areas\Backend\Views\Language\_Create.cshtml" />
     <Content Include="Areas\Backend\Views\Shared\_Language.cshtml" />
+    <Content Include="Areas\Backend\Views\Report\_Rooms.cshtml" />
     <None Include="Properties\PublishProfiles\wghotel.pubxml" />
     <None Include="Properties\PublishProfiles\WGHotel.TW.pubxml" />
     <None Include="Properties\PublishProfiles\WGHotelTest.pubxml" />

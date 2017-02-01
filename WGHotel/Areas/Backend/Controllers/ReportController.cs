@@ -93,18 +93,19 @@ namespace WGHotel.Areas.Backend.Controllers
                     Rooms = Room;
                     var IDs = Room.Select(o => o.ID).ToList();
                    
-                    model.RoomOfReport = _db.ReportRooms.Where(o => o.ReportID == id).ToList();
+                    model.RoomOfReport = _db.ReportRooms.Where(o => o.ReportID == id && o.Deleted != true).ToList();
                 
                 }else {
                     model.HotelID = Hotel.ID;
-                    model.RoomOfReport = _db.ReportRooms.Where(o => o.ReportID == id).ToList();
+                    model.RoomOfReport = _db.ReportRooms.Where(o => o.ReportID == id && o.Deleted != true).ToList();
                 }
                
 
                 //model.RoomOfReport = _basedb.ReportRooms.Where(o => o.ID == model.ID).ToList();
                 
                 //var Rooms = Hotel == null ? new List<Room>() : Hotel.Room;
-                ViewBag.RoomId = new SelectList(Rooms, "ID", "Name",model.RoomID);
+                ViewBag.Rooms = new SelectList(Rooms, "ID", "Name",model.RoomID);
+                ViewBag.RoomOfReport = model.RoomOfReport;
                 var Country = _db.Country.ToList();
                 ViewBag.Country = new SelectList(Country, "ID", "Name",model.CountryID);
                 ViewBag.UserType = model.UserType;
@@ -114,7 +115,7 @@ namespace WGHotel.Areas.Backend.Controllers
             {
                 var Hotel = _db.HotelZH.Where(o => o.UserId == CurrentUser.Id).FirstOrDefault();
                 var Rooms = Hotel == null ? new List<RoomZH>() : Hotel.RoomZH;
-                ViewBag.RoomId = new SelectList(Rooms, "ID", "Name");
+                ViewBag.Rooms = new SelectList(Rooms, "ID", "Name");
                 var Country = _db.Country.ToList();
                 ViewBag.Country = new SelectList(Country, "ID", "Name");
                 
@@ -131,7 +132,7 @@ namespace WGHotel.Areas.Backend.Controllers
         [HttpPost]
         public ActionResult Edit(ReportViewModel model)
         {
-            if (string.IsNullOrEmpty(model.Room)||model.CheckInDate == DateTime.MinValue || model.Price==null )
+            if (model.RoomIds == null || model.RoomIds.Count <=0 ||model.CheckInDate == DateTime.MinValue || model.Price==null )
             {
                 TempData["Message"] = "回報資訊不完整";
                 if (model.ID != 0)
@@ -172,17 +173,18 @@ namespace WGHotel.Areas.Backend.Controllers
                 }
                 else
                 {
+                    model.UserName = User.Identity.Name;
                     model.Edit();
                     return RedirectToAction("Edit", new { id = model.ID });
                 }
 
                 
             }
-            catch
+            catch(Exception ex)
             {
                 var Hotel = _db.HotelZH.Where(o => o.UserId == CurrentUser.Id).FirstOrDefault();
                 var Rooms = Hotel == null ? new List<RoomZH>() : Hotel.RoomZH;
-                ViewBag.RoomId = new SelectList(Rooms, "ID", "Name");
+                ViewBag.Rooms = new SelectList(Rooms, "ID", "Name");
                 var Country = _db.Country.ToList();
                 ViewBag.Country = new SelectList(Country, "ID", "Name");
                 ModelState.AddModelError("","編輯未完成，請檢查資料");
@@ -195,10 +197,13 @@ namespace WGHotel.Areas.Backend.Controllers
         {
             var key = Guid.NewGuid().GetHashCode().ToString("x");
             ViewBag.key = key;
-            var Country = _db.Country.ToList().OrderBy(o=>o.Name);
+            var Country = _db.Country.ToList().OrderBy(o => o.Name);
             ViewBag.Nation = new SelectList(Country, "ID", "Name");
+
+            var Hotel = _db.HotelZH.ToList().OrderBy(o => o.Name);
+            ViewBag.Hotel = new SelectList(Hotel, "ID", "Name");
             var ReportModel = new ReportModel();
-            if(search==null || (search.Nation==0 &&
+            if (search == null || (search.Nation == 0 &&
                 search.Begin == DateTime.MinValue && search.End == DateTime.MinValue))
             {
                 var Now = DateTime.Now;
@@ -210,80 +215,91 @@ namespace WGHotel.Areas.Backend.Controllers
             search.Begin = DateTime.Parse(search.Begin.ToShortDateString() + " 00:00:00");
             search.End = DateTime.Parse(search.End.ToShortDateString() + " 23:59:59");
             var result = (from r in _db.Report
-                          where (search.Nation == 0 ||
-                          r.CountryID == search.Nation) &&
+                          join h in _db.HotelZH on r.HotelID equals h.ID
+                          join room in _db.ReportRooms on r.ID equals room.ReportID
+                          where (search.Nation == 0 || r.CountryID == search.Nation) &&
+                          (search.Hotel <=0 || search.Hotel == h.ID)&&
+                          (string.IsNullOrEmpty(search.Keyword) || (h.Name.Contains(search.Keyword) || h.Area.Contains(search.Keyword) || room.RoomName.Contains(search.Keyword))) &&
                           (r.CheckInDate >= search.Begin && r.CheckInDate <= search.End)
                           select new ReportListModel
-             {
-                 //Amount = r.Amount,
-                 ID = r.ID,
-                 CheckInDate = r.CheckInDate,
-                 Country = r.Country,
-                 HotelID = r.HotelID,
-                 Rooms = r.Room,
-                 Price = r.Price,
-                 Amount = r.NumOfPeople.Value,
-                 Food = r.Food,
-                 FoodCost = r.FoodCost,
-                 Other = r.Other,
-                 OtherCost = r.OtherCost
+                          {
+                              //Amount = r.Amount,
+                              ID = r.ID,
+                              CheckInDate = r.CheckInDate,
+                              Country = r.Country,
+                              HotelID = r.HotelID,
+                              Rooms = r.Room,
+                              Price = r.Price,
+                              Amount = r.NumOfPeople.Value,
+                              Food = r.Food,
+                              FoodCost = r.FoodCost,
+                              Other = r.Other,
+                              OtherCost = r.OtherCost
 
-             }).ToList();
+                          }).Distinct().ToList();
 
             var model = new List<ReportListModel>();
             var dtExcel = new List<ReportExcelModel>();
             foreach (var m in result)
             {
                 //var list = m.Rooms.Split(',').Select(int.Parse).ToList();
-                var room_list =_db.ReportRooms.Where(o=> o.ReportID == m.ID).ToList();
+                var room_list = _db.ReportRooms.Where(o => o.ReportID == m.ID).ToList();
                 var room = new List<string>();
-                foreach(var item in room_list){
-                    room.Add(string.Format("{0}/{1}",item.RoomName,item.Amount));
-                }
-                
-                var hotel = _db.HotelZH.Where(o=>o.ID == m.HotelID).FirstOrDefault();
-                var Name = hotel != null ? hotel.Name : string.Empty;
-                model.Add(new ReportListModel
-                {
-                    Rooms = string.Join(",", room),
-                    Price = m.Price,
-                    Hotel = Name,
-                    CheckInDate = m.CheckInDate,
-                    Country = m.Country,
-                    Amount = m.Amount,
-                    Food = m.Food,
-                    FoodCost = m.FoodCost,
-                    Other = m.Other,
-                    OtherCost = m.OtherCost
-                });
 
-                dtExcel.Add(new ReportExcelModel
+                foreach (var item in room_list)
                 {
-                    國籍 = m.Country,
-                    飯店 = Name,
-                    房型數量 = string.Join(",", room),
-                    人數 = m.Amount,
-                    金額 = m.Price.Value.ToString(),
-                    入住日期 = m.CheckInDate.ToShortDateString(),
-                    餐飲 = m.Food,
-                    餐飲金額 = m.FoodCost == null ? string.Empty : m.FoodCost.Value.ToString(),
-                    其他 = m.Other,
-                    其他金額 = m.OtherCost == null ? string.Empty : m.OtherCost.Value.ToString()
-                });
+                    //var hotel = _db.HotelZH.Where(o => o.ID == m.HotelID).FirstOrDefault();
+                    var hotel = (from hotels in _db.HotelZH join city in _db.CityZH
+                                                          on hotels.City equals city.ID
+                                                          where hotels.ID == m.HotelID select new { hotels = hotels, city = city.Name }).FirstOrDefault();
+                    var Name = hotel != null ? hotel.hotels.Name : string.Empty;
+                    model.Add(new ReportListModel
+                    {
+                        Rooms = string.Join(",", room),
+                        RoomName = item.RoomName,
+                        RoomQuantity = item.Quantity.HasValue ?  item.Quantity.Value : 0,
+                        RoomAmount = item.Amount,
+                        Price = m.Price,
+                        Hotel = Name,
+                        CheckInDate = m.CheckInDate,
+                        Country = m.Country,
+                        Amount = m.Amount,
+                        Food = m.Food,
+                        FoodCost = m.FoodCost,
+                        Other = m.Other,
+                        OtherCost = m.OtherCost
+                    });
+
+                    dtExcel.Add(new ReportExcelModel
+                    {
+                        國籍 = m.Country,
+                        城市 = hotel.city,
+                        地區 = hotel.hotels.Area,
+                        飯店 = Name,
+                        房型 = item.RoomName,
+                         價格 = item.Amount.ToString("#.##"),
+                        數量 = item.Quantity.HasValue ? item.Quantity.Value : 0,
+                        人數 = m.Amount,
+                        //金額 = m.Price.Value.ToString(),
+                        入住日期 = m.CheckInDate.ToShortDateString(),
+                        餐飲 = m.Food,
+                        餐飲金額 = m.FoodCost == null ? string.Empty : m.FoodCost.Value.ToString("#.##"),
+                        其他 = m.Other,
+                        其他金額 = m.OtherCost == null ? string.Empty : m.OtherCost.Value.ToString("#.##")
+                    });
+                }
             }
+
+
             ViewBag.ReportList = model;
 
             var dt = ConvertListToDataTable(dtExcel);
             Session[key] = dt;
             ReportModel.Begin = search.Begin;
             ReportModel.End = search.End;
-            
+
             return View(ReportModel);
         }
-
-
-
-
 
         private DataTable ConvertListToDataTable<T>(List<T> items)
         {

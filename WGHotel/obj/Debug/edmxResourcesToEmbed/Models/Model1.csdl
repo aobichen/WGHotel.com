@@ -196,6 +196,8 @@
     <Property Name="Amount" Type="Int32" Nullable="false" />
     <Property Name="RoomID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Report" Relationship="Self.FK_ReportRooms_Report" FromRole="ReportRooms" ToRole="Report" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Deleted" Type="Boolean" />
   </EntityType>
   <EntityType Name="SysSetting">
     <Key>
@@ -259,6 +261,7 @@
       <End Role="HotelZH" EntitySet="HotelZH" />
       <End Role="RoomZH" EntitySet="RoomZH" />
     </AssociationSet>
+    <EntitySet Name="Log" EntityType="WGHotelsModel.Log" />
   </EntityContainer>
   <EntityType Name="Country">
     <Key>
@@ -388,4 +391,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TargetId" Type="Int32" Nullable="false" />
+    <Property Name="TargetType" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Creator" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

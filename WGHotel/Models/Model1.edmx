@@ -182,6 +182,17 @@
           <Property Name="LanguEN" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Deleted" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TargetId" Type="int" Nullable="false" />
+          <Property Name="TargetType" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Creator" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Report">
           <Key>
             <PropertyRef Name="ID" />
@@ -216,6 +227,8 @@
           <Property Name="RoomName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="Amount" Type="int" Nullable="false" />
           <Property Name="RoomID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Deleted" Type="bit" />
         </EntityType>
         <EntityType Name="RoomEN">
           <Key>
@@ -324,6 +337,7 @@
           <EntitySet Name="HotelZH" EntityType="Self.HotelZH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageStore" EntityType="Self.ImageStore" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReportRooms" EntityType="Self.ReportRooms" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoomEN" EntityType="Self.RoomEN" Schema="dbo" store:Type="Tables" />
@@ -537,6 +551,8 @@
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="RoomID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Report" Relationship="Self.FK_ReportRooms_Report" FromRole="ReportRooms" ToRole="Report" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Deleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="SysSetting">
           <Key>
@@ -600,6 +616,7 @@
             <End Role="HotelZH" EntitySet="HotelZH" />
             <End Role="RoomZH" EntitySet="RoomZH" />
           </AssociationSet>
+          <EntitySet Name="Log" EntityType="WGHotelsModel.Log" />
         </EntityContainer>
         <EntityType Name="Country">
           <Key>
@@ -729,6 +746,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TargetId" Type="Int32" Nullable="false" />
+          <Property Name="TargetType" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Creator" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -932,6 +960,8 @@
           <EntitySetMapping Name="ReportRooms">
             <EntityTypeMapping TypeName="WGHotelsModel.ReportRooms">
               <MappingFragment StoreEntitySet="ReportRooms">
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ReportID" ColumnName="ReportID" />
                 <ScalarProperty Name="RoomName" ColumnName="RoomName" />
@@ -1045,6 +1075,18 @@
                 <ScalarProperty Name="RoomType" ColumnName="RoomType" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="HOTELID" ColumnName="HOTELID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Log">
+            <EntityTypeMapping TypeName="WGHotelsModel.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Creator" ColumnName="Creator" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="TargetType" ColumnName="TargetType" />
+                <ScalarProperty Name="TargetId" ColumnName="TargetId" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

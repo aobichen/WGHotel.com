@@ -177,6 +177,17 @@
     <Property Name="LanguEN" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TargetId" Type="int" Nullable="false" />
+    <Property Name="TargetType" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Created" Type="datetime" Nullable="false" />
+    <Property Name="Creator" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Report">
     <Key>
       <PropertyRef Name="ID" />
@@ -211,6 +222,8 @@
     <Property Name="RoomName" Type="nvarchar" MaxLength="150" Nullable="false" />
     <Property Name="Amount" Type="int" Nullable="false" />
     <Property Name="RoomID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="Deleted" Type="bit" />
   </EntityType>
   <EntityType Name="RoomEN">
     <Key>
@@ -319,6 +332,7 @@
     <EntitySet Name="HotelZH" EntityType="Self.HotelZH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ImageStore" EntityType="Self.ImageStore" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ReportRooms" EntityType="Self.ReportRooms" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoomEN" EntityType="Self.RoomEN" Schema="dbo" store:Type="Tables" />

@@ -198,6 +198,8 @@
     <EntitySetMapping Name="ReportRooms">
       <EntityTypeMapping TypeName="WGHotelsModel.ReportRooms">
         <MappingFragment StoreEntitySet="ReportRooms">
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ReportID" ColumnName="ReportID" />
           <ScalarProperty Name="RoomName" ColumnName="RoomName" />
@@ -311,6 +313,18 @@
           <ScalarProperty Name="RoomType" ColumnName="RoomType" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="HOTELID" ColumnName="HOTELID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Log">
+      <EntityTypeMapping TypeName="WGHotelsModel.Log">
+        <MappingFragment StoreEntitySet="Log">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="TargetType" ColumnName="TargetType" />
+          <ScalarProperty Name="TargetId" ColumnName="TargetId" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

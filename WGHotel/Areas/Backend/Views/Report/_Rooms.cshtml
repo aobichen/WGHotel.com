@@ -1,0 +1,121 @@
+﻿<div class="form-group">
+    <div class="col-md-3">
+        @Html.DropDownList("Rooms", null, null, new { @class = "form-control" })
+    </div>
+    <div class="col-md-3">
+        <input type="text" placeholder="數量" id="RoomQuantity" class="form-control" />
+       </div>
+    <div class="col-md-3">
+        <input type="text" placeholder="金額" id="RoomAmt" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <button type="button" class="btn btn-primary" id="btn-add-rooms">
+            確定
+        </button>
+    </div>
+    </div>
+<table id="rooms-table" class="table table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>
+                房型
+            </th>
+            <th>
+                數量
+            </th>
+            <th>
+                金額
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.RoomOfReport != null)
+        {
+            foreach (var item in (List<WGHotel.Models.ReportRooms>)ViewBag.RoomOfReport)
+            {
+                <tr>
+
+                    <td>
+                        <input type="hidden" name="ReportOfRoomIds" value="@item.ID"/>
+                        
+                        <input type="hidden" name="RoomIds" value="@item.RoomID" />
+                        <input type="hidden" name="RoomName" value="@item.RoomName" />
+                        @item.RoomName
+
+                    </td>
+                    <td>
+                        <input type="hidden" name="Quantity" value="@item.Quantity" />
+                        @item.Quantity
+
+                    </td>
+                    <td>
+                        <input type="hidden" name="Amount" value="@item.Amount" />
+                        @item.Amount
+
+                    </td>
+                    <td>
+                            <button type="button" class="btn btn-primary btnDeleteRow">刪除</button>
+                        </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<style type="text/css">
+    .hidden{
+        display:none;
+    }
+
+   
+</style>
+<script type="text/javascript">
+    const ddlRooms = document.getElementById('Rooms');
+    const btnAdd = document.getElementById('btn-add-rooms');
+    const table = document.getElementById('rooms-table');
+    const Quantity = document.getElementById('RoomQuantity');
+    const Amount = document.getElementById('RoomAmt');
+
+    DeleteBtnEvent();
+    btnAdd.addEventListener("click", AddToTable);
+
+    function AddToTable() {
+        const RoomId = ddlRooms.options[ddlRooms.selectedIndex].value;
+        const RoomName = ddlRooms.options[ddlRooms.selectedIndex].text;
+        const RoomQuantity = Quantity.value;
+        const RoomAmount = Amount.value;
+        //console.log(RoomId, RoomName, RoomQuantity, RoomAmount);
+        //let trHtml = '<td><span name="RoomIds" class="hidden">' + RoomId + '</span><span name="RoomName">' + RoomName + '</span></td><td><span name="Quantity">' + RoomQuantity + '</span></td><td><span name="Amount">' + RoomAmount + '</span></td>';
+        //trHtml += '<td><button type="button"  class="btn btn-primary btnDeleteRow">刪除</button></td>';
+        let trHtml = '<td><input type="hidden" name="ReportOfRoomIds" value="0"/><input type="hidden" name="RoomIds" value="' + RoomId + '" /><input type="hidden" name="RoomName" value="' + RoomName + '"/><input type="text" class="form-control" value="' + RoomName + '"/></td>';
+        trHtml += '<td><input type="hidden" name="Quantity" value="' + RoomQuantity + '" /><input type="text" class="form-control" value="' + RoomQuantity + '" /></td>';
+        trHtml += '<td><input type="text" name="" class="form-control" value="' + RoomAmount + '"/><input type="hidden" name="Amount" value="' + RoomAmount + '"/></td>';
+        trHtml += '<td><button type="button" class="btn btn-primary btnDeleteRow">刪除</button></td>';
+        table.tBodies[0].innerHTML += trHtml;
+        
+        DeleteBtnEvent();
+        var input = table.querySelectorAll('input[type="text"]');
+
+        setInput(input);
+
+
+
+       // document.getElementsByClassName('btnDeleteRow').addEventListener('click', DeleteRow);
+    }
+
+    function DeleteBtnEvent() {
+        var DeleteButtons = document.getElementsByClassName('btnDeleteRow');
+        for (var i = 0, max = DeleteButtons.length; i < max; i++) {
+            DeleteButtons[i].addEventListener('click', DeleteRow);
+        }
+    }
+
+    function setInput(input) {
+        for (var i = 0, max = input.length; i < max; i++) {
+            input[i].disabled = true;
+        }
+    }
+
+    function DeleteRow() {
+        this.parentNode.parentNode.remove();
+    }
+</script>

@@ -44,17 +44,24 @@
 @using (Html.BeginForm())
 {
                <div class="row">
+                  
                    <div class="col-md-12">
-                       <div class="col-md-3">
-                           @Html.DropDownList("Nation", null, "--請選擇--", new { @class = "form-control" })
+                       <div class="col-md-2">
+                           @Html.DropDownList("Nation", null, "--國家--", new { @class = "form-control" })
                        </div>
-                       <div class="col-md-3">
+                       <div class="col-md-2">
                            @Html.EditorFor(model=>model.Begin,new { htmlAttributes = new { @class = "form-control", @Value = Model.Begin.ToString("yyyy/MM/dd") } })
                        </div>
-                       <div class="col-md-3">
+                       <div class="col-md-2">
                            @Html.EditorFor(model => model.End, new { htmlAttributes = new { @class = "form-control", @Value = Model.End.ToString("yyyy/MM/dd") } })
                        </div>
-                       <div class="col-md-3">
+                       <div class="col-md-2">
+                           @Html.DropDownList("Hotel", null, "--飯店--", new { @class = "form-control" })
+                       </div>
+                       <div class="col-md-2">
+                           @Html.EditorFor(model => model.Keyword, new { htmlAttributes = new { @class = "form-control", placeholder  = "飯店，房型，地區"} })
+                       </div>
+                       <div class="col-md-2">
                            <button type="submit" class="btn btn-primary">
                                搜尋
                            </button>

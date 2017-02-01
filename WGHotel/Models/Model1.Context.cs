@@ -47,5 +47,6 @@ namespace WGHotel.Models
         public virtual DbSet<RoomPrice> RoomPrice { get; set; }
         public virtual DbSet<RoomEN> RoomEN { get; set; }
         public virtual DbSet<RoomZH> RoomZH { get; set; }
+        public virtual DbSet<Log> Log { get; set; }
     }
 }
