@@ -261,7 +261,7 @@ namespace WGHotel.Areas.Backend.Models
 
         public int Nation { get; set; }
 
-        public int Hotel { get; set; }
+        public int City { get; set; }
 
         public string Keyword { get; set; }
     }

@@ -141,7 +141,7 @@
     <Property Name="City" Type="int" Nullable="false" />
     <Property Name="Area" Type="nvarchar" MaxLength="10" />
     <Property Name="Address" Type="nvarchar" MaxLength="200" />
-    <Property Name="Features" Type="nvarchar" MaxLength="1500" />
+    <Property Name="Features" Type="nvarchar" MaxLength="3000" />
     <Property Name="LinkUrl" Type="nvarchar" MaxLength="1500" />
     <Property Name="Facilities" Type="nvarchar" MaxLength="200" />
     <Property Name="Enabled" Type="bit" />
@@ -272,7 +272,7 @@
     <Property Name="Enabled" Type="bit" />
     <Property Name="ParentId" Type="int" />
     <Property Name="Feature" Type="nvarchar" MaxLength="3500" />
-    <Property Name="MaxPrice" Type="numeric" Precision="10" Scale="2" />
+    <Property Name="MaxPrice" Type="decimal" Precision="10" Scale="2" />
   </EntityType>
   <EntityType Name="SysSetting">
     <Key>
@@ -305,6 +305,42 @@
     <Property Name="Type" Type="nvarchar" MaxLength="50" />
     <Property Name="Deleted" Type="bit" />
   </EntityType>
+  <Association Name="FK_HotelZH_HotelZH">
+    <End Role="HotelZH" Type="Self.HotelZH" Multiplicity="1" />
+    <End Role="HotelZH1" Type="Self.HotelZH" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="HotelZH">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HotelZH1">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportRooms_Report">
+    <End Role="Report" Type="Self.Report" Multiplicity="1" />
+    <End Role="ReportRooms" Type="Self.ReportRooms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Report">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReportRooms">
+        <PropertyRef Name="ReportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoomEN_HotelEN">
+    <End Role="HotelEN" Type="Self.HotelEN" Multiplicity="1" />
+    <End Role="RoomEN" Type="Self.RoomEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HotelEN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RoomEN">
+        <PropertyRef Name="HOTELID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_RoomZH_HotelZH">
     <End Role="HotelZH" Type="Self.HotelZH" Multiplicity="1" />
     <End Role="RoomZH" Type="Self.RoomZH" Multiplicity="*" />
@@ -341,6 +377,18 @@
     <EntitySet Name="SysSetting" EntityType="Self.SysSetting" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VenueEN" EntityType="Self.VenueEN" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="VenueZH" EntityType="Self.VenueZH" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_HotelZH_HotelZH" Association="Self.FK_HotelZH_HotelZH">
+      <End Role="HotelZH" EntitySet="HotelZH" />
+      <End Role="HotelZH1" EntitySet="HotelZH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportRooms_Report" Association="Self.FK_ReportRooms_Report">
+      <End Role="Report" EntitySet="Report" />
+      <End Role="ReportRooms" EntitySet="ReportRooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoomEN_HotelEN" Association="Self.FK_RoomEN_HotelEN">
+      <End Role="HotelEN" EntitySet="HotelEN" />
+      <End Role="RoomEN" EntitySet="RoomEN" />
+    </AssociationSet>
     <AssociationSet Name="FK_RoomZH_HotelZH" Association="Self.FK_RoomZH_HotelZH">
       <End Role="HotelZH" EntitySet="HotelZH" />
       <End Role="RoomZH" EntitySet="RoomZH" />

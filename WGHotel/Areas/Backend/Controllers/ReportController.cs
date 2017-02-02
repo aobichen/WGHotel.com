@@ -24,6 +24,10 @@ namespace WGHotel.Areas.Backend.Controllers
         // GET: Backend/Report
         public ActionResult Index(int Page=1)
         {
+            if (TempData["Message"] != null)
+            {
+                ViewBag.Message = TempData["Message"].ToString();
+            }
             var IsAdmin = (User.IsInRole("Admin") || User.IsInRole("SystemAdmin"))?true:false;
             var model = (from report in _db.Report
                          where IsAdmin || report.Creator == CurrentUser.Id
@@ -41,6 +45,7 @@ namespace WGHotel.Areas.Backend.Controllers
             foreach (var m in model)
             {
                 var hotel = _db.HotelZH.Where(o => o.ID == m.HotelID).FirstOrDefault();
+                ViewBag.HasHotel = hotel == null ? false : true;
                 m.HotelName = hotel == null ? string.Empty : hotel.Name;
                 //var room = _dbzh.Room.Where(o => o.ID == m.HotelID).FirstOrDefault();
             }
@@ -49,6 +54,7 @@ namespace WGHotel.Areas.Backend.Controllers
             var PageSize = 15;
 
             var PageModel = model.ToPagedList(currentPage, PageSize);
+
             return View(PageModel);
         }
 
@@ -114,6 +120,11 @@ namespace WGHotel.Areas.Backend.Controllers
             else
             {
                 var Hotel = _db.HotelZH.Where(o => o.UserId == CurrentUser.Id).FirstOrDefault();
+                if (Hotel == null)
+                {
+                   TempData["Message"] =  "未建立飯店";
+                    return View("Index");
+                }
                 var Rooms = Hotel == null ? new List<RoomZH>() : Hotel.RoomZH;
                 ViewBag.Rooms = new SelectList(Rooms, "ID", "Name");
                 var Country = _db.Country.ToList();
@@ -180,7 +191,7 @@ namespace WGHotel.Areas.Backend.Controllers
 
                 
             }
-            catch(Exception ex)
+            catch
             {
                 var Hotel = _db.HotelZH.Where(o => o.UserId == CurrentUser.Id).FirstOrDefault();
                 var Rooms = Hotel == null ? new List<RoomZH>() : Hotel.RoomZH;
@@ -200,8 +211,8 @@ namespace WGHotel.Areas.Backend.Controllers
             var Country = _db.Country.ToList().OrderBy(o => o.Name);
             ViewBag.Nation = new SelectList(Country, "ID", "Name");
 
-            var Hotel = _db.HotelZH.ToList().OrderBy(o => o.Name);
-            ViewBag.Hotel = new SelectList(Hotel, "ID", "Name");
+            var City = _db.CityZH.ToList();
+            ViewBag.City = new SelectList(City, "ID", "Name");
             var ReportModel = new ReportModel();
             if (search == null || (search.Nation == 0 &&
                 search.Begin == DateTime.MinValue && search.End == DateTime.MinValue))
@@ -218,7 +229,7 @@ namespace WGHotel.Areas.Backend.Controllers
                           join h in _db.HotelZH on r.HotelID equals h.ID
                           join room in _db.ReportRooms on r.ID equals room.ReportID
                           where (search.Nation == 0 || r.CountryID == search.Nation) &&
-                          (search.Hotel <=0 || search.Hotel == h.ID)&&
+                          (search.City <= 0 || search.City == h.City) &&
                           (string.IsNullOrEmpty(search.Keyword) || (h.Name.Contains(search.Keyword) || h.Area.Contains(search.Keyword) || room.RoomName.Contains(search.Keyword))) &&
                           (r.CheckInDate >= search.Begin && r.CheckInDate <= search.End)
                           select new ReportListModel

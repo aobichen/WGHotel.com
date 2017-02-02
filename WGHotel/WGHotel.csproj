@@ -1066,6 +1066,7 @@
     <Content Include="Areas\Backend\Views\Language\_Create.cshtml" />
     <Content Include="Areas\Backend\Views\Shared\_Language.cshtml" />
     <Content Include="Areas\Backend\Views\Report\_Rooms.cshtml" />
+    <None Include="Properties\PublishProfiles\hotels.2017.taipei.pubxml" />
     <None Include="Properties\PublishProfiles\wghotel.pubxml" />
     <None Include="Properties\PublishProfiles\WGHotel.TW.pubxml" />
     <None Include="Properties\PublishProfiles\WGHotelTest.pubxml" />

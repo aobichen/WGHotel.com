@@ -4,8 +4,15 @@
         <div class="panel-heading">
             <h2>
                 住房回報
+                @if (ViewBag.Message != null)
+                {
+                    <span style="color:red;">
+                        @ViewBag.Message
+                    </span>
+                }
             </h2>
-            @if (!User.IsInRole("Admin") && !User.IsInRole("Admin")) { 
+            @if (!User.IsInRole("Admin"))
+            { 
                 <div class="panel-actions">
                     <a href="@Url.Action("Edit")" class="btn-setting" title="新增"><i class="fa fa-plus-circle"></i></a>
 

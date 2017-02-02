@@ -2,7 +2,7 @@
 
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary(true, "AAA", new { @class = "text-danger" })
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
     @Html.AntiForgeryToken()
     @*@Html.HiddenFor(model=>model.ImgKey)*@
     <script src="~/Content/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
@@ -73,9 +73,12 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">房型</label>
                                     <div class="col-sm-10 col-lg-6 col-md-8">
+
+                                        @Html.Partial("_Rooms")
+
                                         @*@Html.CheckBoxList("RoomId", (SelectList)ViewBag.RoomId, null, WGHotel.Helpers.Position.Vertical, 5)*@
                                       
-                                          <table id="room-table" class="table">
+                                          @*<table id="room-table" class="table">
                                             @foreach (var item in (SelectList)ViewBag.RoomId)
                                             {
                                                 <tr>
@@ -105,7 +108,7 @@
                                                 </tr>
                                             }
                                         </table>
-                                        <input type="hidden" name="Room" id="Rooms"/>
+                                        <input type="hidden" name="Room" id="Rooms"/>*@
                                       
 
                                     </div>
