@@ -38,7 +38,7 @@ namespace WGHotel.Models
                             ID = item.ID,
                             Name = item.Name,
                             Game = item.Game,
-                            //Sell = Hotel.RoomEN.Min(o => o.Sell),
+                            Sell = Hotel.RoomEN.Min(o => o.Sell),
                             Tel = item.Tel,
                             LinkUrl = item.LinkUrl
                         });

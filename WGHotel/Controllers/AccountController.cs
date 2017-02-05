@@ -103,7 +103,7 @@ namespace WGHotel.Controllers
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "登入嘗試失試。");
+                    ModelState.AddModelError("", "帳號密碼錯誤。");
                     return View(model);
             }
         }
