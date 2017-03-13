@@ -58,7 +58,7 @@ namespace WGHotel.Areas.Backend.Controllers
                 var result = (from room in _db.RoomZH
                              join hotel in _db.HotelZH
                              on room.HOTELID equals hotel.ID
-                             where hotel.ID == Page.id
+                             where hotel.ID == Page.id && room.Deleted != true
                              select new RoomList
                              {
                                  ID = room.ID,
@@ -100,7 +100,7 @@ namespace WGHotel.Areas.Backend.Controllers
             var model = (from room in _db.RoomZH
                          join hotel in _db.HotelZH
                          on room.HOTELID equals hotel.ID
-                         where hotel.ID == hotelId 
+                         where hotel.ID == hotelId && room.Deleted != true
                          select new RoomList
                          {
                              ID = room.ID,

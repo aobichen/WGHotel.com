@@ -625,7 +625,7 @@ namespace WGHotel.Controllers
             if (CurrentLanguage.Equals("us"))
             {
                 Rooms = (from r in _db.RoomEN
-                         where rooms.Contains(r.ParentId.Value)
+                         where rooms.Contains(r.ParentId.Value) && r.Deleted != true
                          select new RoomViewList
                          {
                              Feature = r.Feature,
@@ -644,7 +644,7 @@ namespace WGHotel.Controllers
             else
             {
                 Rooms = (from r in _db.RoomZH
-                         where rooms.Contains(r.ID)
+                         where rooms.Contains(r.ID) && r.Deleted != true
                          select new RoomViewList
                          {
                              Feature = r.Feature,

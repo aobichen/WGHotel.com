@@ -30,23 +30,23 @@ namespace WGHotel.Models
         public virtual DbSet<CityZH> CityZH { get; set; }
         public virtual DbSet<CodeFileEN> CodeFileEN { get; set; }
         public virtual DbSet<CodeFileZH> CodeFileZH { get; set; }
+        public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<FacilityEN> FacilityEN { get; set; }
         public virtual DbSet<FacilityZH> FacilityZH { get; set; }
         public virtual DbSet<GameSiteEN> GameSiteEN { get; set; }
         public virtual DbSet<GameSiteZH> GameSiteZH { get; set; }
-        public virtual DbSet<ImageStore> ImageStore { get; set; }
-        public virtual DbSet<Report> Report { get; set; }
-        public virtual DbSet<SysSetting> SysSetting { get; set; }
-        public virtual DbSet<Country> Country { get; set; }
-        public virtual DbSet<VenueEN> VenueEN { get; set; }
-        public virtual DbSet<VenueZH> VenueZH { get; set; }
-        public virtual DbSet<Language> Language { get; set; }
-        public virtual DbSet<RoomPrice> RoomPrice { get; set; }
         public virtual DbSet<HotelEN> HotelEN { get; set; }
         public virtual DbSet<HotelZH> HotelZH { get; set; }
-        public virtual DbSet<RoomEN> RoomEN { get; set; }
-        public virtual DbSet<RoomZH> RoomZH { get; set; }
+        public virtual DbSet<ImageStore> ImageStore { get; set; }
+        public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<Log> Log { get; set; }
+        public virtual DbSet<Report> Report { get; set; }
         public virtual DbSet<ReportRooms> ReportRooms { get; set; }
+        public virtual DbSet<RoomEN> RoomEN { get; set; }
+        public virtual DbSet<RoomPrice> RoomPrice { get; set; }
+        public virtual DbSet<RoomZH> RoomZH { get; set; }
+        public virtual DbSet<SysSetting> SysSetting { get; set; }
+        public virtual DbSet<VenueEN> VenueEN { get; set; }
+        public virtual DbSet<VenueZH> VenueZH { get; set; }
     }
 }

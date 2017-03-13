@@ -744,7 +744,6 @@ C:\Users\Aobi\Documents\Bitbucket\WGHotel.com\WGHotel\bin\zh-Hant\Microsoft.Owin
 C:\Users\Aobi\Documents\Bitbucket\WGHotel.com\WGHotel\bin\zh-Hant\Microsoft.Owin.Security.Google.resources.dll
 C:\Users\Aobi\Documents\Bitbucket\WGHotel.com\WGHotel\bin\zh-Hant\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\Aobi\Documents\Bitbucket\WGHotel.com\WGHotel\bin\zh-Hant\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-C:\Users\Aobi\Documents\Bitbucket\WGHotel.com\WGHotel\obj\Debug\WGHotel.csprojResolveAssemblyReference.cache
 C:\Users\Aobi\Documents\Bitbucket\WGHotel.com\WGHotel\obj\Debug\WGHotel.App_GlobalResources.Resource-zh.resources
 C:\Users\Aobi\Documents\Bitbucket\WGHotel.com\WGHotel\obj\Debug\WGHotel.csproj.GenerateResource.Cache
 C:\Users\Aobi\Documents\Bitbucket\WGHotel.com\WGHotel\obj\Debug\WGHotel.dll

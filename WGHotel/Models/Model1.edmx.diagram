@@ -4,34 +4,34 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="62ae1f3d6262481da82c93e0ac312564" Name="Diagram1" ZoomLevel="79">
-        <EntityTypeShape EntityType="WGHotelsModel.Banner" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.CityEN" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.CityZH" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.CodeFileEN" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.CodeFileZH" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.FacilityEN" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.FacilityZH" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.GameSiteEN" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.GameSiteZH" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.ImageStore" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.Report" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.SysSetting" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WGHotelsModel.Country" Width="1.5" PointX="13.375" PointY="3.75" />
-        <EntityTypeShape EntityType="WGHotelsModel.VenueEN" Width="1.5" PointX="13.375" PointY="10.75" />
-        <EntityTypeShape EntityType="WGHotelsModel.VenueZH" Width="1.5" PointX="13.375" PointY="13.75" />
-        <EntityTypeShape EntityType="WGHotelsModel.Language" Width="1.5" PointX="14.375" PointY="0.75" />
-        <EntityTypeShape EntityType="WGHotelsModel.RoomPrice" Width="1.5" PointX="13.375" PointY="7.75" />
-        <EntityTypeShape EntityType="WGHotelsModel.HotelEN" Width="1.5" PointX="15.375" PointY="7" />
-        <EntityTypeShape EntityType="WGHotelsModel.HotelZH" Width="1.5" PointX="5.375" PointY="11" />
-        <EntityTypeShape EntityType="WGHotelsModel.RoomEN" Width="1.5" PointX="17.625" PointY="7.125" />
-        <EntityTypeShape EntityType="WGHotelsModel.RoomZH" Width="1.5" PointX="7.625" PointY="11.375" />
-        <AssociationConnector Association="WGHotelsModel.FK_RoomEN_HotelEN" />
-        <AssociationConnector Association="WGHotelsModel.FK_HotelZH_HotelZH" />
-        <AssociationConnector Association="WGHotelsModel.FK_RoomZH_HotelZH" />
-        <EntityTypeShape EntityType="WGHotelsModel.Log" Width="1.5" PointX="10.375" PointY="3.75" />
-        <EntityTypeShape EntityType="WGHotelsModel.ReportRooms" Width="1.5" PointX="3" PointY="2.375" />
-        <AssociationConnector Association="WGHotelsModel.FK_ReportRooms_Report" />
+      <Diagram DiagramId="a48e3dd40f2d48f899972ece1d87e41f" Name="Diagram1">
+        <EntityTypeShape EntityType="WGHotelsModel.Banner" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.CityEN" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.CityZH" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.CodeFileEN" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.CodeFileZH" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.Country" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.FacilityEN" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.FacilityZH" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.GameSiteEN" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.GameSiteZH" Width="1.5" PointX="9.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.HotelEN" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.HotelZH" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.ImageStore" Width="1.5" PointX="11.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.Language" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.Log" Width="1.5" PointX="12.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.Report" Width="1.5" PointX="5.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.ReportRooms" Width="1.5" PointX="8" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.RoomEN" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.RoomPrice" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.RoomZH" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.SysSetting" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.VenueEN" Width="1.5" PointX="6.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WGHotelsModel.VenueZH" Width="1.5" PointX="13.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="WGHotelsModel.FK_RoomEN_HotelEN" ManuallyRouted="false" />
+        <AssociationConnector Association="WGHotelsModel.FK_HotelZH_HotelZH" ManuallyRouted="false" />
+        <AssociationConnector Association="WGHotelsModel.FK_RoomZH_HotelZH" ManuallyRouted="false" />
+        <AssociationConnector Association="WGHotelsModel.FK_ReportRooms_Report" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
