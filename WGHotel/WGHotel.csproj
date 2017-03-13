@@ -1137,7 +1137,9 @@
     <Content Include="Views\Home\_ListHsinchuCity.cshtml" />
     <Content Include="Views\Home\_ListHsinchuCountry.cshtml" />
     <Content Include="Views\Shared\_VenueTypeList.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
