@@ -130,6 +130,7 @@ namespace WGHotel.Areas.Backend.Models
                                 Name = fileName,
                                 Image = img.Image
                             });
+       
                         }
                         _db.SaveChanges();
                     }
@@ -185,6 +186,10 @@ namespace WGHotel.Areas.Backend.Models
                         var dbImg = _db.ImageStore.Where(o => o.ReferIdZH == zhHotel.ID);
                         var ImgNames = dbImg.Select(o => o.Name).ToList();
                         images = images.Where(o => !ImgNames.Contains(o.Name)).ToList();
+                        if (images.Count > 0)
+                        {
+                            HttpContext.Current.Session["HasNewImage"] = true;
+                        }
                         foreach (var img in images)
                         {
                             var fileName = Guid.NewGuid().GetHashCode().ToString("x");

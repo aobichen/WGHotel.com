@@ -8,25 +8,11 @@ using WGHotel.Models;
 
 namespace WGHotel.Controllers
 {
-    public class RoomController : BaseController
+    public class ImagesController : BaseController
     {
-        // GET: Room
-        public ActionResult Index()
+        [OutputCache(Duration = 7200, Location = OutputCacheLocation.Client, VaryByParam = "id")]
+        public ActionResult ShowRoomImage(int id)
         {
-            return View();
-        }
-        public ActionResult RoomImage(int id)
-        {
-            var image = _db.ImageStore.Where(o => o.ID == id && o.Type=="Room").FirstOrDefault();
-
-            byte[] img = image == null ? new ImageDAO().EmptyImageForHotel() : image.Image;
-            var Extension = image == null ? "jpg" : image.Extension.Replace(".", "");
-            var imgtype = string.Format("image/{0}", Extension);
-            return File(img, imgtype);
-        }
-
-        [OutputCache(Duration=3600, Location = OutputCacheLocation.Client,VaryByParam="id")]
-        public ActionResult ShowRoomImage(int id){
             var image = _db.ImageStore.Where(o => o.ID == id && o.Type == "Room").FirstOrDefault();
 
             byte[] img = image == null ? new ImageDAO().EmptyImageForHotel() : image.Image;
@@ -34,8 +20,8 @@ namespace WGHotel.Controllers
             var imgtype = string.Format("image/{0}", Extension);
             return File(img, imgtype);
         }
-
-       // [OutputCache(Duration = 3600, Location = OutputCacheLocation.Client, VaryByParam = "id")]
+        // GET: Images
+        [OutputCache(Duration = 7200, Location = OutputCacheLocation.Client, VaryByParam = "id")]
         public ActionResult ShowHotelImage(int id)
         {
             var image = _db.ImageStore.Where(o => o.ID == id && o.Type == "Hotel").FirstOrDefault();

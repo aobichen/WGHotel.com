@@ -73,12 +73,15 @@
             <ul id="image-gallery" class="cS-hidden">
                 @foreach (var img in Model.Images)
                 {
-                    var base64 = Convert.ToBase64String(img.Image);
-                    var Extension = string.IsNullOrEmpty(img.Extension) ? "jpg" : img.Extension;
-                    var imgSrc = String.Format("data:image/{0};base64,{1}", Extension,base64);
-                <li data-thumb="@imgSrc">
+                    //var base64 = Convert.ToBase64String(img.Image);
+                    //var Extension = string.IsNullOrEmpty(img.Extension) ? "jpg" : img.Extension;
+                    //var imgSrc = String.Format("data:image/{0};base64,{1}", Extension,base64);
+                @*<li data-thumb="@imgSrc">
                     <img src="@imgSrc" alt="" />
-                </li>
+                </li>*@
+                    <li data-thumb="@Url.Action("ShowHotelImage", "Images", new { id = img.ID})">
+                        <img src="@Url.Action("ShowHotelImage", "Images", new { id = img.ID})" alt="@Model.Name" />
+                    </li>
 
                 }
             </ul>

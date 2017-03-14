@@ -200,6 +200,12 @@ namespace WGHotel.Areas.Backend.Controllers
             model.Game = (model.GameSite == null || model.GameSite.Count <= 0) ? string.Empty : string.Join(",", model.GameSite);
             model.Languages = (model.Language == null || model.Language.Count <= 0) ? string.Empty : string.Join(",", model.Language);
             model.Edit();
+
+            if (Session["HasNewImage"] != null && ((bool)Session["HasNewImage"]) == true)
+            {
+                var url = Url.Action("ShowHotelImage", "Images", new { Area = string.Empty, id = model.ID });
+                HttpResponse.RemoveOutputCacheItem(url);
+            }
                 
             return RedirectToAction("Edit", new { id = model.ID });
         }
